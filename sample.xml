@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blogEntry>
+    <title>Give me 1K LOC and I will move the Earth!</title>
+    <subtitle></subtitle>
+    <excerpt></excerpt>
+    <body><![CDATA[<p>
+Well.. maybe not "move the earth"... but I might just be able to come up with a pretty nice little sample blog app. My goal is to have something to add to the Grails samples distro so that people have a nice, gentle, but complete app to cut their teeth on.
+</p>
+<p>
+The humble blog app seems to be low handing fruit, (<a href="http://jameswilliams.be/blog/index.php?itemid=39">some people</a> have already started work on such beasts) so I'm off and running on my next little project. I'm modelling off Simon Brown's way cool <a href="http://pebble.sourceforge.net/">Pebble</a> (which powers this site at the moment), but if I'm to fit it into 1000 Lines of Code, I'm going to have to dispense with a few features... so... may I introduce:
+</p>
+<p>
+<img src="images/2007/gravl.gif" alt="gravl's shiny new logo"/>
+</p>
+<p>
+Gravl - Pebble, but smaller, and without some of the niceties.
+</p>
+<p>
+Ok. Here are the rules.
+<ul>
+<li>Everything(*) must fit into 1000 LOC as returned by the "grails stats" command
+<li> That number excludes plugins since users want to learn how the app works, not the plugins (I'm thinking that Searchable and Feeds are going to save a ton of lines there)
+<li> That number doesn't include webby view stuff (like gsps/css/javascript) - just the core logic (services/logic/models/taglibs) and related config elements
+<li>That number also doesn't include the test cases, since I'd like to have some nice samples for both unit and integration testing to get people up and running there (especially since Dierk sold me on Canoo Webtest stuff... that guy groks testing more than anyone I've ever heard)
+</ul>
+</p>
+<p>
+The main aim of the app is as a samples/teaching tool. So I'm cramming a fairly diverse set of stuff in just so people have examples of some of the powerful features in Grails. In my sights right now are:
+<ul>
+<li> Custom Filters for doing referrer tracking
+<li> All the common domain relationship (incl M:N)
+<li> Custom UrlMapping for permalinks
+<li> Command objects for form processing (incl validation)
+<li> Some WebFlow samples around the publishing process
+<li> AJAX tags/autocomplete stuff for entry categories
+<li> Using the Searchable and Feeds plugin
+<li> Using custom configs to make it all tidy
+<li> Simple taglibs for pretty Date display
+<li> i18n for the core interface features
+<li> Unit testing controllers
+<li> Integration testing webflows
+<li> Some funky layout templates to make it all web2.0
+<li> Bonus marks to handle import and export of content (and a Gold Star if we can import my existing Pebble content straight from a Pebble export into a Gravl import).
+</ul>
+</p>
+<p>
+Boy.. That all sounds a little ambitious.. Let's see how far I can get by Christmas... It's Grails, right? I'm sure I'll have something to show...
+</p>]]></body>
+    <date>28 Nov 2007 11:15:11:519 +0000</date>
+    <timeZone>Australia/Canberra</timeZone>
+    <state>published</state>
+    <author>glen</author>
+    <staticName/>
+    <commentsEnabled>true</commentsEnabled>
+    <trackBacksEnabled>true</trackBacksEnabled>
+    <category>/Groovy</category>
+    <tags></tags>
+    <comment>
+        <title>Re: Give me 1K LOC and I will move the Earth!</title>
+        <body><![CDATA[Hy,
+
+Can you include also breadcrumbs in the list ?]]></body>
+        <author>Marius Vasilache</author>
+        <email></email>
+        <website></website>
+        <ipAddress>85.204.29.143</ipAddress>
+        <date>28 Nov 2007 12:47:24:891 +0000</date>
+        <state>approved</state>
+        <authenticated>false</authenticated>
+    </comment>
+    <comment>
+        <title>Re: Give me 1K LOC and I will move the Earth!</title>
+        <body><![CDATA[LOL! Gravl, love the name, can't wait for the code ;-)
+
+Good luck!]]></body>
+        <author>Graeme Rocher</author>
+        <email>graeme.rocher@gmail.com</email>
+        <website>http://grails.org</website>
+        <ipAddress>81.102.253.64</ipAddress>
+        <date>28 Nov 2007 17:11:14:306 +0000</date>
+        <state>approved</state>
+        <authenticated>false</authenticated>
+    </comment>
+    <comment>
+        <title>Re: Give me 1K LOC and I will move the Earth!</title>
+        <body>
+            <![CDATA[I'm looking forward to this. I still use your rss aggregator app sometimes for reference, so one more will be nice!]]></body>
+        <author>Robert</author>
+        <email>pocket5s@gmail.com</email>
+        <website>http://thebull.macsimumweb.com</website>
+        <ipAddress>206.173.230.2</ipAddress>
+        <date>30 Nov 2007 18:01:48:763 +0000</date>
+        <state>approved</state>
+        <authenticated>false</authenticated>
+    </comment>
+</blogEntry>
