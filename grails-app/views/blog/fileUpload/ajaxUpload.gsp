@@ -7,12 +7,14 @@
         <g:javascript src="jsProgressBarHandler.js"/>
         <link rel="stylesheet" media="screen" type="text/css" href="${createLinkTo(dir: 'css', file: 'jsProgressBarHandler.css')}"/>
 
+
         <g:javascript>
 
-            new Ajax.PeriodicalUpdater('progressBarId', '<g:link action="fileUpload" event="refresh" />',
+            new Ajax.PeriodicalUpdater('progressBarId', '<g:createLink action="fileUpload"/>' ,
               {
                 method: 'get',
-                frequency: 60,
+                parameters: { _flowExecutionKey: '${request.flowExecutionKey}', _eventId_update: 'update' } ,
+                frequency: 15
               });
 
 
@@ -20,6 +22,12 @@
 
     </head>
     <body>
+
+
+        <div id="webflowForm">
+            <g:render template="updateForm"/>
+        </div>
+
 
         <div style="padding: 2em; border: black 1px solid; margin: 2em;">
             <span class="progressBar colorClass" id="progressBarId">50%</span>

@@ -58,7 +58,7 @@ class ImportService implements Serializable {
              while (stillImporting && progressCount < totalEntries) {
                  progressCount++
                  log.debug "Importing entry $progressCount of $totalEntries"
-                 Thread.sleep(100)
+                 Thread.sleep(200)
              }
              log.debug "Exiting thread"
          }
