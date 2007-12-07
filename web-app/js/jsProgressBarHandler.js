@@ -32,7 +32,7 @@
 			var percentage 		= parseInt(progressBar.innerHTML.replace("%",""));
 			var id				= progressBar.id;
 			
-			progressBar.update('<img id="' + id + '_percentImage" src="images/percentImage.png" alt="0%" style="background-position: 0px 0px;"/> <span id="' + id + '_percentText">0%</span>');
+			progressBar.update('<img id="' + id + '_percentImage" src="../images/percentImage.png" alt="0%" style="background-position: 0px 0px;"/> <span id="' + id + '_percentText">0%</span>');
 			
 			this.setPercentage(id, percentage);
 		},
