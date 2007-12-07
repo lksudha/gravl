@@ -93,8 +93,9 @@ class BlogController {
         // refresh the ajax progress
         refreshResults {
             action {
-                log.debug ("Sending progress as: " + importService.percentComplete())
-                [ percentComplete: importService.percentComplete() ]
+                def percent = importService.percentComplete()
+                log.debug ("Sending progress as: " + percent)
+                [ percentComplete: percent ]
             }
             on("success").to "_webflowForm"
             on("failure").to "headHome"
@@ -104,9 +105,11 @@ class BlogController {
         // as a gsp template in the initial ajaxUpload view
         _webflowForm {
             on("update").to("refreshResults")
+            on("complete").to("finishedImport")
             on("cancel").to "headHome"
         }
 
+        finishedImport()
 
 
         headHome {

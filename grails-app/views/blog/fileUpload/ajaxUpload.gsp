@@ -14,6 +14,8 @@
             <g:render template="/blog/fileUpload/webflowForm"/>
         </div>
 
+        <h1>Importing Blog...</h1>
+
         <span class="progressBar percentImage3" id="myProgressBar">0%</span>
 
         <g:javascript>
@@ -22,11 +24,14 @@
               {
                 method: 'get',
                 parameters: $('webflowForm').serialize(true) ,
-                frequency: 5,
+                frequency: 10,
                 decay: 2,
                 onSuccess: function() {
                     // hackery to delay update till the webflowFormDiv is refreshed... I wish onComplete() worked...
                     setTimeout("myJsProgressBarHandler.setPercentage('myProgressBar', $('currentProgress').getValue())",500)
+                    if ($('currentProgress').getValue() == '100') {
+                        window.location = '<g:createLink action="fileUpload"/>?_flowExecutionKey=' + $('flowExecutionKey').getValue() + '&_eventId_complete=true'    
+                    }
                 }
               });
 
