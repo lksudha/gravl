@@ -78,30 +78,35 @@ class BlogController {
         startUpload {
             action {
                 importService.importBlog()
+                [ percentComplete: importService.percentComplete() ]
             }
             on("success").to "ajaxUpload"
             // on(Exception).to "errorPage"
         }
 
+        // display ajax upload form
         ajaxUpload {
-            on("update") {
+            on("update").to("refreshResults")
+            on("cancel").to "headHome"
+        }
+
+        // refresh the ajax progress
+        refreshResults {
+            action {
                 log.debug ("Sending progress as: " + importService.percentComplete())
                 [ percentComplete: importService.percentComplete() ]
-            }.to("loop1")
+            }
+            on("success").to "_webflowForm"
+            on("failure").to "headHome"
+        }
+
+        // send a webform with the results, unusual _ naming allows us to reuse the form
+        // as a gsp template in the initial ajaxUpload view
+        _webflowForm {
+            on("update").to("refreshResults")
             on("cancel").to "headHome"
         }
 
-        loop1 {
-            render(view: '_updateForm', model: [ percentComplete: importService.percentComplete() ] )
-            on("update").to("loop2")
-            on("cancel").to "headHome"
-        }
-
-        loop2 {
-            render(view: '_updateForm', model: [ percentComplete: importService.percentComplete() ] )
-            on("update").to("loop1")
-            on("cancel").to "headHome"
-        }
 
 
         headHome {
