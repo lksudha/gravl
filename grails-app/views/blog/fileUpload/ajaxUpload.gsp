@@ -25,7 +25,8 @@
                 frequency: 5,
                 decay: 2,
                 onSuccess: function() {
-                    myJsProgressBarHandler.setPercentage('myProgressBar', $('currentProgress').getValue())
+                    // hackery to delay update till the webflowFormDiv is refreshed... I wish onComplete() worked...
+                    setTimeout("myJsProgressBarHandler.setPercentage('myProgressBar', $('currentProgress').getValue())",500)
                 }
               });
 
