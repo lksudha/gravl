@@ -10,11 +10,14 @@
 
         <g:javascript>
 
-            new Ajax.PeriodicalUpdater('progressBarId', '<g:createLink action="fileUpload"/>' ,
+            new Ajax.PeriodicalUpdater('webflowFormDiv', '<g:createLink action="fileUpload"/>' ,
               {
                 method: 'get',
-                parameters: { _flowExecutionKey: '${request.flowExecutionKey}', _eventId_update: 'update' } ,
-                frequency: 15
+                parameters: Form.serialize('webflowForm') ,
+                frequency: 15,
+                onSuccess: function(transport, json){
+                    alert("Event fired. Need to update timer");
+                }
               });
 
 
@@ -24,7 +27,7 @@
     <body>
 
 
-        <div id="webflowForm">
+        <div id="webflowFormDiv">
             <g:render template="updateForm"/>
         </div>
 

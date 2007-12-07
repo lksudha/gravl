@@ -1,5 +1,6 @@
-<g:form action="fileUpload">
-    <input id="currentProgress" type="hidden" value="${currentProgress}"/>
-    <g:submitButton name="update" value="Upload" style='display:None'/>
-    <g:submitButton name="cancel" value="Cancel"/>
-</g:form>
+<form action="<g:createLink action="fileUpload"/>" id="webflowForm">
+    <input id="currentProgress" type="hidden" value="${percentComplete}"/>
+    <g:submitButton name="_eventId_update" value="Update"/>
+    <g:submitButton name="_eventId_cancel" value="Cancel"/>
+    <input type="hidden" name="_flowExecutionKey" value="${request.flowExecutionKey}"/>
+</form>

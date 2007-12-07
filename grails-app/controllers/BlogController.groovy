@@ -86,19 +86,19 @@ class BlogController {
         ajaxUpload {
             on("update") {
                 log.debug ("Sending progress as: " + importService.percentComplete())
-                render(importService.percentComplete())
-            }.to("ajaxUpload")
+                [ percentComplete: importService.percentComplete() ]
+            }.to("loop1")
             on("cancel").to "headHome"
         }
 
         loop1 {
-            render(view: 'updateForm', model: [ complete: importService.percentComplete(), action: 'loop2' ] )
+            render(view: '_updateForm', model: [ percentComplete: importService.percentComplete() ] )
             on("update").to("loop2")
             on("cancel").to "headHome"
         }
 
         loop2 {
-            render(view: 'updateForm', model: [ complete: importService.percentComplete(), action: 'loop1' ] )
+            render(view: '_updateForm', model: [ percentComplete: importService.percentComplete() ] )
             on("update").to("loop1")
             on("cancel").to "headHome"
         }
