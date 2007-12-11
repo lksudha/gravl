@@ -81,70 +81,92 @@ class ImportService implements Serializable {
         // 28 Nov 2007 11:15:11:519 +0000
         SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy HH:mm:ss:SSS Z")
 
+
         Thread.start {
-            log.debug "Starting thread"
+            Blog.withTransaction {status ->  // if not transactional your Hibernate session will disappear
+                log.debug "Starting thread"
 
-            Blog newBlog = new Blog(title: "Imported Pebble Blog", blogid: "pebble").save()
+                Blog newBlog = new Blog(title: "Imported Pebble Blog", blogid: "pebble").save()
 
-            blogZip.entries().each {entry -> // a ZipEntry
-
-
-                if (!stillImporting)
-                    return // exit thread safely
-
-                progressCount++
+                blogZip.entries().each {entry -> // a ZipEntry
 
 
-                // trim entries in format 2007/11/28/1196248511519.xml
-                if (entry.name =~ /\d{4}\/\d{2}\/\d{2}\/\d{13}.xml$/) {
-                    log.debug "Importing ${entry.name}"
-                    String entryText = blogZip.getInputStream(entry).getText()
-                    def blogEntry = new XmlSlurper().parseText(entryText)
+                    if (!stillImporting)
+                        return // exit thread safely
 
-                    def comments = blogEntry.comment
-                    log.debug "Title: $blogEntry.title (${comments.size()} comments)"
+                    progressCount++
 
-                    BlogEntry newEntry = new BlogEntry(title: blogEntry.title.toString(),
-                            subtitle: blogEntry.subtitle.toString(),
-                            excerpt: blogEntry.excerpt.toString(), body: blogEntry.body.toString(),
-                            created: sdf.parse(blogEntry.date.toString()),
-                            published: blogEntry.state.toString() =~ /published/ ? true : false)
-                    entriesImported++
-                    newBlog.addToBlogEntries(newEntry).save()
-                    newBlog.errors.allErrors.each {
-                        log.debug it
+
+                    // trim entries in format 2007/11/28/1196248511519.xml
+                    if (entry.name =~ /\d{4}\/\d{2}\/\d{2}\/\d{13}.xml$/) {
+                        log.debug "Importing ${entry.name}"
+                        String entryText = blogZip.getInputStream(entry).getText()
+                        def blogEntry = new XmlSlurper().parseText(entryText)
+
+                        def comments = blogEntry.comment
+                        def categories = blogEntry.category
+                        def tags = blogEntry.tags
+
+                        log.debug "Title: $blogEntry.title (${comments.size()} comments, ${categories.size()} categories, ${tags.size()} tags)"
+
+
+                        BlogEntry newEntry = new BlogEntry(title: blogEntry.title.toString(),
+                                subtitle: blogEntry.subtitle.toString(),
+                                excerpt: blogEntry.excerpt.toString(), body: blogEntry.body.toString(),
+                                created: sdf.parse(blogEntry.date.toString()),
+                                status: blogEntry.state.toString())
+                        entriesImported++
+                        newBlog.addToBlogEntries(newEntry).save()
+                        newBlog.errors.allErrors.each {
+                            log.debug it
+                        }
+                        newEntry.errors.allErrors.each {
+                            log.debug it
+                        }
+                        log.debug "New Id of entry is ${newEntry.id}"
+
+                        categories.each {category ->
+                            String niceCat = category.toString()
+                            if (niceCat.startsWith('/')) {niceCat.substring(1)} // strip leading slash
+                            def tag = Tag.findByBlogAndName(newBlog, niceCat)
+                            if (tag == null) {
+                                tag = new Tag(name: niceCat)
+                                log.debug "Creating new tag for ${niceCat}"
+                                newBlog.addToTags(tag).save()
+                            } else {
+                                log.debug "Found existing tag for ${niceCat}"
+                            }
+                            newEntry.addToTags(tag).save()
+                        }
+
+
+                        comments.each {c ->
+                            Comment newComment = new Comment(body: c.body.toString(), author: c.author.toString(),
+                                    email: c.email.toString(), url: c.website.toString(),
+                                    created: sdf.parse(c.date.toString()), status: c.state.toString())
+                            newEntry.addToComments(newComment).save()
+                            commentsImported++
+                        }
+
+                    } else if (entry.name =~ /blog.properties/) {
+
+                        log.debug "Processing Blog Properties file"
+                        def props = new Properties()
+                        props.load(blogZip.getInputStream(entry))
+                        // log.debug("Properties are: ${props.dump()}")
+                        if (props.name) {
+                            log.debug "Setting blog name to [$props.name]"
+                            newBlog.title = props.name
+                            newBlog.save()
+                        }
+
+                    } else {
+                        log.debug("Skipping non-blog entry ${entry.name}")
                     }
-                    newEntry.errors.allErrors.each {
-                        log.debug it
-                    }
-                    log.debug "New Id of entry is ${newEntry.id}"
 
-                    comments.each {c ->
-                        Comment newComment = new Comment(body: c.body.toString(), author: c.author.toString(),
-                                email: c.email.toString(), url: c.website.toString(),
-                                created: sdf.parse(c.date.toString()), approved: c.state.toString() =~ /approved/ ? true : false)
-                        newEntry.addToComments(newComment).save()
-                        commentsImported++
-                    }
-
-                } else if (entry.name =~ /blog.properties/) {
-
-                    log.debug "Processing Blog Properties file"
-                    def props = new Properties()
-                    props.load(blogZip.getInputStream(entry))
-                    // log.debug("Properties are: ${props.dump()}")
-                    if (props.name) {
-                        log.debug "Setting blog name to [$props.name]"
-                        newBlog.title = props.name
-                        newBlog.save()
-                    }
-
-                } else {
-                    log.debug("Skipping non-blog entry ${entry.name}")
                 }
-
+                log.debug "Exiting Pebble Import Thread"
             }
-            log.debug "Exiting Pebble Import Thread"
         }
         log.debug "Exiting Pebble Import"
 

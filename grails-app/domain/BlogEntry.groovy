@@ -20,7 +20,7 @@ class BlogEntry
   String body
   String markup = "html"
 
-  boolean published = false
+  String status = "draft"
   boolean allowComments = true
 
   String toString ()

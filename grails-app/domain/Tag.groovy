@@ -1,7 +1,7 @@
 class Tag
 {
-    static hasMany = [entries: BlogEntry]
-    static belongsTo = [BlogEntry,Blog]
+    static belongsTo = [Blog, BlogEntry]
+    static hasMany = [ entries: BlogEntry ]
     // static constraints = {}
 
     String name

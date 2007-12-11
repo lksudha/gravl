@@ -19,7 +19,7 @@ class Comment
   Date created = new Date()
   
   boolean notify = false // notify the user if other comments are added to the thread...
-  boolean approved = false 
+  String status = "pending" 
 
   String toString ()
   {

@@ -24,16 +24,20 @@
               {
                 method: 'get',
                 parameters: $('webflowForm').serialize(true) ,
-                frequency: 10,
+                frequency: 5,
                 decay: 2,
                 onSuccess: function() {
                     // hackery to delay update till the webflowFormDiv is refreshed... I wish onComplete() worked...
                     setTimeout("myJsProgressBarHandler.setPercentage('myProgressBar', $('currentProgress').getValue())",500)
-                    if ($('currentProgress').getValue() == '100') {
-                        window.location = '<g:createLink action="fileUpload"/>?_flowExecutionKey=' + $('flowExecutionKey').getValue() + '&_eventId_complete=true'    
-                    }
+                    setTimeout("checkComplete()", 4000) // give it some time to animate to 100%
                 }
               });
+
+            function checkComplete() {
+               if ($('currentProgress').getValue() == '100') {
+                        window.location = '<g:createLink action="fileUpload"/>?_flowExecutionKey=' + $('flowExecutionKey').getValue() + '&_eventId_complete=true'
+               }
+            }
 
 
 
