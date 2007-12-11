@@ -12,6 +12,14 @@ class ImportServiceTests extends GroovyTestCase {
         println "Starting test.."
         def file = "/Users/glen/Desktop/glen-20071203.zip"
         ImportService is = new ImportService()
-        is.importPebbleZip(file)
+        is.zipFile = new File(file)
+        is.blogId = 'glen'
+        is.blogType = 'Pebble'
+        is.importBlog()
+        while (is.percentComplete() < 100) {
+            println "Percent Complete: ${is.percentComplete()}"
+            Thread.sleep(1000)
+        }
+        println "Done"
     }
 }
