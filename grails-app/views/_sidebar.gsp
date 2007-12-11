@@ -128,6 +128,18 @@
 	      		</div>
 
 
+                <style type="text/css">
+                    .tagCloudSize0 { font-size: xx-small; }
+                    .tagCloudSize1 { font-size: small;  }
+                    .tagCloudSize2 { font-size: medium;  }
+                    .tagCloudSize3 { font-size: large;  }
+                    .tagCloudSize4 { font-size: xx-large;  } 
+                </style>
+                <div class="niceBox">
+                    <div class="niceBoxBody">
+                        <g:tagCloud blogId="glen2"/>
+                    </div>
+                </div>
 	      		
 
 	      		<div style="padding-left: 3em;">

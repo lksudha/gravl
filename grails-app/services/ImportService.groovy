@@ -8,7 +8,7 @@ class ImportService implements Serializable {
     static scope = "conversation"
 
     File zipFile
-    String blogId
+    String blogId = "Imported Blog"
     String blogType
 
     // stuff related to the import progress
@@ -86,7 +86,7 @@ class ImportService implements Serializable {
             Blog.withTransaction {status ->  // if not transactional your Hibernate session will disappear
                 log.debug "Starting thread"
 
-                Blog newBlog = new Blog(title: "Imported Pebble Blog", blogid: "pebble").save()
+                Blog newBlog = new Blog(title: "Imported Pebble Blog", blogid: blogId).save()
 
                 blogZip.entries().each {entry -> // a ZipEntry
 
@@ -127,7 +127,7 @@ class ImportService implements Serializable {
 
                         categories.each {category ->
                             String niceCat = category.toString()
-                            if (niceCat.startsWith('/')) {niceCat.substring(1)} // strip leading slash
+                            niceCat = niceCat.replaceAll('/', '') // strip slashs
                             def tag = Tag.findByBlogAndName(newBlog, niceCat)
                             if (tag == null) {
                                 tag = new Tag(name: niceCat)
