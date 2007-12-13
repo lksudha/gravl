@@ -99,11 +99,11 @@
 
 
 				           <g:form controller="login" action="login" method="post" >
-	                                <b>User Id:</b>
-									<input type='text' name='userId'/>
-	                       			<b>Password:</b>
-	                                <input type="password" name='password'/>
-				                        
+                                    <b>User Id:</b><br/>
+                                    <input type='text' name='userId'/>
+                                    <b>Password:</b><br/>
+                                    <input type="password" name='password'/>
+
 				                     <span class="formButton">
 				                        <input type="submit" value="Login"/>
 				                     </span>
@@ -137,12 +137,58 @@
                 </style>
                 <div class="niceBox">
                     <div class="niceBoxBody">
-                        <g:tagCloud blogId="glen2"/>
+                        <g:tagCloud blogId="glen"/>
                     </div>
                 </div>
-	      		
 
-	      		<div style="padding-left: 3em;">
+                <!--CSS file (default YUI Sam Skin)
+                <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.4.0/build/calendar/assets/skins/sam/calendar.css?_yuiversion=2.4.0">
+                -->
+                <link rel="stylesheet" type="text/css" href="${createLinkTo(dir:'css/yahoo/calendar/assets/skins/sam',file:'calendar.css')}"/>
+
+                <!-- Dependencies
+                <script type="text/javascript" src="http://yui.yahooapis.com/2.4.0/build/yahoo-dom-event/yahoo-dom-event.js?_yuiversion=2.4.0"></script>
+                 -->
+                <g:javascript library="yahoo/yahoo-dom-event" />
+
+                <!-- Source file
+                <script type="text/javascript" src="http://yui.yahooapis.com/2.4.0/build/calendar/calendar-min.js?_yuiversion=2.4.0"></script>
+                -->
+                <g:javascript library="yahoo/calendar-min" />
+
+                <style type="text/css">
+                    /* The size of the custom close image is the same as the default version, hence no need to override width/height */
+                    .yui-calcontainer .calclose {
+                         background: url("${createLinkTo(dir:'css/yahoo/calendar/assets',file:'calx.gif')}") no-repeat;
+                    }
+                    /* Custom arrow images override background image url and width/height properties */
+                    .yui-calendar .calnavleft {
+                        background: url("${createLinkTo(dir:'css/yahoo/calendar/assets',file:'callt.gif')}") no-repeat;
+                        width:12px;
+                        height:12px;
+                    }
+
+                    .yui-calendar .calnavright {
+                        background: url("${createLinkTo(dir:'css/yahoo/calendar/assets',file:'calrt.gif')}") no-repeat;
+                        width:12px;
+                        height:12px;
+                    }
+
+                </style>
+
+                <div class="niceBox">
+                        <div id="blogCalendar">
+                        </div>
+                        <g:javascript>
+                            // A DIV with id "cal1Container" should already exist on the page
+                            var myCalendar = new YAHOO.widget.Calendar("blogCalendar");
+                            myCalendar.render();
+                        </g:javascript>
+                </div>
+    
+
+
+                  <div style="padding-left: 3em;">
 	      			<a href="http://www.grails.org/">
 	      				<img src="${createLinkTo(dir:'images',file:'grails_button.gif')}" alt="Powered By Grails"/>
 	      			</a>
