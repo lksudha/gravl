@@ -6,6 +6,9 @@ class TagCloudTagLib {
         Blog.withTransaction { stats ->
         def blogId = attrs.blogId
         Blog blog = Blog.findByBlogid(blogId)
+        if (!blog)
+            return;
+            
         log.debug "Building tagcloud for: $blog.title"
 
         // step 1: determine tags and their frequency
@@ -18,7 +21,7 @@ class TagCloudTagLib {
         }
         def allFreq = tagToFreq.collect {tag, freq -> return freq}.sort()
         def minFreq = allFreq[0]  // first entry
-        def maxFreq = allFreq[-1] // last entry
+        def maxFreq = allFreq[allFreq.size() > 1 ? -1 : 0] // last entry
         log.debug "Max is $maxFreq and min is $minFreq"
 
         // step 3: find the spread, use 5 font sizes
