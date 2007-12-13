@@ -164,14 +164,10 @@
                     /* Custom arrow images override background image url and width/height properties */
                     .yui-calendar .calnavleft {
                         background: url("${createLinkTo(dir:'css/yahoo/calendar/assets',file:'callt.gif')}") no-repeat;
-                        width:12px;
-                        height:12px;
                     }
 
                     .yui-calendar .calnavright {
                         background: url("${createLinkTo(dir:'css/yahoo/calendar/assets',file:'calrt.gif')}") no-repeat;
-                        width:12px;
-                        height:12px;
                     }
 
                 </style>
