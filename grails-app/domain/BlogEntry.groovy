@@ -27,4 +27,13 @@ class BlogEntry
   {
     return "BlogEntry ${id} - ${title}"
   }
+
+  public String toPermalink(String baseUri) {
+      return baseUri + "/" + blog.blogid + "/" + 
+            (created.year + 1900) + "/" +
+               (created.month + 1) + "/" +
+               (created.getDate()) + "/" +
+               title.encodeAsNiceTitle()
+
+  }
 }

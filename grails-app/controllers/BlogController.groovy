@@ -3,12 +3,58 @@ import au.com.bytecode.upload.BlogDataZip
 class BlogController {
     def scaffold = Blog
 
-    def index = { redirect(action:list,params:params) }
+    def index = {redirect(action: list, params: params)}
+
+    def feeds = {
+
+        log.debug "Starting feed generation..."
+
+        def blogId = params.blog
+        def category = params.categoryName
+        def feedtype = params.feedtype
+        
+        def blog = Blog.findByBlogid(blogId)
+
+        log.debug "Rendering feed for blog $blogId of type $feedtype"
+
+        if (blog) {
+            def entries = BlogEntry.findAllByBlog(blog, [max: 10, sort: "created", order: "desc"])
+            if (category) {
+                // filter to supplied category
+                entries = entries.findAll {entry ->
+                    entry.tags.find {it.name == category}
+                }
+            }
+            def baseUri = request.scheme + "://" + request.serverName + ":" + request.serverPort +
+                    grailsAttributes.getApplicationUri(request)
+            log.debug "BaseUri is $baseUri"
+
+            def builder = new feedsplugin.FeedBuilder()
+            def feedTitle = blog.title + (category ? " ($category Related category)" : "")
+            builder.feed(title: feedTitle,
+                    link: baseUri + (category ? "/categories/$category" : ""),
+                    description: feedTitle) {
+                entries.each() {blogEntry ->
+                    entry() {
+                        title = blogEntry.title
+                        link = blogEntry.toPermalink(baseUri)
+                        publishedDate = blogEntry.created
+                        content(type: 'text/html', value: blogEntry.body) // return the content
+                    }
+                }
+            }
+
+            def romeFeed = builder.render(feedtype)
+
+            render(text: romeFeed, contentType: "text/xml", encoding: "UTF-8")
+
+        }
+    }
 
     def displayOneEntry = {
 
         log.info "Ok.. We're goes to display selected entries for ${params.blog}"
-        
+
         def blogId = params.blog
 
         int year = Integer.parseInt(params.year)
@@ -34,17 +80,17 @@ class BlogController {
         def blog = Blog.findByBlogid(blogId)
         if (blog) {
             log.info "Blog name is ${blog.title}"
-            def entries = BlogEntry.findAllByBlogAndCreatedBetween( blog , blogStartDate, blogEndDate, [ sort: 'created', order: 'desc'])
+            def entries = BlogEntry.findAllByBlogAndCreatedBetween(blog, blogStartDate, blogEndDate, [sort: 'created', order: 'desc'])
             log.info "Found some entries... for $blogId then we're ${entries.size()}"
-            return [ blog: blog, entries: entries ]
+            return [blog: blog, entries: entries]
         } else {
             flash.message = "Could not find blogid"
-            redirect(action:list, params:params)
+            redirect(action: list, params: params)
         }
     }
 
     def fileUploadFlow = {
-        
+
         showDialog {
             on("upload") {
                 File zipfile = File.createTempFile("gravl-import-", ".zip")
@@ -60,7 +106,7 @@ class BlogController {
                     flash.message = "Invalid file upload"
                     return error()
                 }
-                return [ziptype: importService.supportedTypes ]
+                return [ziptype: importService.supportedTypes]
             }.to "showImportDetails"
             on("cancel").to "headHome"
         }
@@ -78,7 +124,7 @@ class BlogController {
         startUpload {
             action {
                 importService.importBlog()
-                [ percentComplete: importService.percentComplete() ]
+                        [percentComplete: importService.percentComplete()]
             }
             on("success").to "ajaxUpload"
             // on(Exception).to "errorPage"
@@ -94,8 +140,8 @@ class BlogController {
         refreshResults {
             action {
                 def percent = importService.percentComplete()
-                log.debug ("Sending progress as: " + percent)
-                [ percentComplete: percent ]
+                log.debug("Sending progress as: " + percent)
+                        [percentComplete: percent]
             }
             on("success").to "_webflowForm"
             on("failure").to "headHome"
@@ -115,11 +161,10 @@ class BlogController {
         headHome {
             redirect(action: index)
         }
-        
+
         errorPage {
             redirect(action: index)
         }
-
 
     }
 
