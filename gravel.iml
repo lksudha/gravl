@@ -23,7 +23,7 @@
     </content>
     <orderEntry type="library" name="GRAILS" level="application" />
     <orderEntry type="library" name="GROOVY" level="application" />
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.4" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntryProperties />
   </component>
