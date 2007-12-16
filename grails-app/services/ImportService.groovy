@@ -1,5 +1,6 @@
 import java.util.zip.ZipFile
 import java.text.SimpleDateFormat
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
 class ImportService implements Serializable {
 
@@ -147,6 +148,27 @@ class ImportService implements Serializable {
                             newEntry.addToComments(newComment).save()
                             commentsImported++
                         }
+
+                    } else if (entry.name =~ /.*images\/.*/) {
+
+                        def fileName = ConfigurationHolder.config.data.dir +
+                                entry.name.substring(f.indexOf("/images"))
+
+                        log.debug "Processing Image file: $fileName"
+                        def f = new File(fileName)
+                        def p = new File(f.getParent())
+
+                        // make any parent dirs..
+                        if (!p.exists())
+                            p.mkdirs()
+
+                        def fos = new FileOutputStream(f)
+                        blogZip.getInputStream(entry).eachByte { b ->
+                            fos.write(b)
+                        }
+
+                        
+
 
                     } else if (entry.name =~ /blog.properties/) {
 

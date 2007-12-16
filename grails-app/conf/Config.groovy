@@ -31,6 +31,44 @@ grails.views.'default.codec'="none" // none, html, base64
 // enabled native2ascii conversion of i18n properties files
 grails.enable.native2ascii = true
 
+// local gravl config data
+// from controllers:   def propValue = grailsApplication.config.my.property
+// from services: ConfigurationHolder.config.my.custom.data
+// import org.codehaus.groovy.grails.commons.ConfigurationHolder
+pdf {
+	dir=System.properties["java.io.tmpdir"]
+}
+
+data {
+    dir="/data/gravl/"
+}
+
+cache {
+	enabled = false
+}
+
+mail {
+	host ="latte"
+	from="glen.smith@gmail.com"
+	subject="Welcome to gravl"
+    enabled=false
+}
+
+http {
+	useproxy=true
+	host="192.168.1.7"
+	port=3128
+	useragent="Gravl/1.0 (http://code.google.com/gravl)"
+	usefeedburner=false
+
+	feedburner_atom="http://feeds.feedburner.com/gzone"
+	feedburner_rss="http://feeds.feedburner.com/gzone"
+
+}
+
+
+
+
 // log4j configuration
 log4j {
     appender.stdout = "org.apache.log4j.ConsoleAppender"
