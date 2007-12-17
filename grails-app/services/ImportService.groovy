@@ -20,8 +20,7 @@ class ImportService implements Serializable {
     int commentsImported
 
 
-    def supportedTypes = ["Mock", "Pebble", "Gravl"]
-
+    def supportedTypes = ["Pebble", "Gravl","Mock"]
 
     public int percentComplete() {
         return progressCount / totalEntries * 100
@@ -151,18 +150,21 @@ class ImportService implements Serializable {
 
                     } else if (entry.name =~ /.*images\/.*/) {
 
-                        def fileName = ConfigurationHolder.config.data.dir +
-                                entry.name.substring(f.indexOf("/images"))
+                        log.debug "Processing Image file: $entry.name"
+                        String configDir =  ConfigurationHolder.config.blogdata.dir
+                        def fileName = configDir + blogId + "/" +
+                                entry.name.substring(entry.name.indexOf("images"))
 
                         log.debug "Processing Image file: $fileName"
-                        def f = new File(fileName)
-                        def p = new File(f.getParent())
+                        File outfile = new File(fileName)
+                        File parentDir = new File(outfile.getParent())
 
+                        log.debug "Checking for existing image dir $parentDir"
                         // make any parent dirs..
-                        if (!p.exists())
-                            p.mkdirs()
+                        if (!parentDir.exists())
+                            parentDir.mkdirs()
 
-                        def fos = new FileOutputStream(f)
+                        def fos = new FileOutputStream(outfile)
                         blogZip.getInputStream(entry).eachByte { b ->
                             fos.write(b)
                         }

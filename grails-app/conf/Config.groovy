@@ -39,7 +39,7 @@ pdf {
 	dir=System.properties["java.io.tmpdir"]
 }
 
-data {
+blogdata {
     dir="/data/gravl/"
 }
 
