@@ -41,5 +41,11 @@ class UrlMappings {
                 feedtype(inList: ['rss', 'atom'])
             }
         }
+
+        // image display stuff. Mostly /glen/images/stuff.gif but historically /glen/2007/12/images/stuff.gif 
+        "/$blog/**/images/**" {
+            controller = "image"
+            action = "display"
+        }
     }
 }

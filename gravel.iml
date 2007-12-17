@@ -25,6 +25,7 @@
     <orderEntry type="library" name="GROOVY" level="application" />
     <orderEntry type="jdk" jdkName="1.4" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Gravl" level="project" />
     <orderEntryProperties />
   </component>
 </module>
