@@ -25,13 +25,18 @@ class PdfController {
 
     def show = {
 
-        def url = params.url
+        def baseUri = request.scheme + "://" + request.serverName + ":" + request.serverPort +
+                    grailsAttributes.getApplicationUri(request)
+        log.debug "BaseUri is $baseUri"
+
+        def url = baseUri + params.url + "?print=true"
+        log.debug "Fetching url $url"
 
         // grab pdf bytes from cache if possible
-        byte[] b = cacheService.getFromCache("pdfCache", 60, "homePage")
+        byte[] b = cacheService.getFromCache("pdfCache", 60, url)
         if (!b) {
             b = buildPdf(url)
-            cacheService.putToCache("pdfCache", 60, "homePage", b)
+            cacheService.putToCache("pdfCache", 60, url, b)
         }
 
         response.setContentType("application/pdf")

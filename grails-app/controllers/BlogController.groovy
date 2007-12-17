@@ -82,7 +82,7 @@ class BlogController {
             log.info "Blog name is ${blog.title}"
             def entries = BlogEntry.findAllByBlogAndCreatedBetween(blog, blogStartDate, blogEndDate, [sort: 'created', order: 'desc'])
             log.info "Found some entries... for $blogId then we're ${entries.size()}"
-            return [blog: blog, entries: entries]
+            return [blog: blog, entries: entries, print: params.print ? true : false ]
         } else {
             flash.message = "Could not find blogid"
             redirect(action: list, params: params)

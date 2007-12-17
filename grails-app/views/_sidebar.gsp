@@ -137,7 +137,7 @@
                 </style>
                 <div class="niceBox">
                     <div class="niceBoxBody">
-                        <g:tagCloud blogId="glen"/>
+                        <g:tagCloud blogId="glen2"/>
                     </div>
                 </div>
 

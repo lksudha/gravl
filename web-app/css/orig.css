@@ -1,0 +1,33 @@
+/* GENERAL */
+
+.spinner {
+    padding: 5px;
+    position: absolute;
+    right: 0;
+}
+
+body {
+    background: #fff;
+    color: #333;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 110%;
+}
+
+
+.blogtitle a:link, blogtitle a:visited {
+
+    color: #6e7d8e;
+    text-decoration: none;
+    font-size: x-large;
+
+}
+
+.blogtitle a:hover {
+
+    text-decoration: underline;
+
+}
+
+p {
+    margin: 0px;
+}
