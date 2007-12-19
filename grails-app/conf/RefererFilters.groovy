@@ -24,6 +24,16 @@ class RefererFilters {
                 
                 def country = ip ? countryLookupService.getCountryName(ip) : "N/A"
                 println "Address: ${ip}, Country: ${country}"
+
+                def url = request.getRequestURI()
+                println "URL: ${url}"
+
+                // put in the cache
+                CacheService cacheService = applicationContext.getBean('cacheService')
+                cacheService.putToCache("referers", 60, Calendar.getInstance(),
+                                [ userAgent: userAgent, referer: referer, country: country, url: url ])
+
+
                 return true
 
             }
