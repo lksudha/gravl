@@ -144,7 +144,7 @@
                 <!--CSS file (default YUI Sam Skin)
                 <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.4.0/build/calendar/assets/skins/sam/calendar.css?_yuiversion=2.4.0">
                 -->
-                <link rel="stylesheet" type="text/css" href="${createLinkTo(dir:'css/yahoo/calendar/assets/skins/sam',file:'calendar.css')}"/>
+                <link rel="stylesheet" href="${createLinkTo(dir:'css/yahoo/calendar/assets/skins/sam',file:'calendar.css')}"/>
 
                 <!-- Dependencies
                 <script type="text/javascript" src="http://yui.yahooapis.com/2.4.0/build/yahoo-dom-event/yahoo-dom-event.js?_yuiversion=2.4.0"></script>
@@ -172,14 +172,16 @@
 
                 </style>
 
-                <div class="niceBox">
+                <div class="niceBox" style="height: 150px;">
                         <div id="blogCalendar">
-                        </div>
+
                         <g:javascript>
                             // A DIV with id "cal1Container" should already exist on the page
                             var myCalendar = new YAHOO.widget.Calendar("blogCalendar");
                             myCalendar.render();
                         </g:javascript>
+
+                        </div>
                 </div>
     
 

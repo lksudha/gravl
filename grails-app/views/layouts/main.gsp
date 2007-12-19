@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="${createLinkTo(dir: 'css', file: 'reset-fonts-grids.css')}"/>
         <link rel="stylesheet" href="${createLinkTo(dir: 'css', file: 'main.css')}"/>
         <link rel="shortcut icon" href="${createLinkTo(file: 'favicon.ico')}"/>
+
         <g:layoutHead/>
         <g:javascript library="application"/>
         <g:javascript library="rounded_corners_lite.inc"/>
