@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
   <head>
-      <title>Simple GSP page</title>
+      <title>gravl</title>
       <g:if test="${print==true}">
         <meta name="layout" content="print"/>
       </g:if>

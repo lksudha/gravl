@@ -11,27 +11,22 @@ class RefererFilters {
 
             before = {
 
-                // Referer and User-Agent and remote IP
-                // action == feed?
-                // println "Request is: [$request]"
+                // Scoop up Referer and User-Agent and remote IP
                 def userAgent = request.getHeader("User-Agent")
                 def referer = request.getHeader("Referer")
-                println "Agent: ${userAgent}, Referer: ${referer}"
-
                 def ip = request.getRemoteAddr()
+                println "IP: [${ip}], Referer: [${referer}], Agent: [${userAgent}]"
 
-                def countryLookupService = applicationContext.getBean('countryLookupService')
-                
-                def country = ip ? countryLookupService.getCountryName(ip) : "N/A"
-                println "Address: ${ip}, Country: ${country}"
+                //def countryLookupService = applicationContext.getBean('countryLookupService')
+                //def country = ip ? countryLookupService.getCountryName(ip) : "N/A"
 
                 def url = request.getRequestURI()
                 println "URL: ${url}"
 
-                // put in the cache
+                // put in the cache, not use of applicationContext to lookup service bean
                 CacheService cacheService = applicationContext.getBean('cacheService')
-                cacheService.putToCache("referers", 60, Calendar.getInstance(),
-                                [ userAgent: userAgent, referer: referer, country: country, url: url ])
+                cacheService.putToCache("referers", 60*24, Calendar.getInstance(),
+                                [ userAgent: userAgent, referer: referer, ip: ip, url: url ])
 
 
                 return true

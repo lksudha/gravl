@@ -33,6 +33,11 @@ class UrlMappings {
             }
         }
 
+        "/$blog/stats" {
+            controller = "blog"
+            action = "stats"
+        }
+
         // feeds for individual categories
         "/$blog/categories/$categoryName/$feedtype" {
             controller = "blog"

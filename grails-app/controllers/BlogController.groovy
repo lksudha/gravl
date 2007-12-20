@@ -1,7 +1,11 @@
 import au.com.bytecode.upload.BlogDataZip
 
 class BlogController {
+
     def scaffold = Blog
+
+    CacheService cacheService
+    CountryLookupService countryLookupService
 
     def index = {redirect(action: list, params: params)}
 
@@ -49,6 +53,44 @@ class BlogController {
             render(text: romeFeed, contentType: "text/xml", encoding: "UTF-8")
 
         }
+    }
+
+    def stats = {
+
+        Map referrers = cacheService.getCacheMap("referers")
+        def hitsPerHour = [ : ]
+        def browserTypes = [ : ]
+        def countries = [ : ]
+        def urlCount = [ : ]
+        def referers = [ : ]
+
+        referrers.each { cal, detailsElement ->
+
+            def details = detailsElement.getObjectValue()
+
+            // first do hit counting
+            urlCount[details.url] = urlCount[details.url] ? urlCount[details.url]+1 : 1
+
+            // then referrer counts
+            referers[details.referer] = referers[details.referer] ? referers[details.referer]+1 : 1
+
+            // then by browser type, needs more parsing work
+            // Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-GB; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11
+            browserTypes[details.userAgent] = browserTypes[details.userAgent] ? browserTypes[details.userAgent]+1 : 1
+
+            // work out hits per hour
+            def hour = cal.get(Calendar.HOUR_OF_DAY)
+            hitsPerHour[hour] = hitsPerHour[hour] ? hitsPerHour[hour]+1 : 1
+
+            // country codes from ip
+            def country = details.ip ? countryLookupService.getCountryName(details.ip) : "N/A"
+            countries[country] = countries[country] ? countries[country]+1 : 1
+
+            
+        }
+        return [ urlCount: urlCount, referers: referers, browserTypes: browserTypes,
+                        hitsPerHour: hitsPerHour, countries: countries ]
+
     }
 
     def displayOneEntry = {

@@ -44,7 +44,7 @@ blogdata {
 }
 
 cache {
-	enabled = false
+	enabled = true
 }
 
 mail {
@@ -61,9 +61,18 @@ http {
 	useragent="Gravl/1.0 (http://code.google.com/gravl)"
 	usefeedburner=false
 
-	feedburner_atom="http://feeds.feedburner.com/gzone"
-	feedburner_rss="http://feeds.feedburner.com/gzone"
+	feedburner_atom="http://feeds.feedburner.com/gravl"
+	feedburner_rss="http://feeds.feedburner.com/gravl"
 
+}
+
+// you can configure bean attributes from here tooo
+beans {
+       cacheService {
+           nameToTimeout {
+               //referrers=60
+           }
+       }
 }
 
 

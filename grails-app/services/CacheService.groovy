@@ -17,6 +17,8 @@ class CacheService {
 
     boolean transactional = false
 
+    Map nameToTimeout = [ : ]
+
     private CacheManager manager = CacheManager.create();
 
     private Cache getCache(cname, int timeout) {
@@ -43,6 +45,22 @@ class CacheService {
         } else {
             return null
         }
+
+    }
+
+    def synchronized getCacheMap(cname) {
+
+         if (manager.cacheExists(cname)) {
+            def cache = manager.getCache(cname)
+            def keys = cache.getKeys()
+            def timeToInfo = [ : ]
+            keys.each { key ->
+                timeToInfo[key] = cache.get(key)
+            }
+            return timeToInfo
+         } else {
+             return [:]
+         }
 
     }
 
