@@ -41,7 +41,7 @@ class BlogController {
                 entries.each() {blogEntry ->
                     entry() {
                         title = blogEntry.title
-                        link = blogEntry.toPermalink(baseUri)
+                        link = baseUri + blogEntry.toPermalink()
                         publishedDate = blogEntry.created
                         content(type: 'text/html', value: blogEntry.body) // return the content
                     }
@@ -121,6 +121,10 @@ class BlogController {
 
         log.info "Ok.. We're goes to display selected entries for ${params.blog}"
 
+        def baseUri = request.scheme + "://" + request.serverName + ":" + request.serverPort +
+                grailsAttributes.getApplicationUri(request)
+
+
         def blogId = params.blog
 
         int year = Integer.parseInt(params.year)
@@ -148,7 +152,7 @@ class BlogController {
             log.info "Blog name is ${blog.title}"
             def entries = BlogEntry.findAllByBlogAndCreatedBetween(blog, blogStartDate, blogEndDate, [sort: 'created', order: 'desc'])
             log.info "Found some entries... for $blogId then we're ${entries.size()}"
-            return [blog: blog, entries: entries, print: params.print ? true : false ]
+            return [blog: blog, entries: entries, print: params.print ? true : false, baseUri: baseUri ]
         } else {
             flash.message = "Could not find blogid"
             redirect(action: list, params: params)
