@@ -55,16 +55,32 @@ class BlogController {
         }
     }
 
+    //TODO this should done with a closure...
+    private Map toPercentMap(niceMap) {
+
+        def percentMap = [ : ]
+        def total = 0
+        niceMap.values().each { value ->
+            total += value
+        }
+        niceMap.each { key, value ->
+            percentMap[key] = ((value / total) * 100).setScale(1) // one decimal for google maps
+        }
+        return percentMap
+
+
+    }
+
     def stats = {
 
-        Map referrers = cacheService.getCacheMap("referers")
+        Map allReferers = cacheService.getCacheMap("referers")
         def hitsPerHour = [ : ]
         def browserTypes = [ : ]
         def countries = [ : ]
         def urlCount = [ : ]
         def referers = [ : ]
 
-        referrers.each { cal, detailsElement ->
+        allReferers.each { cal, detailsElement ->
 
             def details = detailsElement.getObjectValue()
 
@@ -88,8 +104,16 @@ class BlogController {
 
             
         }
+
+
+        
+
         return [ urlCount: urlCount, referers: referers, browserTypes: browserTypes,
-                        hitsPerHour: hitsPerHour, countries: countries ]
+                        hitsPerHour: hitsPerHour, countries: countries,
+                    browserTypesChart: toPercentMap(browserTypes),
+                    countriesChart: toPercentMap(countries),
+                    hitsPerHourChart: toPercentMap(hitsPerHour)
+                    ]
 
     }
 

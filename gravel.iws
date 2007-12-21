@@ -16,18 +16,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gravel.iws" afterPath="$PROJECT_DIR$/gravel.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gravel.ipr" afterPath="$PROJECT_DIR$/gravel.ipr" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/taglib/TableTagLib.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/devDB.properties" afterPath="$PROJECT_DIR$/devDB.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TESTS-TestSuites.xml" afterPath="$PROJECT_DIR$/TESTS-TestSuites.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/devDB.script" afterPath="$PROJECT_DIR$/devDB.script" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/BlogController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/BlogController.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stacktrace.log" afterPath="$PROJECT_DIR$/stacktrace.log" />
-    </list>
-    <list name="Failed commit: Default" comment="Add ability to render images.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gravel.iws" afterPath="$PROJECT_DIR$/gravel.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gravel.ipr" afterPath="$PROJECT_DIR$/gravel.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gravel.iml" afterPath="$PROJECT_DIR$/gravel.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/integration/ImageControllerTests.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/controllers/ImageController.groovy" />
+      <change type="DELETED" beforePath="C:\Data\java\intellij\gravl\grails-app\conf\ReferrersFilters.groovy" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/integration/TableTagLibTests.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/blog/stats.gsp" afterPath="$PROJECT_DIR$/grails-app/views/blog/stats.gsp" />
     </list>
     <ignored path="gravel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -93,37 +92,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ImportService.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/services/ImportService.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="155" column="82" selection-start="5499" selection-end="5624" vertical-scroll-proportion="3.0134356">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UrlMappings.groovy" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="UrlMappings.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="8" selection-start="1136" selection-end="1136" vertical-scroll-proportion="0.619403">
+            <state line="23" column="58" selection-start="628" selection-end="628" vertical-scroll-proportion="0.8319149">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageController.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/ImageController.groovy">
+      <file leaf-file-name="BlogController.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/BlogController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="11" selection-start="133" selection-end="133" vertical-scroll-proportion="0.17137097">
+            <state line="114" column="20" selection-start="3955" selection-end="3955" vertical-scroll-proportion="0.45348838">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PdfController.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/PdfController.groovy">
+      <file leaf-file-name="RefererFilters.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/conf/RefererFilters.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="24" selection-start="657" selection-end="657" vertical-scroll-proportion="1.0282258">
+            <state line="4" column="6" selection-start="58" selection-end="58" vertical-scroll-proportion="0.09072165">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stats.gsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/blog/stats.gsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="182" selection-start="692" selection-end="692" vertical-scroll-proportion="0.74816626">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TableTagLib.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/taglib/TableTagLib.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="37" selection-start="210" selection-end="210" vertical-scroll-proportion="0.24536082">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EntriesTagLib.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/taglib/EntriesTagLib.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="9" selection-start="1039" selection-end="1039" vertical-scroll-proportion="1.7553191">
               <folding />
             </state>
           </provider>
@@ -132,7 +149,7 @@
       <file leaf-file-name="Config.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/conf/Config.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="63" selection-start="1642" selection-end="1666" vertical-scroll-proportion="-1.1567165">
+            <state line="34" column="63" selection-start="1642" selection-end="1666" vertical-scroll-proportion="0.036170214">
               <folding />
             </state>
           </provider>
@@ -211,6 +228,76 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="PsiDirectory:C:\Data\java\intellij\gravl\grails-app" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\Data\java\intellij\gravl\grails-app\views" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="gravel" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="gravel" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\Data\java\intellij\gravl" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\Data\java\intellij\gravl\grails-app" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\Data\java\intellij\gravl\grails-app\views" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\Data\java\intellij\gravl\grails-app\views\blog" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="gravel" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="gravel" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\Data\java\intellij\gravl" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\Data\java\intellij\gravl\grails-app" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="gravel" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="gravel" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\Data\java\intellij\gravl" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\Data\java\intellij\gravl\grails-app" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:C:\Data\java\intellij\gravl\grails-app\taglib" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -310,7 +397,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="RestoreUpdateTree">
-    <UpdateInfo date="17/12/07 12:18" ActionInfo="_Update">
+    <UpdateInfo date="21/12/07 14:41" ActionInfo="_Update">
       <UpdatedFiles>
         <FILE-GROUP>
           <option name="myUpdateName" value="Updated from server" />
@@ -324,8 +411,13 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="UPDATED" />
-            <PATH vcs="svn" revision="25">C:\Data\java\intellij\gravl\grails-app\services\ImportService.groovy</PATH>
-            <PATH vcs="svn" revision="25">C:\Data\java\intellij\gravl\grails-app\conf\Config.groovy</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\grails-app\services\CacheService.groovy</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\grails-app\conf\UrlMappings.groovy</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\grails-app\conf\Config.groovy</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\grails-app\controllers\BlogController.groovy</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\grails-app\views\layouts\main.gsp</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\grails-app\views\_sidebar.gsp</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\grails-app\views\blog\displayOneEntry.gsp</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Created" />
@@ -333,11 +425,25 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="CREATED" />
-            <PATH vcs="svn" revision="25">C:\Data\java\intellij\gravl\grails-app\services\MailService.groovy</PATH>
-            <PATH vcs="svn" revision="25">C:\Data\java\intellij\gravl\grails-app\services\CacheService.groovy</PATH>
-            <PATH vcs="svn" revision="25">C:\Data\java\intellij\gravl\grails-app\controllers\PdfController.groovy</PATH>
-            <PATH vcs="svn" revision="25">C:\Data\java\intellij\gravl\lib\core-renderer.jar</PATH>
-            <PATH vcs="svn" revision="25">C:\Data\java\intellij\gravl\lib\itext-paulo-155.jar</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\test\integration\CountryLookupServiceTests.groovy</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\test\integration\TagCloudTagLibTests.groovy</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\src\java\resources</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\src\java\resources\geoIp</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\src\java\resources\geoIp\GeoIP.dat</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\src\java\CountryLookupTest.java</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\src\java\com</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\src\java\com\maxmind</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\src\java\com\maxmind\geoip</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\src\java\com\maxmind\geoip\DatabaseInfo.java</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\src\java\com\maxmind\geoip\Country.java</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\src\java\com\maxmind\geoip\Region.java</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\src\java\com\maxmind\geoip\regionName.java</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\src\java\com\maxmind\geoip\Location.java</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\src\java\com\maxmind\geoip\LookupService.java</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\src\java\com\maxmind\geoip\timeZone.java</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\grails-app\services\CountryLookupService.groovy</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\grails-app\conf\RefererFilters.groovy</PATH>
+            <PATH vcs="svn" revision="31">C:\Data\java\intellij\gravl\grails-app\views\blog\stats.gsp</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Deleted" />
@@ -431,50 +537,6 @@
         <option name="Make" value="true" />
       </method>
     </tempConfiguration>
-    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-    </configuration>
-    <configuration default="true" type="GroovyScriptRunConfigurationType" factoryName="Groovy Script">
-      <module name="" />
-      <setting name="path" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workDir" value="$PROJECT_DIR$/." />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-    </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails Application">
-      <module name="" />
-      <setting name="vmparams" value="" />
-      <setting name="operation" value="run-app" />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG" enabled="false" merge="false">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -504,6 +566,13 @@
         <option name="Make" value="true" />
       </method>
     </configuration>
+    <configuration default="true" type="GroovyScriptRunConfigurationType" factoryName="Groovy Script">
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="$PROJECT_DIR$/." />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -525,6 +594,43 @@
       <method>
         <option name="Make" value="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails Application">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="operation" value="run-app" />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
     </configuration>
     <configuration default="false" name="Gravel" type="GrailsRunConfigurationType" factoryName="Grails Application">
       <module name="gravel" />
@@ -591,26 +697,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1280" y="19" width="1280" height="999" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1191" y="36" width="1166" height="954" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="0" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32827103" order="5" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32799014" order="5" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="0" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="5" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" order="8" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3989899" order="11" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="6" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32827103" order="1" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3271028" order="3" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32799014" order="1" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32552403" order="3" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="14" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="4" />
       <window_info id="Maven projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="1" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="2" />
-      <window_info id="Grails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32827103" order="0" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24511401" order="1" />
+      <window_info id="Grails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32799014" order="0" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24416517" order="1" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="4" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.25" order="6" x="595" y="107" width="303" height="616" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="13" />
@@ -631,7 +737,7 @@
     <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add ability to render images." />
+    <option name="LAST_COMMIT_MESSAGE" value="More work on stats" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -651,6 +757,7 @@
     <MESSAGE value="More attempts to fix YUI arrows" />
     <MESSAGE value="Added ability to import image files from pebble zip files" />
     <MESSAGE value="Add ability to render images." />
+    <MESSAGE value="More work on stats" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -691,54 +798,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/Tag.groovy">
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/integration/TagTests.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="8" selection-start="756" selection-end="756" vertical-scroll-proportion="0.8589474">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-app/css/yahoo/calendar/assets/calendar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="22" selection-start="1709" selection-end="1709" vertical-scroll-proportion="0.033009708">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/main.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="59" selection-start="386" selection-end="437" vertical-scroll-proportion="0.038724374">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/BlogEntry.groovy">
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/DataSource.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="14" selection-start="631" selection-end="631" vertical-scroll-proportion="0.8582524">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/blog/fileUpload/ajaxUpload.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="59" selection-start="834" selection-end="835" vertical-scroll-proportion="0.65553236">
@@ -776,35 +835,79 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/services/ImportService.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="82" selection-start="5499" selection-end="5624" vertical-scroll-proportion="3.0134356">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/PdfController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="24" selection-start="657" selection-end="657" vertical-scroll-proportion="1.0282258">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/Config.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="63" selection-start="1642" selection-end="1666" vertical-scroll-proportion="-1.1567165">
+        <state line="155" column="82" selection-start="5499" selection-end="5624" vertical-scroll-proportion="0.036170214">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/ImageController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="11" selection-start="133" selection-end="133" vertical-scroll-proportion="0.17137097">
+        <state line="5" column="11" selection-start="133" selection-end="133" vertical-scroll-proportion="0.19101124">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/PdfController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="8" selection-start="657" selection-end="657" vertical-scroll-proportion="0.6764045">
+          <folding>
+            <marker date="1197940032921" expanded="true" signature="1066:1080" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/CommentController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="28" selection-start="55" selection-end="55" vertical-scroll-proportion="0.11460674">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/Config.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="63" selection-start="1642" selection-end="1666" vertical-scroll-proportion="0.036170214">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/taglib/EntriesTagLib.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="9" selection-start="1039" selection-end="1039" vertical-scroll-proportion="1.7553191">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="8" selection-start="1136" selection-end="1136" vertical-scroll-proportion="0.619403">
+        <state line="23" column="58" selection-start="628" selection-end="628" vertical-scroll-proportion="0.8319149">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/taglib/TableTagLib.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="37" selection-start="210" selection-end="210" vertical-scroll-proportion="0.24536082">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/RefererFilters.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="6" selection-start="58" selection-end="58" vertical-scroll-proportion="0.09072165">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/BlogController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="20" selection-start="3955" selection-end="3955" vertical-scroll-proportion="0.45348838">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/blog/stats.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="182" selection-start="692" selection-end="692" vertical-scroll-proportion="0.74816626">
           <folding />
         </state>
       </provider>
