@@ -16,6 +16,7 @@
               <div class="blogtitle"><a href="${baseUri + entry.toPermalink()}">${entry.title}</a></div>
               <div class="blogdate"><g:niceDate date="${entry.created}"/></div>
               <g:if test="${print!=true}">
+                 <a href="${request.forwardURI}?print=true">Print</a>
                  <g:link controller="pdf" action="show" params="[url: entry.toPermalink()]">PDF</g:link>
               </g:if>
               <div class="blogbody">${entry.body}</div>

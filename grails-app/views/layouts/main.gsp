@@ -45,7 +45,7 @@
 
             </div>  <!-- end body -->
             <div id="ft">
-                All article content copyright by respective authors. Gravel by <a href="http://blogs.bytecode.com.au/glen">Glen Smith</a>.
+                Gravl <g:meta name="app.version"/> on Grails <g:meta name="app.grails.version"/> by <a href="http://blogs.bytecode.com.au/glen">Glen Smith</a>.
             </div>
         </div>
 

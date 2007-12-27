@@ -20,7 +20,7 @@ class RefererFilters {
                 //def countryLookupService = applicationContext.getBean('countryLookupService')
                 //def country = ip ? countryLookupService.getCountryName(ip) : "N/A"
 
-                def url = request.getRequestURI()
+                def url = request.forwardURI // Grails adds request.forwardURI to keep the orig URI
                 println "URL: ${url}"
 
                 // put in the cache, not use of applicationContext to lookup service bean
