@@ -1,10 +1,33 @@
 
+div#hd {
+	background-color: black;
+	margin: auto;
+	height: 100px;
+	background: #558EAD url(../images/header_bg.gif) repeat scroll 0%;
+    margin-bottom: 12px;
+}
+
+#hdtitle {
+    margin-left: 10px;
+    font-size: 50px;
+    font-family: Verdana;
+    font-weight: bold;
+    color: white;
+}
+
+#hdsubtitle {
+    margin-left: 10px;
+    font-size: 20px;
+    font-family: Verdana;
+    color: white;
+}
+
 body {
     background: #fff;
     color: #333;
     font: verdana, arial, helvetica, sans-serif;
     text-align: left;
-    margin: 1em;
+    margin: auto;
 }
 
 
@@ -51,6 +74,17 @@ li {
 }
 
 
+/* Blog comments */
+
+.blogcommentEven {
+    background-color: white;
+}
+
+.blogcommentOdd {
+    background-color: lightgray;
+}
+
+
 /* All that Blog Rolodex Jazz. Inspiration from http://www.wynia.org/wordpress/2005/09/05/css-date-blocks-for-blogs/ */
 
 .dateblock {
@@ -81,3 +115,11 @@ li {
 .blogRolodex {
     float: left;
 }
+
+/* Stuff for the tag clouds */
+
+.tagCloudSize0 { font-size: xx-small; }
+.tagCloudSize1 { font-size: small;  }
+.tagCloudSize2 { font-size: medium;  }
+.tagCloudSize3 { font-size: large;  }
+.tagCloudSize4 { font-size: xx-large;  } 

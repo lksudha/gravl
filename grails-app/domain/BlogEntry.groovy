@@ -1,5 +1,4 @@
-class BlogEntry
-{
+class BlogEntry {
 
   static hasMany = [ comments : Comment, tags : Tag ]
   static belongsTo = [ Blog ]
@@ -11,6 +10,8 @@ class BlogEntry
       excerpt (nullable:true, blank: true, maxSize: 1024)
       markup (inList: ['html', 'wiki'])
   }
+
+  SortedSet comments
 
   Blog blog
   Date created = new Date()
@@ -37,4 +38,6 @@ class BlogEntry
                title.encodeAsNiceTitle() + ".html"
 
   }
+
+    
 }

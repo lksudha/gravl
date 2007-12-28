@@ -17,7 +17,10 @@
     <body>
         <div id="doc3" class="yui-t5">
             <div id="hd">
-                <img id="logo" src="${createLinkTo(dir: 'images', file: 'headerlogo.png')}" alt="gravel logo"/>
+                <NOimg id="logo" src="${createLinkTo(dir: 'images', file: 'headerlogo.png')}" alt="gravel logo"/>
+
+                <div id="hdtitle"><g:blogTitle blogid="${params.blog}"/></div>
+                <div id="hdsubtitle"><g:blogByline blogid="${params.blog}"/></div>
 
                 <div id="tabs">
 

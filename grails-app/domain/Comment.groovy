@@ -1,5 +1,5 @@
-class Comment
-{
+class Comment implements Comparable {
+
   // static hasMany = []
   static belongsTo = [ BlogEntry ]
   
@@ -21,8 +21,13 @@ class Comment
   boolean notify = false // notify the user if other comments are added to the thread...
   String status = "pending" 
 
-  String toString ()
-  {
+  String toString () {
     return "Comment ${id}"
   }
+
+  // we keep comments sorted by date on each entry
+  public int compareTo(Object obj) {
+    return created <=> obj.created
+  }
+
 }

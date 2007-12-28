@@ -94,7 +94,6 @@
 	      		</g:if>
 	      		<g:else>
 		      		<div class="niceBox">
-		      			<div class="niceBoxHd">Login</div>
 		      			<div class="niceBoxBody">
 
 
@@ -110,7 +109,6 @@
 				            </g:form>
 				            <p>
 				            <g:link controller='login' action="forgottenPassword">Forgotten your password?</g:link><p/>
-				            <g:link controller='account' action="signup">Need to Sign Up?</g:link>
 
 		      			</div>
 		      		
@@ -119,23 +117,15 @@
 	      		
 
 	      		<div class="niceBox">
-	      			<div class="niceBoxHd">Get the Source</div>
 	      			<div class="niceBoxBody">
 						Download the 
-						<a href="http://www.bytecode.com.au/downloads/grails">complete source code</a>
-						to groovyblogs.org. Contribute patches and enhancements!
+						<a href="http://code.google.com/p/gravl/">complete source code</a>
+						to Gravl. Contribute patches and enhancements!
 	      			</div>
 	      		</div>
 
 
-                <style type="text/css">
-                    .tagCloudSize0 { font-size: xx-small; }
-                    .tagCloudSize1 { font-size: small;  }
-                    .tagCloudSize2 { font-size: medium;  }
-                    .tagCloudSize3 { font-size: large;  }
-                    .tagCloudSize4 { font-size: xx-large;  } 
-                </style>
-                <div class="niceBox">
+               <div class="niceBox">
                     <div class="niceBoxBody">
                         <g:tagCloud blogId="${params.blog}"/>
                     </div>
