@@ -22,9 +22,9 @@ class BlogController {
         log.debug "Rendering feed for blog $blogId of type $feedtype"
 
         if (blog) {
-            def entries = BlogEntry.findAllByBlog(blog, [max: 10, sort: "created", order: "desc"])
+            def entries = BlogEntry.findAllByBlogAndStatus(blog, "published", [max: 10, sort: "created", order: "desc"])
             if (category) {
-                // filter to supplied category
+                // filter to supplied category, should be done in hibernate
                 entries = entries.findAll {entry ->
                     entry.tags.find {it.name == category}
                 }
@@ -73,7 +73,7 @@ class BlogController {
 
     def stats = {
 
-        Map allReferers = cacheService.getCacheMap("referers")
+        Map allReferers = cacheService.getCacheMap("referrers")
         def hitsPerHour = [ : ]
         def browserTypes = [ : ]
         def countries = [ : ]
@@ -152,6 +152,7 @@ class BlogController {
             log.info "Blog name is ${blog.title}"
             def entries = BlogEntry.findAllByBlogAndCreatedBetween(blog, blogStartDate, blogEndDate, [sort: 'created', order: 'desc'])
             log.info "Found some entries... for $blogId then we're ${entries.size()}"
+            entries = entries.findAll { entry -> entry.status ==~ 'published' }
             return [blog: blog, entries: entries, print: params.print ? true : false, baseUri: baseUri ]
         } else {
             flash.message = "Could not find blogid"

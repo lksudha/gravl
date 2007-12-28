@@ -15,7 +15,7 @@
 
     </head>
     <body>
-        <div id="doc3" class="yui-t6">
+        <div id="doc3" class="yui-t5">
             <div id="hd">
                 <img id="logo" src="${createLinkTo(dir: 'images', file: 'headerlogo.png')}" alt="gravel logo"/>
 

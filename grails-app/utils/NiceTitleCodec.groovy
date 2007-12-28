@@ -1,7 +1,7 @@
-// strip all non word chars...
+// strip all non word chars, convert to lowercase...
 class NiceTitleCodec {
 	static encode = { str ->
-		return str.toString().replaceAll("\\W", "_")
+		return str.toString().replaceAll("\\W", "_").toLowerCase()
 	}
 
 }

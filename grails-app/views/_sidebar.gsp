@@ -49,7 +49,7 @@
                   <div class="niceBox">
 	      			<div class="niceBoxHd">About</div>
 	      			<div class="niceBoxBody">
-						Gravel was developed by
+						Gravl was developed by
 						<a href="http://blogs.bytecode.com.au/glen">Glen Smith</a>
 						 on <a href="http://www.grails.org/">Grails 1.0 RC1</a>
 						for the Grails demo app collection.
@@ -63,12 +63,12 @@
 	      			<div class="niceBoxBody">
 						<ul>
 						<li>	      			
-		      				<a href="<g:createLink controller='feed' action='atom'/>" class="feedLink">
+		      				<a href="${request.contextPath + '/' + params.blog + "/atom"}" class="feedLink">
 			      				<img src="${createLinkTo(dir:'images',file:'feed-icon-16x16.jpg')}" alt="Atom"/>
 			      			 Atom </a>
 			      		</li>
 			      		<li>
-		      				<a href="<g:createLink controller='feed' action='rss'/>" class="feedLink">
+		      				<a href="${request.contextPath + '/' + params.blog + "/rss"}" class="feedLink">
 			      				<img src="${createLinkTo(dir:'images',file:'feed-icon-16x16.jpg')}" alt="RSS"/>
 			      			 RSS </a>
 			      		</li>
@@ -137,56 +137,11 @@
                 </style>
                 <div class="niceBox">
                     <div class="niceBoxBody">
-                        <g:tagCloud blogId="glen2"/>
+                        <g:tagCloud blogId="${params.blog}"/>
                     </div>
                 </div>
 
-                <!--CSS file (default YUI Sam Skin)
-                <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.4.0/build/calendar/assets/skins/sam/calendar.css?_yuiversion=2.4.0">
-                -->
-                <link rel="stylesheet" href="${createLinkTo(dir:'css/yahoo/calendar/assets/skins/sam',file:'calendar.css')}"/>
-
-                <!-- Dependencies
-                <script type="text/javascript" src="http://yui.yahooapis.com/2.4.0/build/yahoo-dom-event/yahoo-dom-event.js?_yuiversion=2.4.0"></script>
-                 -->
-                <g:javascript library="yahoo/yahoo-dom-event" />
-
-                <!-- Source file
-                <script type="text/javascript" src="http://yui.yahooapis.com/2.4.0/build/calendar/calendar-min.js?_yuiversion=2.4.0"></script>
-                -->
-                <g:javascript library="yahoo/calendar-min" />
-
-                <style type="text/css">
-                    /* The size of the custom close image is the same as the default version, hence no need to override width/height */
-                    .yui-calcontainer .calclose {
-                         background: url("${createLinkTo(dir:'css/yahoo/calendar/assets',file:'calx.gif')}") no-repeat;
-                    }
-                    /* Custom arrow images override background image url and width/height properties */
-                    .yui-calendar .calnavleft {
-                        background: url("${createLinkTo(dir:'css/yahoo/calendar/assets',file:'callt.gif')}") no-repeat;
-                    }
-
-                    .yui-calendar .calnavright {
-                        background: url("${createLinkTo(dir:'css/yahoo/calendar/assets',file:'calrt.gif')}") no-repeat;
-                    }
-
-                </style>
-
-                <div class="niceBox" style="height: 150px;">
-                        <div id="blogCalendar">
-
-                        <g:javascript>
-                            // A DIV with id "cal1Container" should already exist on the page
-                            var myCalendar = new YAHOO.widget.Calendar("blogCalendar");
-                            myCalendar.render();
-                        </g:javascript>
-
-                        </div>
-                </div>
-    
-
-
-                  <div style="padding-left: 3em;">
+                <div style="padding-left: 3em;">
 	      			<a href="http://www.grails.org/">
 	      				<img src="${createLinkTo(dir:'images',file:'grails_button.gif')}" alt="Powered By Grails"/>
 	      			</a>

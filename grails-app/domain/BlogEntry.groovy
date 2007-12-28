@@ -29,10 +29,11 @@ class BlogEntry
   }
 
   public String toPermalink() {
+
+      def sdf = new java.text.SimpleDateFormat("yyyy/MM/dd")
+
       return "/" + blog.blogid + "/" +
-            (created.year + 1900) + "/" +
-               (created.month + 1) + "/" +
-               (created.getDate()) + "/" +
+            sdf.format(created) + "/" +
                title.encodeAsNiceTitle() + ".html"
 
   }
