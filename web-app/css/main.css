@@ -76,6 +76,17 @@ li {
 
 /* Blog comments */
 
+.blogcomments {
+    margin-top: 5px;
+    padding: 1em;
+    background-color: #e6e6e6;
+
+}
+
+.blogcomment {
+    
+}
+
 .blogcommentEven {
     background-color: white;
 }

@@ -9,6 +9,7 @@
             <meta name="layout" content="main"/>
             <link rel="stylesheet" href="${createLinkTo(dir: 'css', file: 'bubbles.css')}"/>
         </g:else>
+        <g:javascript library="scriptaculous"/>
     </head>
     <body>
         <g:each var="entry" in="${entries}">
@@ -25,35 +26,31 @@
                     </div>
                 </g:if>
                 <div class="blogdate">By [glen] at <g:niceDate date="${entry.created}"/></div>
-  
+
                 <div class="blogbody">${entry.body}</div>
                 <div class="blogtags">
-                    Tags: <g:each var="tag" in="${entry.tags}"> ${tag.name} </g:each>
+                    Tags: <g:each var="tag" in="${entry.tags}">${tag.name}</g:each>
                 </div>
                 <g:if test="${entries.size == 1 && print==false}">
-                    <g:each var="comment" in="${entry.comments}" status="counter">
 
-                       <div class="blogcomment">
-                           <div class="bubble">
-                            <blockquote>
-                                <p>${comment.body}</p>
-                            </blockquote>
-                            <cite><strong>${comment.author}</strong> on <g:niceDate date="${comment.created}"/></cite>
+                    <div id="newComment">
 
-                        </div>
-                           <!--
-                        <div class="${ counter % 2 ? "blogcommentEven" : "blogcommentOdd"}">
-                            <div class="commentAuthor">
-                                ${comment.author} at <g:niceDate date="${comment.created}"/>
-                            </div>
-                            <div class="commentBody">
-                                ${comment.body}
-                            </div>
+                    </div>
 
-                        </div>
-                        -->
-                       </div>
-                    </g:each>
+                    <p style="margin: 1em;">
+                        <g:remoteLink controller="comment" action="newComment" id="${entry.id}" update="newComment">Add Comment</g:remoteLink>
+                    </p>
+
+
+
+                    <div class="blogcomments">
+
+                        <g:each var="comment" in="${entry.comments}" status="counter">
+
+                            <g:render template="comment" model="[comment: comment]"/>
+                            
+                        </g:each>
+                    </div>
                 </g:if>
             </div>
 
