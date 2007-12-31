@@ -19,6 +19,7 @@ class CommentCommand {
   String author
   String email
   String url
+  String entryId
   boolean emailUpdates
   Date created = new Date()
 
