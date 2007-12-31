@@ -30,15 +30,11 @@
                </td>
             </tr>
 
-            <tr>
-                <td>Maths Puzzle: (reduces comment spam)</td>
-                <td><g:textField name="captcha"/></td>
-            </tr>
-
         </table>
         <g:hiddenField name="entryId" value="${entryId}"/>
         <g:submitToRemote url="[controller: 'comment', action: 'preview']" update="commentPreview" value="Preview"/>
         <g:submitToRemote url="[controller: 'comment', action: 'addComment']" update="commentPreview" value="Save"/>
+        <input type="button" value="Cancel" onclick="document.getElementById('newComment').innerHTML='';" />
     
     </g:form>
 </div>

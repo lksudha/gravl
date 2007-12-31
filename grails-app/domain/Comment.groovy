@@ -4,8 +4,8 @@ class Comment implements Comparable {
   static belongsTo = [ BlogEntry ]
   
   static constraints = {
-      body(nullable: false, maxSize: 4096)
-      author(nullable: true, blank: true)
+      body(nullable: false, blank: false, maxSize: 4096)
+      author(nullable: false, blank: false)
       email(nullable: true, email: true, blank: true)
       url(nullable: true, url: true, blank: true)
       created(nullable: false)

@@ -8,8 +8,9 @@
         <g:else>
             <meta name="layout" content="main"/>
             <link rel="stylesheet" href="${createLinkTo(dir: 'css', file: 'bubbles.css')}"/>
+            <g:javascript library="scriptaculous"/>
         </g:else>
-        <g:javascript library="scriptaculous"/>
+
     </head>
     <body>
         <g:each var="entry" in="${entries}">

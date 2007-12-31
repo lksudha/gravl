@@ -7,15 +7,16 @@ class CommentController {
         // displays a new comment form
     }
 
-    def preview = {
+    def preview = { CommentCommand comment ->
 
-        Comment comment = new Comment()
-        comment.properties = params
+        if (comment.hasErrors())  {
+           log.debug "Missing stuff in comment..."
+        }
         comment.body = params.body.encodeAsWiki()
-        log.debug "New comment is ${comment.dump()}"
 
-        render(template: "/blog/comment", model: [comment: comment])
+        render(template: "/blog/comment", model: [comment: comment ])
         
     }
 
 }
+
