@@ -54,6 +54,13 @@ mail {
     enabled=false
 }
 
+chat {
+    host = "talk.google.com"
+    port = 5222
+    username = "user@gmail.com"
+    password = "password"
+}
+
 http {
 	useproxy=true
 	host="192.168.1.7"
