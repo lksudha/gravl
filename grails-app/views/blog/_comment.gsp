@@ -4,7 +4,7 @@
             <g:renderErrors/>
         </div>
     </g:hasErrors>
-    <div class="bubble"><a name="comment${comment.id}"/>
+    <div class="bubble"><a name="comment${comment.properties.id}"/>
         <blockquote>
             <p>${comment.body}</p>
         </blockquote>

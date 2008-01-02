@@ -34,15 +34,6 @@
                 </div>
                 <g:if test="${entries.size == 1 && print==false}">
 
-                    <div id="newComment">
-
-                    </div>
-
-                    <p style="margin: 1em;">
-                        <g:remoteLink controller="comment" action="newComment" id="${entry.id}" update="newComment">Add Comment</g:remoteLink>
-                    </p>
-
-
 
                     <div class="blogcomments">
 
@@ -52,6 +43,15 @@
                             
                         </g:each>
                     </div>
+
+                    <div id="newComment">
+
+                    </div>
+
+                    <p style="margin: 1em;">
+                        <g:remoteLink controller="comment" action="newComment" id="${entry.id}" update="newComment">Add Comment</g:remoteLink>
+                    </p>
+
                 </g:if>
             </div>
 

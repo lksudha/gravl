@@ -27,6 +27,7 @@ class CommentController {
             
         } else {
             Comment newComment = new Comment()
+            newComment.properties = comment.properties
             BlogEntry be = BlogEntry.get(comment.entryId)
             be.addToComments(newComment).save()
             render("Successfully Saved")

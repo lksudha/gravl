@@ -38,6 +38,16 @@ class UrlMappings {
             action = "stats"
         }
 
+        "/$blog/admin/comments/pending" {
+            controller = "blog"
+            action = "pendingComments"
+        }
+
+        "/$blog/admin/comments/approved" {
+            controller = "blog"
+            action = "approvedComments"
+        }
+
         // feeds for individual categories
         "/$blog/categories/$categoryName/$feedtype" {
             controller = "blog"
