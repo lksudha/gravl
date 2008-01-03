@@ -45,10 +45,11 @@
             </tr>
 
         </table>
+        
         <g:hiddenField name="entryId" value="${entryId}"/>
         <g:submitToRemote url="[controller: 'comment', action: 'preview']" update="commentPreview" value="Preview"/>
-        <g:submitToRemote url="[controller: 'comment', action: 'save']" update="commentPreview" value="Save"/>
-        <input type="button" value="Cancel" onclick="document.getElementById('newComment').innerHTML='';" />
+        <g:submitToRemote url="[controller: 'comment', action: 'save']" update="commentPreview" value="Save" onComplete="refreshIfSuccessful()"/>
+        <input type="button" value="Cancel" onclick="removeNewCommentUI();" />
     
     </g:form>
 </div>

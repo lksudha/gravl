@@ -30,7 +30,12 @@
 
                 <div class="blogbody">${entry.body}</div>
                 <div class="blogtags">
+                    <p>
                     Tags: <g:each var="tag" in="${entry.tags}">${tag.name}</g:each>
+                    </p>
+                    <p>
+                    ${ entry.comments.size() } Comments:
+                    </p>
                 </div>
                 <g:if test="${entries.size == 1 && print==false}">
 
@@ -39,11 +44,26 @@
 
                         <g:each var="comment" in="${entry.comments}" status="counter">
 
-                            <g:render template="comment" model="[comment: comment]"/>
+                            <g:if test="${comment.status == 'approved' || session.account }">
+                                <g:render template="comment" model="[comment: comment]"/>
+                            </g:if>
                             
                         </g:each>
                     </div>
 
+                    <g:javascript>
+                        function removeNewCommentUI() {
+                            document.getElementById('newComment').innerHTML='';
+                        }
+
+                        function refreshIfSuccessful() {
+                            if (document.getElementById('commentPreview').innerHTML=='success') {
+                                document.getElementById('newComment').innerHTML = "Comment Successfully Added"
+                                window.location.href = window.location.href;
+                            }
+                        }
+                    </g:javascript>
+                    
                     <div id="newComment">
 
                     </div>
@@ -53,6 +73,9 @@
                     </p>
 
                 </g:if>
+                <g:else>
+
+                </g:else>
             </div>
 
         </g:each>

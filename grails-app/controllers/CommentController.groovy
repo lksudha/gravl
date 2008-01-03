@@ -1,5 +1,7 @@
 class CommentController {
 
+    NotificationService notificationService
+
     def newComment = {
 
         log.debug "Sending new comment form via Ajax"
@@ -26,11 +28,12 @@ class CommentController {
             render(template: "/blog/comment", model: [comment: comment ])
             
         } else {
-            Comment newComment = new Comment()
-            newComment.properties = comment.properties
+            Comment newComment = new Comment(comment.properties)
             BlogEntry be = BlogEntry.get(comment.entryId)
             be.addToComments(newComment).save()
-            render("Successfully Saved")
+            flash.message = "Successfully Added Comment"
+            render("success")
+            notificationService.newCommentPosted(newComment)
         }
 
     }

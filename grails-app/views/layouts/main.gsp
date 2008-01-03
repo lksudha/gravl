@@ -32,7 +32,7 @@
                 <div id="yui-main">
                     <div class="yui-b">
                         <g:if test="${flash.message}">
-                            <div id="flash">
+                            <div id="flash" style="padding: 1em; margin-bottom: 1em; border: 1px solid black; background-color: pink;">
                                 ${flash.message}
                             </div>
                         </g:if>
