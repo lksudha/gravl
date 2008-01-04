@@ -7,4 +7,8 @@ class NotificationService {
         log.debug ("New comment posted")
     }
 
+    def approvedComment(Comment comment) {
+        log.debug ("Approved comment")
+    }
+
 }

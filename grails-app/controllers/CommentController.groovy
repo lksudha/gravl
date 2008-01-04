@@ -61,5 +61,32 @@ class CommentController {
 
     }
 
+    def approve = {
+
+        def commentId = params.id
+        log.debug "Entering approve for comment ${commentId}"
+        def successful
+        def message
+        if (Comment.exists(commentId) && session.account) {
+            def comment = Comment.get(commentId)
+            comment.status = 'approved'
+            comment.save()
+            log.debug "Approval successful"
+            message = "Approved comment"
+            successful = true
+            notificationService.approvedComment(comment)
+        } else {
+            log.debug "Approve failed"
+            message = "Failed to approve message. Does not exist, or no access rights"
+            successful = false
+        }
+        // Jetty sends back "Content-Type=text/javascript; charset=ISO-8859-1" which won't trip Prototype cause of that charset bit
+        // Prototype will parse X-JSON headers if present, though, so let's do that
+        response.setHeader("X-JSON", "{'successful': ${successful}, 'commentId' : '${commentId}', 'message' : '${message}'}")
+        render(contentType: "text/javascript")
+
+    }
+
+
 }
 

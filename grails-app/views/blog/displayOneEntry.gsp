@@ -24,6 +24,7 @@
                             }
                         }
 
+
                         function deleteComment(successful, commentId, message) {
 
                             if (successful) {
@@ -35,6 +36,19 @@
                             }
 
                         }
+
+                        function approveComment(successful, commentId, message) {
+
+                            if (successful) {
+                                var commentIdDivName = 'approval' + commentId
+                                var commentIdDiv = document.getElementById(commentIdDivName)
+                                commentIdDiv.innerHTML='<b>' + message + "</b>"
+                            } else {
+                                alert(message);
+                            }
+
+                        }
+
                     </g:javascript>
 
     </head>

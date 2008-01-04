@@ -37,6 +37,16 @@ body {
     background-color: pink;
 }
 
+.approvalLink {
+    float: right;
+    margin: 3px;
+}
+
+.deleteLink {
+    float: right;
+    margin: 3px;
+}
+
 .blogtitle a:link, .blogtitle a:visited {
 
     color: #6e7d8e;
