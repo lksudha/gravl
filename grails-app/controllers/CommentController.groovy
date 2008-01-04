@@ -32,7 +32,13 @@ class CommentController {
             flash.message = "Successfully Added Comment"
 
             render(template: "/blog/comment", model: [comment: comment, newlySaved: true ])
-            notificationService.newCommentPosted(newComment)
+
+            if (session.account) {
+                comment.status = "approved"
+                notificationService.approvedCommend(newComment)    
+            } else {
+                notificationService.newCommentPosted(newComment)
+            }
         }
 
     }

@@ -12,7 +12,8 @@
         </g:else>
                             <g:javascript>
                         function removeNewCommentUI() {
-                            document.getElementById('newComment').innerHTML='';
+                            Effect.Fade('newComment')
+                            // document.getElementById('newComment').innerHTML='';
                         }
 
                         function refreshIfSuccessful() {
@@ -30,7 +31,8 @@
                             if (successful) {
                                 var commentIdDivName = 'comment' + commentId
                                 var commentIdDiv = document.getElementById(commentIdDivName)
-                                commentIdDiv.innerHTML='<div class="flash">' + message + "</div>"
+                                Effect.Fade(commentIdDivName)
+                                // commentIdDiv.innerHTML='<div class="flash">' + message + "</div>"
                             } else {
                                 alert(message);
                             }
@@ -43,6 +45,7 @@
                                 var commentIdDivName = 'approval' + commentId
                                 var commentIdDiv = document.getElementById(commentIdDivName)
                                 commentIdDiv.innerHTML='<b>' + message + "</b>"
+                                Effect.Highlight(commentIdDivName)
                             } else {
                                 alert(message);
                             }
@@ -91,12 +94,12 @@
                         </g:each>
                     </div>
                     
-                    <div id="newComment">
+                    <div id="newComment" style="display: none;">
 
                     </div>
 
                     <p style="margin: 1em;">
-                        <g:remoteLink controller="comment" action="newComment" id="${entry.id}" update="newComment">Add Comment</g:remoteLink>
+                        <g:remoteLink controller="comment" action="newComment" id="${entry.id}" update="newComment" onSuccess="Effect.Appear('newComment')">Add Comment</g:remoteLink>
                     </p>
 
                 </g:if>
