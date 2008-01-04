@@ -69,7 +69,7 @@
                         </g:link>
                     </div>
                 </g:if>
-                <div class="blogdate">By [glen] at <g:niceDate date="${entry.created}"/></div>
+                <div class="blogdate">By ${entry.account?.fullName} at <g:niceDate date="${entry.created}"/></div>
 
                 <div class="blogbody">${entry.body}</div>
                 <div class="blogtags">
