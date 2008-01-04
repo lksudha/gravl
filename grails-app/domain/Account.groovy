@@ -1,6 +1,7 @@
 class Account
 {
-  // static hasMany = []
+  static hasMany = [ blogEntries : BlogEntry ]
+  
   // static belongsTo = []
   static constraints = {
       userId (nullable: false, maxSize: 20)

@@ -10,6 +10,32 @@
             <link rel="stylesheet" href="${createLinkTo(dir: 'css', file: 'bubbles.css')}"/>
             <g:javascript library="scriptaculous"/>
         </g:else>
+                            <g:javascript>
+                        function removeNewCommentUI() {
+                            document.getElementById('newComment').innerHTML='';
+                        }
+
+                        function refreshIfSuccessful() {
+                            if (document.getElementById('newlySaved')) {
+                                var currComments = document.getElementById('allcomments')
+                                var newComment = document.getElementById('newlySaved')
+                                currComments.innerHTML += newComment.innerHTML
+                                removeNewCommentUI()
+                            }
+                        }
+
+                        function deleteComment(successful, commentId, message) {
+
+                            if (successful) {
+                                var commentIdDivName = 'comment' + commentId
+                                var commentIdDiv = document.getElementById(commentIdDivName)
+                                commentIdDiv.innerHTML='<div class="flash">' + message + "</div>"
+                            } else {
+                                alert(message);
+                            }
+
+                        }
+                    </g:javascript>
 
     </head>
     <body>
@@ -40,29 +66,16 @@
                 <g:if test="${entries.size == 1 && print==false}">
 
 
-                    <div class="blogcomments">
+                    <div class="blogcomments" id="allcomments">
 
                         <g:each var="comment" in="${entry.comments}" status="counter">
 
-                            <g:if test="${comment.status == 'approved' || session.account }">
+                            <g:if test="${comment.status == 'approved' || session.account || comment.ipaddress == request.getRemoteAddr() }">
                                 <g:render template="comment" model="[comment: comment]"/>
                             </g:if>
                             
                         </g:each>
                     </div>
-
-                    <g:javascript>
-                        function removeNewCommentUI() {
-                            document.getElementById('newComment').innerHTML='';
-                        }
-
-                        function refreshIfSuccessful() {
-                            if (document.getElementById('commentPreview').innerHTML=='success') {
-                                document.getElementById('newComment').innerHTML = "Comment Successfully Added"
-                                window.location.href = window.location.href;
-                            }
-                        }
-                    </g:javascript>
                     
                     <div id="newComment">
 

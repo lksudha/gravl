@@ -1,4 +1,5 @@
-import au.com.bytecode.upload.BlogDataZip
+import com.sun.syndication.feed.synd.*
+import com.sun.syndication.io.SyndFeedOutput
 
 class BlogController {
 
@@ -33,24 +34,48 @@ class BlogController {
                     grailsAttributes.getApplicationUri(request)
             log.debug "BaseUri is $baseUri"
 
-            def builder = new feedsplugin.FeedBuilder()
-            def feedTitle = blog.title + (category ? " ($category Related category)" : "")
-            builder.feed(title: feedTitle,
-                    link: baseUri + (category ? "/categories/$category" : ""),
-                    description: feedTitle) {
-                entries.each() {blogEntry ->
-                    entry() {
-                        title = blogEntry.title
-                        link = baseUri + blogEntry.toPermalink()
-                        publishedDate = blogEntry.created
-                        content(type: 'text/html', value: blogEntry.body) // return the content
-                    }
-                }
-            }
+        def feedTitle = blog.title + (category ? " ($category Related category)" : "")
 
-            def romeFeed = builder.render(feedtype)
+        def rssEntries = [ ]
+        entries.each { issue ->
+        	def desc = new SyndContentImpl(type: "text/html", value: blogEntry.body);
+	        def entry = new SyndEntryImpl(title: blogEntry.title,
+	        		link:  baseUri + blogEntry.toPermalink(),
+	        		publishedDate: blogEntry.created);
+	        rssEntries.add(entry);
 
-            render(text: romeFeed, contentType: "text/xml", encoding: "UTF-8")
+        }
+        SyndFeed feed = new SyndFeedImpl(feedType: feedtype, title: feedTitle,
+        		link: baseUri + (category ? "/categories/$category" : ""),
+                description: feedTitle,
+        		entries: rssEntries);
+
+        StringWriter writer = new StringWriter();
+        SyndFeedOutput output = new SyndFeedOutput();
+        output.output(feed,writer);
+        writer.close();
+
+        return writer.toString();
+
+//
+//            def builder = new feedsplugin.FeedBuilder()
+//            def feedTitle = blog.title + (category ? " ($category Related category)" : "")
+//            builder.feed(title: feedTitle,
+//                    link: baseUri + (category ? "/categories/$category" : ""),
+//                    description: feedTitle) {
+//                entries.each() {blogEntry ->
+//                    entry() {
+//                        title = blogEntry.title
+//                        link = baseUri + blogEntry.toPermalink()
+//                        publishedDate = blogEntry.created
+//                        content(type: 'text/html', value: blogEntry.body) // return the content
+//                    }
+//                }
+//            }
+//
+//            def romeFeed = builder.render(feedtype)
+//
+//            render(text: romeFeed, contentType: "text/xml", encoding: "UTF-8")
 
         }
     }

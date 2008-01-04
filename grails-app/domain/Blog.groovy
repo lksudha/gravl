@@ -1,6 +1,6 @@
 class Blog
 {
-  static hasMany = [ blogEntries : BlogEntry, tags : Tag ]
+  static hasMany = [ blogEntries : BlogEntry, tags : Tag, properties : BlogProperty ]
   // static belongsTo = []
     
   static constraints = {

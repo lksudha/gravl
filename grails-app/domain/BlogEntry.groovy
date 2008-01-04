@@ -9,11 +9,13 @@ class BlogEntry {
       subtitle (nullable: true, blank: true, maxSize: 128)
       excerpt (nullable:true, blank: true, maxSize: 1024)
       markup (inList: ['html', 'wiki'])
+      account (nullable: true)
   }
 
   SortedSet comments
 
   Blog blog
+  Account account
   Date created = new Date()
   String title
   String subtitle

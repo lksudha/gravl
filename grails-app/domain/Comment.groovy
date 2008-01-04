@@ -9,13 +9,17 @@ class Comment implements Comparable {
       email(nullable: true, email: true, blank: true)
       url(nullable: true, url: true, blank: true)
       created(nullable: false)
+      ipaddress(nullable: true, blank: true)
+      markup (nullable: true, inList: ['html', 'wiki'])
   }
 
   String body
   String author
   String email
   String url
+  String ipaddress
   BlogEntry blogEntry
+  String markup = 'wiki'
   Date created = new Date()
   
   boolean notify = false // notify the user if other comments are added to the thread...
