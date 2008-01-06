@@ -29,6 +29,10 @@ class Comment implements Comparable {
     return "Comment ${id}"
   }
 
+  String toMarkup() {
+    return (markup == 'wiki') ? body.encodeAsWiki() : body
+  }
+
   // we keep comments sorted by date on each entry
   public int compareTo(Object obj) {
     return created <=> obj.created

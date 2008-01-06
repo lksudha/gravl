@@ -150,6 +150,13 @@ class BlogController {
 
     }
 
+    def archive = {
+
+        
+        
+    }
+
+
     def displayOneEntry = {
 
         log.info "Ok.. We're goes to display selected entries for ${params.blog}"

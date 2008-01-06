@@ -48,6 +48,11 @@ class UrlMappings {
             action = "approvedComments"
         }
 
+        "/$blog/archive" {
+            controller = "blog"
+            action = "archive"
+        }
+
         // feeds for individual categories
         "/$blog/categories/$categoryName/$feedtype" {
             controller = "blog"
