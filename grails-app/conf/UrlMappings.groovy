@@ -70,10 +70,16 @@ class UrlMappings {
             action = "display"
         }
 
+        // image display stuff. Mostly /glen/images/stuff.gif but historically /glen/2007/12/images/stuff.gif
+        "/$blog/images/**" {
+            controller = "image"
+            action = "display"
+        }
+
         // home page
         "/$blog" {
             controller = "blog"
-            action = "displayOneEntry"
+            action = "homePage"
         }
     }
 }

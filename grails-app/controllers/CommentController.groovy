@@ -24,21 +24,24 @@ class CommentController {
     def save = { CommentCommand comment ->
         if (comment.hasErrors()) {
             comment.body = params.body.encodeAsWiki()
+            render(template: "/blog/comment", model: [comment: comment ])
+
        } else {
             Comment newComment = new Comment(comment.properties)
             newComment.ipaddress = request.getRemoteAddr()
             BlogEntry be = BlogEntry.get(comment.entryId)
             be.addToComments(newComment).save()
-            flash.message = "Successfully Added Comment"
 
-            render(template: "/blog/comment", model: [comment: comment, newlySaved: true ])
-
-            if (session.account) {
+            if (session.account) { // auto approve comments by owners/authenticated users
                 comment.status = "approved"
-                notificationService.approvedCommend(newComment)    
+                notificationService.approvedCommend(newComment)
             } else {
                 notificationService.newCommentPosted(newComment)
             }
+
+            log.debug "Rendering new comment"
+            render(template: "/blog/comment", model: [comment: comment, newlySaved: true ])
+
         }
 
     }

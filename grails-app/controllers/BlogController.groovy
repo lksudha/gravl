@@ -14,16 +14,27 @@ class BlogController {
 
         log.debug "Starting feed generation..."
 
+        def supportedFormats = [ "rss_0.90", "rss_0.91", "rss_0.92", "rss_0.93", "rss_0.94", "rss_1.0", "rss_2.0", "atom_0.3", "atom_1.0"]
+        def feedAbbr = [ 'rss' : 'rss_2.0', 'atom': 'atom_1.0']
+
         def blogId = params.blog
         def category = params.categoryName
         def feedtype = params.feedtype
+        if (feedAbbr[feedtype]) { feedtype = feedAbbr[feedtype] }
+
+        if (!supportedFormats.grep(feedtype)) {
+            flash.message = "Unsupported feedtype"
+            log.warn "Unsupported feed type: ${feedtype}"
+            response.sendError(response.SC_FORBIDDEN);
+        }
+
         
         def blog = Blog.findByBlogid(blogId)
 
         log.debug "Rendering feed for blog $blogId of type $feedtype"
 
         if (blog) {
-            def entries = BlogEntry.findAllByBlogAndStatus(blog, "published", [max: 10, sort: "created", order: "desc"])
+            def entries = BlogEntry.findAllByBlogAndStatus(blog, "published", [max: 5, sort: "created", order: "desc"])
             if (category) {
                 // filter to supplied category, should be done in hibernate
                 entries = entries.findAll {entry ->
@@ -37,25 +48,25 @@ class BlogController {
         def feedTitle = blog.title + (category ? " ($category Related category)" : "")
 
         def rssEntries = [ ]
-        entries.each { issue ->
+        entries.each { blogEntry ->
         	def desc = new SyndContentImpl(type: "text/html", value: blogEntry.body);
 	        def entry = new SyndEntryImpl(title: blogEntry.title,
 	        		link:  baseUri + blogEntry.toPermalink(),
-	        		publishedDate: blogEntry.created);
-	        rssEntries.add(entry);
+	        		publishedDate: blogEntry.created, description: desc)
+	        rssEntries.add(entry)
 
         }
         SyndFeed feed = new SyndFeedImpl(feedType: feedtype, title: feedTitle,
         		link: baseUri + (category ? "/categories/$category" : ""),
                 description: feedTitle,
-        		entries: rssEntries);
+        		entries: rssEntries)
 
-        StringWriter writer = new StringWriter();
-        SyndFeedOutput output = new SyndFeedOutput();
-        output.output(feed,writer);
-        writer.close();
+        StringWriter writer = new StringWriter()
+        SyndFeedOutput output = new SyndFeedOutput()
+        output.output(feed,writer)
+        writer.close()
 
-        return writer.toString();
+        render(text: writer.toString(), contentType:"text/xml", encoding:"UTF-8")
 
 //
 //            def builder = new feedsplugin.FeedBuilder()
@@ -171,6 +182,27 @@ class BlogController {
         
     }
 
+    def homePage = {
+
+               def baseUri = request.scheme + "://" + request.serverName + ":" + request.serverPort +
+                grailsAttributes.getApplicationUri(request)
+
+
+        def blogId = params.blog
+
+        def blog = Blog.findByBlogid(blogId)
+        if (blog) {
+            // display most recent 5 entries
+            def entries = BlogEntry.findAllByBlogAndStatus(blog, "published", [sort: 'created', order: 'desc', max: 5])
+            render(view: 'displayOneEntry', model:  [blog: blog, entries: entries, print: params.print ? true : false, baseUri: baseUri ])
+        } else {
+            flash.message = "Could not find blogid"
+            redirect(action: list, params: params)
+            render(view: 'displayOneEntry')
+        }
+
+    }
+
 
     def displayOneEntry = {
 
@@ -182,7 +214,6 @@ class BlogController {
 
         def blogId = params.blog
 
-        //TODO fix year code here... if 0, list most recent entries...
         int year = params.year ? Integer.parseInt(params.year) : 0
         int month = params.month ? Integer.parseInt(params.month) - 1 : 0
         int day = params.day ? Integer.parseInt(params.day) : 1

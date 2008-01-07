@@ -15,7 +15,7 @@ div#hd {
     color: white;
 }
 
-#hdtitle a:link, .blogtitle a:visited {
+#hdtitle a:link, .blogtitle a:visited, #hdtitle a {
 
     color: white;
     text-decoration: none;

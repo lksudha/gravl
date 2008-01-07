@@ -1,7 +1,7 @@
 
 
 <div class="blogcomments">
-    <div id="commentPreview">
+    <div id="commentPreview" style="display:none;">
 
     </div>
 
@@ -47,7 +47,7 @@
         </table>
         
         <g:hiddenField name="entryId" value="${entryId}"/>
-        <g:submitToRemote url="[controller: 'comment', action: 'preview']" update="commentPreview" value="Preview"/>
+        <g:submitToRemote url="[controller: 'comment', action: 'preview']" update="commentPreview" value="Preview" onComplete="Effect.Appear('commentPreview')"/>
         <g:submitToRemote url="[controller: 'comment', action: 'save']" update="commentPreview" value="Save" onComplete="refreshIfSuccessful()"/>
         <input type="button" value="Cancel" onclick="removeNewCommentUI();" />
     

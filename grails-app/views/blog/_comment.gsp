@@ -1,4 +1,6 @@
-<div class="blogcomment" id="comment${comment.properties.id}" <g:if test="${newlySaved}">id="newlySaved"</g:if> >
+<g:if test="${newlySaved}"><div id="newlySaved"></g:if>
+
+<div class="blogcomment" id="comment${comment.properties.id}" >
     <g:hasErrors>
         <div class="error" style="background-color: pink; border: 1px solid black; margin: 1em; padding: 1em;">
             <g:renderErrors/>
@@ -49,8 +51,7 @@
             </strong> on
             <g:niceDate date="${comment.created}"/>
 
-
-
         </cite>
     </div>
 </div>
+ <g:if test="${newlySaved}"></div></g:if>

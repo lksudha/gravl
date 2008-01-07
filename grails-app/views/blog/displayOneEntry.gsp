@@ -10,49 +10,54 @@
             <link rel="stylesheet" href="${createLinkTo(dir: 'css', file: 'bubbles.css')}"/>
             <g:javascript library="scriptaculous"/>
         </g:else>
-                            <g:javascript>
-                        function removeNewCommentUI() {
-                            Effect.Fade('newComment')
-                            // document.getElementById('newComment').innerHTML='';
-                        }
-
-                        function refreshIfSuccessful() {
-                            if (document.getElementById('newlySaved')) {
-                                var currComments = document.getElementById('allcomments')
-                                var newComment = document.getElementById('newlySaved')
-                                currComments.innerHTML += newComment.innerHTML
-                                removeNewCommentUI()
-                            }
-                        }
 
 
-                        function deleteComment(successful, commentId, message) {
+        <g:javascript>
+        function removeNewCommentUI() {
+            Effect.Fade('newComment')
+            // document.getElementById('newComment').innerHTML='';
+        }
 
-                            if (successful) {
-                                var commentIdDivName = 'comment' + commentId
-                                var commentIdDiv = document.getElementById(commentIdDivName)
-                                Effect.Fade(commentIdDivName)
-                                // commentIdDiv.innerHTML='<div class="flash">' + message + "</div>"
-                            } else {
-                                alert(message);
-                            }
 
-                        }
+        function refreshIfSuccessful() {
+            if (document.getElementById('newlySaved')) {
+                var currComments = document.getElementById('allcomments')
+                var newComment = document.getElementById('newlySaved')
+                currComments.innerHTML += newComment.innerHTML
+                removeNewCommentUI()
+            }
+        }
 
-                        function approveComment(successful, commentId, message) {
 
-                            if (successful) {
-                                var commentIdDivName = 'approval' + commentId
-                                var commentIdDiv = document.getElementById(commentIdDivName)
-                                commentIdDiv.innerHTML='<b>' + message + "</b>"
-                                Effect.Highlight(commentIdDivName)
-                            } else {
-                                alert(message);
-                            }
+        function deleteComment(successful, commentId, message) {
 
-                        }
+            if (successful) {
+                var commentIdDivName = 'comment' + commentId
+                var commentIdDiv = document.getElementById(commentIdDivName)
+                Effect.Fade(commentIdDivName)
+                // commentIdDiv.innerHTML='<div class="flash">' + message + "</div>"
+            } else {
+                alert(message);
+            }
 
-                    </g:javascript>
+        }
+
+        function approveComment(successful, commentId, message) {
+
+            if (successful) {
+                var commentIdDivName = 'approval' + commentId
+                var commentIdDiv = document.getElementById(commentIdDivName)
+                commentIdDiv.innerHTML='<b>' + message + "</b>"
+                Effect.Highlight(commentIdDivName)
+            } else {
+                alert(message);
+            }
+
+        }
+
+    </g:javascript>
+
+
 
     </head>
     <body>
