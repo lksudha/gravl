@@ -61,6 +61,33 @@ body {
 
 }
 
+.archiveMonth {
+    font-size: large;
+    margin-top: 1em;
+    margin-bottom: 5px;
+}
+
+.archiveTable {
+    width: 100%;
+    border-top: 1px dotted black;
+    border-bottom: 1px dotted black;
+}
+
+.archiveTable tr {
+    height: 2em;
+}
+
+.archiveDate {
+    width: 2em;
+}
+.archiveTags {
+    width: 10em;
+}
+.archiveComments {
+    width: 2em;
+    text-align: right;
+}
+
 p {
     margin-top: 1em;
     margin-bottom: 1em;

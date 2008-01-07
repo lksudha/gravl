@@ -105,6 +105,62 @@ class EntriesTagLib {
         }
     }
 
+    public static String getYear(Date date) {
+
+        def sdf = new java.text.SimpleDateFormat("yyyy")
+        return sdf.format(date)
+
+    }
+
+
+    public static String getMonthName(Date date) {
+
+        def sdf = new java.text.SimpleDateFormat("MMMMM")
+        return sdf.format(date)
+
+    }
+
+    public static String getDayTwoDigits(Date date) {
+
+       def sdf = new java.text.SimpleDateFormat("dd")
+       return sdf.format(date)
+
+    }
+
+    // archive entries, with a ctrl-break on each month
+    def archiveByMonth = { attrs ->
+
+        out << "<table>"
+       def entries = attrs.entries
+       def baseUri = attrs.baseUri
+       def recentMonth = ""
+       if (entries)
+       entries.each { entry ->
+       
+           def monthName = getMonthName(entry.created)
+           def year = getYear(entry.created)
+
+           if (recentMonth && monthName != recentMonth) {
+              out << "</table>"
+           }
+           if (!recentMonth || monthName != recentMonth) {
+               recentMonth = monthName
+               out << "<div class='archiveMonth'>$monthName, ${year}</div>"
+               out << "<table class='archiveTable'>"
+           }
+           out << "<tr>"
+           out << "<td class='archiveDate'><a href='${baseUri + entry.toPermalink()}'>" +  getDayTwoDigits(entry.created) + "</a></td>"
+           out << "<td class='archiveTitle'>${entry.title}</td>"
+           out << "<td class='archiveTags'>"
+           entry.tags.each { tag -> out << "$tag.name " }
+           out << "</td>"
+           out << "<td class='archiveComments'>${entry.comments.size()}</td>"
+           out << "</tr>"
+       }
+       out << "</table>"
+
+    }
+
 
     def feedburner = { attr ->
 

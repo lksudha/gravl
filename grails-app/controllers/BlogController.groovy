@@ -152,6 +152,21 @@ class BlogController {
 
     def archive = {
 
+        def blogId = params.blog
+        Blog blog = Blog.findByBlogid(blogId)
+        def entries = [ ]
+        def totalArchiveSize = 0
+        if (blog) {
+            def offset = params.offset ? params.offset : 0
+            totalArchiveSize = BlogEntry.countByBlogAndStatus(blog, "published")
+            entries = BlogEntry.findAllByBlogAndStatus(blog, "published", [ sort: "created", order: "desc", offset: offset, max: 20 ] )
+        } else {
+            flash.message = "Could not find blog archive"
+        }
+        def baseUri = request.scheme + "://" + request.serverName + ":" + request.serverPort +
+            grailsAttributes.getApplicationUri(request)
+
+        return [ entries: entries, totalArchiveSize: totalArchiveSize, baseUri: baseUri ]
         
         
     }
