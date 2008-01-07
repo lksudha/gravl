@@ -10,7 +10,7 @@
 
         <g:archiveByMonth entries="${entries}" baseUri="${baseUri}"/>
 
-        <div style="margin-top: 2em; text-align: center; ">
+        <div class="archivePaginate">
             <g:paginate total="${totalArchiveSize}" max="20" params="[blog : params.blog]"/>
         </div>
 

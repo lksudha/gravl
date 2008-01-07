@@ -31,23 +31,15 @@
       newCornersObj = new curvyCorners(settingsObj, classNameStr);
       newCornersObj = new curvyCorners(settingsObj, divObj1[, divObj2[, divObj3[, . . . [, divObjN]]]]);
       */
-      var myBoxObject = new curvyCorners(settings, "niceBox");
+      var myBoxObject = new curvyCorners(settings, "niceBox", "curvyCorners");
       myBoxObject.applyCornersToAll();
+
   }
 </script>
 
-    <style type="text/css">
-        div.niceBox {
-            background-color: #e4ecec ;
-            margin: 1em;
-            padding: 1em;
-            margin-bottom: 3em;
-        }
-    </style>
-
 
                   <div class="niceBox">
-	      			<div class="niceBoxHd">About</div>
+	      			<div class="niceBoxHd"></div>
 	      			<div class="niceBoxBody">
 						Gravl was developed by
 						<a href="http://blogs.bytecode.com.au/glen">Glen Smith</a>
@@ -59,7 +51,7 @@
 	      		
 	      	
 	      		<div class="niceBox">
-	      			<div class="niceBoxHd">Feeds</div>
+	      			<div class="niceBoxHd"></div>
 	      			<div class="niceBoxBody">
 						<ul>
 						<li>	      			
@@ -76,9 +68,16 @@
 			      		
 	      			</div>
 	      		</div>
-	      		
-	      		
-	      		<g:if test="${session.account}">
+
+                     <div class="niceBox">
+                          <div class="niceBoxHd"></div>
+                          <div class="niceBoxBody" style="text-align: center;">
+                             <a href="${request.contextPath + '/' + params.blog + "/archive"}" class="feedLink">Archive</a>
+                        </div>
+                    </div>
+
+
+                  <g:if test="${session.account}">
 	      		
 		      		<div class="niceBox">
 			      			<div class="niceBoxHd">User Info</div>

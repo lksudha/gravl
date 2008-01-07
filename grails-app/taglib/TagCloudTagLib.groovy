@@ -5,6 +5,9 @@ class TagCloudTagLib {
 
         Blog.withTransaction { stats ->
         def blogId = attrs.blogId
+        if (!blogId)
+            return
+            
         Blog blog = Blog.findByBlogid(blogId)
         if (!blog)
             return;

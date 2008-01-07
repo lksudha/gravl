@@ -24,6 +24,8 @@ class UrlMappings {
             }
         }
 
+
+
         // feeds for all blog entries
         "/$blog/$feedtype" {
             controller = "blog"
@@ -66,6 +68,12 @@ class UrlMappings {
         "/$blog/**/images/**" {
             controller = "image"
             action = "display"
+        }
+
+        // home page
+        "/$blog" {
+            controller = "blog"
+            action = "displayOneEntry"
         }
     }
 }

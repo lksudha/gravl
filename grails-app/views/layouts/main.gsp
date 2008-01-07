@@ -19,7 +19,7 @@
             <div id="hd">
                 <NOimg id="logo" src="${createLinkTo(dir: 'images', file: 'headerlogo.png')}" alt="gravel logo"/>
 
-                <div id="hdtitle"><g:blogTitle blogid="${params.blog}"/></div>
+                <div id="hdtitle"><a href="<g:createLinkTo dir="${params.blog}/"/>"><g:blogTitle blogid="${params.blog}"/></a></div>
                 <div id="hdsubtitle"><g:blogByline blogid="${params.blog}"/></div>
 
                 <div id="tabs">
@@ -48,7 +48,9 @@
 
             </div>  <!-- end body -->
             <div id="ft">
+                <div id="footerText">
                 Gravl <g:meta name="app.version"/> on Grails <g:meta name="app.grails.version"/> by <a href="http://blogs.bytecode.com.au/glen">Glen Smith</a>.
+                </div>
             </div>
         </div>
 

@@ -182,7 +182,8 @@ class BlogController {
 
         def blogId = params.blog
 
-        int year = Integer.parseInt(params.year)
+        //TODO fix year code here... if 0, list most recent entries...
+        int year = params.year ? Integer.parseInt(params.year) : 0
         int month = params.month ? Integer.parseInt(params.month) - 1 : 0
         int day = params.day ? Integer.parseInt(params.day) : 1
 

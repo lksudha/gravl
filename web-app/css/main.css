@@ -15,6 +15,20 @@ div#hd {
     color: white;
 }
 
+#hdtitle a:link, .blogtitle a:visited {
+
+    color: white;
+    text-decoration: none;
+
+}
+
+#hdtitle a:hover {
+
+    text-decoration: underline;
+
+}
+
+
 #hdsubtitle {
     margin-left: 10px;
     font-size: 20px;
@@ -37,6 +51,24 @@ body {
     background-color: pink;
 }
 
+div.niceBox {
+    background-color: #e4ecec ;
+    margin: 1em;
+    padding: 1em;
+    margin-bottom: 3em;
+}
+
+.niceBox li {
+    list-style-type: none;
+}
+
+
+div#footerText {
+    background-color: #e4ecec ;
+    text-align: center;
+    padding: 4px;
+}
+
 .approvalLink {
     float: right;
     margin: 3px;
@@ -46,6 +78,7 @@ body {
     float: right;
     margin: 3px;
 }
+
 
 .blogtitle a:link, .blogtitle a:visited {
 
@@ -86,6 +119,18 @@ body {
 .archiveComments {
     width: 2em;
     text-align: right;
+}
+
+.archivePaginate {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    text-align: center;
+}
+/* archive breakcrumbs */
+.archivePaginate a {
+    margin-left: 3px;
+    margin-right: 3px;
+
 }
 
 p {
