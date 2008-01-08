@@ -11,6 +11,7 @@ class ImportService implements Serializable {
     File zipFile
     String blogId = "Imported Blog"
     String blogType
+    String accountId
 
     // stuff related to the import progress
     boolean stillImporting
@@ -88,6 +89,8 @@ class ImportService implements Serializable {
 
                 Blog newBlog = new Blog(title: "Imported Pebble Blog", blogid: blogId).save()
 
+                def account = Account.findByUserId(accountId)
+
                 blogZip.entries().each {entry -> // a ZipEntry
 
 
@@ -114,7 +117,7 @@ class ImportService implements Serializable {
                                 subtitle: blogEntry.subtitle.toString(),
                                 excerpt: blogEntry.excerpt.toString(), body: blogEntry.body.toString(),
                                 created: sdf.parse(blogEntry.date.toString()),
-                                status: blogEntry.state.toString())
+                                status: blogEntry.state.toString(), account: account)
                         entriesImported++
                         newBlog.addToBlogEntries(newEntry).save()
                         newBlog.errors.allErrors.each {
@@ -142,8 +145,8 @@ class ImportService implements Serializable {
 
                         comments.each {c ->
                             Comment newComment = new Comment(body: c.body.toString(), author: c.author.toString(),
-                                    email: c.email.toString(), url: c.website.toString(),
-                                    created: sdf.parse(c.date.toString()), status: c.state.toString())
+                                    email: c.email.toString(), url: c.website.toString(), ipaddress: c.ipAddress.toString(),
+                                    created: sdf.parse(c.date.toString()), status: c.state.toString(), markup: "html")
                             newEntry.addToComments(newComment).save()
                             commentsImported++
                         }

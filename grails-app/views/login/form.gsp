@@ -14,12 +14,12 @@
     </head>
     <body>
 
-        <g:form action="login">
+        <form action="<g:createLinkTo dir="${blog}/admin/login/login"/>" method="POST">
 
             username: <input name="userId"/>
             password: <input name="password" type="password"/>
             <input type="submit" value="login"/>
 
-        </g:form>
+        </form>
     </body>
 </html>

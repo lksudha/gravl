@@ -28,7 +28,16 @@ class UrlMappings {
 
         // feeds for all blog entries
         "/$blog/$feedtype" {
-            controller = "blog"
+            controller = "feed"
+            action = "feeds"
+            constraints {
+                feedtype(inList: ['rss', 'atom'])
+            }
+        }
+
+        // feeds for individual categories
+        "/$blog/categories/$categoryName/$feedtype" {
+            controller = "feed"
             action = "feeds"
             constraints {
                 feedtype(inList: ['rss', 'atom'])
@@ -36,33 +45,42 @@ class UrlMappings {
         }
 
         "/$blog/stats" {
-            controller = "blog"
+            controller = "admin"
             action = "stats"
         }
 
         "/$blog/admin/comments/pending" {
-            controller = "blog"
+            controller = "admin"
             action = "pendingComments"
         }
 
         "/$blog/admin/comments/approved" {
-            controller = "blog"
+            controller = "admin"
             action = "approvedComments"
         }
+
+        "/$blog/admin/login/form" {
+            controller = "login"
+            action = "form"
+        }
+
+        "/$blog/admin/login/login" {
+            controller = "login"
+            action = "login"
+        }
+
+        "/$blog/admin/login/logout" {
+            controller = "login"
+            action = "logout"
+        }
+
 
         "/$blog/archive" {
             controller = "blog"
             action = "archive"
         }
 
-        // feeds for individual categories
-        "/$blog/categories/$categoryName/$feedtype" {
-            controller = "blog"
-            action = "feeds"
-            constraints {
-                feedtype(inList: ['rss', 'atom'])
-            }
-        }
+
 
         // image display stuff. Mostly /glen/images/stuff.gif but historically /glen/2007/12/images/stuff.gif 
         "/$blog/**/images/**" {

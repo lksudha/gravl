@@ -85,7 +85,8 @@
 								<p><a href="<g:createLink controller='account' action='edit'/>">
 									${session.account.userId}
 								</a></p>
-			      			</div>
+                                  <a href="<g:createLinkTo dir="/${blog.blogid}/admin/login/logout"/>">Logout</a>
+                              </div>
 			      		
 			      	</div>
 
@@ -96,7 +97,7 @@
 		      			<div class="niceBoxBody">
 
 
-				           <g:form controller="login" action="login" method="post" >
+				           <form action="<g:createLinkTo dir="/${blog.blogid}/admin/login/login"/>" method="post" >
                                     <b>User Id:</b><br/>
                                     <input type='text' name='userId'/>
                                     <b>Password:</b><br/>
@@ -105,7 +106,7 @@
 				                     <span class="formButton">
 				                        <input type="submit" value="Login"/>
 				                     </span>
-				            </g:form>
+				            <form>
 				            <p>
 				            <g:link controller='login' action="forgottenPassword">Forgotten your password?</g:link><p/>
 
