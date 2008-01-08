@@ -12,10 +12,10 @@ class LoginController {
             Account account = Account.findByUserIdAndPassword(cmd.userId, cmd.password.encodeAsSha1())
             if (account) {
                 session.account = account
-                redirect(uri: "${params.blog}/")  // to the blog they logged in from
+                redirect(uri: "/${params.blog}/")  // to the blog they logged in from
             } else {
-                flash = "Invalid username or password. Please try again"
-                redirect(action: 'form')
+                flash.loginError = "Invalid username or password. Please try again"
+                redirect(uri: "/${params.blog}/")
             }
         }
 
@@ -25,7 +25,7 @@ class LoginController {
         if (session.account) {
             session.account = null
         }
-        redirect(uri: "${params.blog}/")  // to the blog they logged out from
+        redirect(uri: "/${params.blog}/")  // to the blog they logged out from
     }
 
     def form = {

@@ -75,7 +75,7 @@ class UrlMappings {
         }
 
 
-        "/$blog/archive" {
+        "/$blog/archive/$tagName?" {
             controller = "blog"
             action = "archive"
         }

@@ -35,7 +35,7 @@ class TagCloudTagLib {
 
         // step 4: output your tags
         tagToFreq.each {tag, freq ->
-            out << "<a href='/$blogId/tags/$tag' class='tagCloudSize" + (freq / catSize).intValue() + "'>"
+            out << "<a href='${request.contextPath}/$blogId/archive/$tag' class='tagCloudSize" + (freq / catSize).intValue() + "'>"
             out << tag
             out << "</a> "
             log.debug "Tag class of $tag with size $freq is " +  (freq / catSize).intValue()

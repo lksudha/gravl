@@ -84,8 +84,8 @@
 			      			<div class="niceBoxBody">
 								<p><a href="<g:createLink controller='account' action='edit'/>">
 									${session.account.userId}
-								</a></p>
-                                  <a href="<g:createLinkTo dir="/${blog.blogid}/admin/login/logout"/>">Logout</a>
+								</a> (${session.account.fullName}} </p>
+                                  <a href="<g:createLinkTo dir="${params.blog}/admin/login/logout"/>">Logout</a>
                               </div>
 			      		
 			      	</div>
@@ -96,8 +96,11 @@
 		      		<div class="niceBox">
 		      			<div class="niceBoxBody">
 
+                           <g:if test="${flash.loginError}">
+                                <div class="flash">${flash.loginError}</div>
+                           </g:if>
 
-				           <form action="<g:createLinkTo dir="/${blog.blogid}/admin/login/login"/>" method="post" >
+                           <form action="<g:createLinkTo dir="${params.blog}/admin/login/login"/>" method="post" >
                                     <b>User Id:</b><br/>
                                     <input type='text' name='userId'/>
                                     <b>Password:</b><br/>
@@ -107,8 +110,6 @@
 				                        <input type="submit" value="Login"/>
 				                     </span>
 				            <form>
-				            <p>
-				            <g:link controller='login' action="forgottenPassword">Forgotten your password?</g:link><p/>
 
 		      			</div>
 		      		

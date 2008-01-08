@@ -88,7 +88,10 @@ class EntriesTagLib {
         def blogId = attrs.blogid
         if (blogId) {
             Blog blog = Blog.findByBlogid(blogId)
-            out << blog?.title ? blog.title : ""
+            if (blog)
+                out << blog.title
+            else
+                out << "Gravl"
         } else {
             out << "Gravl"
         }
@@ -99,7 +102,10 @@ class EntriesTagLib {
         def blogId = attrs.blogid
         if (blogId) {
             Blog blog = Blog.findByBlogid(blogId)
-            out << blog?.byline ? blog.byline : "Subtitle here"
+            if (blog)
+                out << blog.byline
+            else
+                out << "Grails based blog engine"
         } else {
             out << "Grails based blog engine"
         }

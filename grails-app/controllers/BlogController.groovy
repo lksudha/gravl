@@ -9,20 +9,45 @@ class BlogController {
     def archive = {
 
         def blogId = params.blog
+        log.debug "Blog id is ${blogId}"
         Blog blog = Blog.findByBlogid(blogId)
         def entries = [ ]
         def totalArchiveSize = 0
         if (blog) {
-            def offset = params.offset ? params.offset : 0
-            totalArchiveSize = BlogEntry.countByBlogAndStatus(blog, "published")
-            entries = BlogEntry.findAllByBlogAndStatus(blog, "published", [ sort: "created", order: "desc", offset: offset, max: 20 ] )
+            def offset = params.offset ? Integer.parseInt(params.offset) : 0
+            if (params.tagName) {
+                log.debug "Looking for archive entries in category ${params.tagName}"
+                def bc = BlogEntry.createCriteria()
+                totalArchiveSize = bc.count {
+                    eq('blog', blog)
+                    eq('status', 'published')
+                    tags {
+                        eq('name', params.tagName)
+                    }
+                }
+                bc = BlogEntry.createCriteria()
+                entries = bc.list {
+                    eq('blog', blog)
+                    eq('status', 'published')
+                    tags {
+                        eq('name', params.tagName)
+                    }
+                    maxResults(20)
+                    firstResult(offset)
+	                order("created", "desc")
+                }
+
+            } else {
+                totalArchiveSize = BlogEntry.countByBlogAndStatus(blog, "published")
+                entries = BlogEntry.findAllByBlogAndStatus(blog, "published", [ sort: "created", order: "desc", offset: offset, max: 20 ] )
+            }
         } else {
             flash.message = "Could not find blog archive"
         }
         def baseUri = request.scheme + "://" + request.serverName + ":" + request.serverPort +
             grailsAttributes.getApplicationUri(request)
 
-        return [ entries: entries, totalArchiveSize: totalArchiveSize, baseUri: baseUri ]
+        return [ entries: entries, totalArchiveSize: totalArchiveSize, baseUri: baseUri, tag: params.tagName ]
         
         
     }
@@ -39,7 +64,7 @@ class BlogController {
         if (blog) {
             // display most recent 5 entries
             def entries = BlogEntry.findAllByBlogAndStatus(blog, "published", [sort: 'created', order: 'desc', max: 5])
-            render(view: 'displayOneEntry', model:  [blog: blog, entries: entries, print: params.print ? true : false, baseUri: baseUri ])
+            render(view: 'displayOneEntry', model:  [blogObj: blog, entries: entries, print: params.print ? true : false, baseUri: baseUri ])
         } else {
             flash.message = "Could not find blogid"
             redirect(action: list, params: params)
@@ -118,9 +143,10 @@ class BlogController {
         showImportDetails {
             on("cancel").to "headHome"
             on("upload") {
-                log.debug "Setting type to ${params.blogType} and id to ${params.blogId}"
+                log.debug "Setting type to ${params.blogType} and id to ${params.blogId} and owner ${params.account}"
                 importService.setBlogId(params.blogId)
                 importService.setBlogType(params.blogType)
+                importService.setAccountId(params.account)
             }.to "startUpload"
         }
 

@@ -14,6 +14,7 @@
         <g:form action="fileUpload">
             Type of File: <g:select name="blogType" from="${ziptype}"/>
             Blog Id: <input name="blogId"/>
+            Author: <g:select name="account" from="${Account.list()}" optionValue="fullName" optionKey="id"/>
             <g:submitButton name="upload" value="Upload"/>
             <g:submitButton name="cancel" value="Cancel"/>
         </g:form>
