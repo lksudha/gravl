@@ -8,7 +8,7 @@
     </head>
     <body>
 
-        <g:form action="updateProperties">
+        <g:form controller="${params.blog}" action="admin/updateProperties">
             <g:hiddenField name="id" value="${cmd.id}"/>
             <table>
 
@@ -24,7 +24,7 @@
 
                 <tr>
                     <td>Url: (go easy, tiger)</td>
-                    <td>${request.contextPath}/<g:textField name="byline" value="${cmd.blogId}"/>/</td>
+                    <td>${request.contextPath}/<g:textField name="blogid" value="${cmd.blogid}"/>/</td>
                 </tr>
 
                 <tr>
@@ -42,12 +42,13 @@
                 </tr>
 
                 <tr>
-                    <td><g:checkBox name="smsNotify" value="${cmd.smsNotify}"/>SMS on new comments to: (comma separated) </td>
-                    <td><g:textField name="smsAddresses" value="${cmd.smsAddresses}"/></td>
+                    <td><g:checkBox name="useFeedburner" value="${cmd.useFeedburner}"/>Enable Feedburner. Your Feedburner URL:</td>
+                    <td><g:textField name="fbAddress" value="${cmd.fbAddress}"/></td>
                 </tr>
 
 
             </table>
+            <g:submitButton name="save" value="Save"/>
 
         </g:form>
 

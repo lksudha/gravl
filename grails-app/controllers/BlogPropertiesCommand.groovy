@@ -1,6 +1,6 @@
 
 class BlogPropertiesCommand {
-
+    
   static constraints = {
       title(nullable: false, size: 1..128)
       byline(nullable: true)
@@ -20,7 +20,7 @@ class BlogPropertiesCommand {
   boolean gtalkNotify
   String gtalkAddresses
 
-  boolean smsNotify
-  String smsAddresses
+  boolean useFeedburner
+  String fbAddress
 
 }

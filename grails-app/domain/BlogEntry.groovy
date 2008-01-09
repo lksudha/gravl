@@ -31,6 +31,16 @@ class BlogEntry {
     return "BlogEntry ${id} - ${title}"
   }
 
+  public String toMarkup() {
+
+      if (markup == "wiki") {
+          return body.encodeAsWiki()
+      } else {
+          return body
+      }
+
+  }
+
   public String toPermalink() {
 
       def sdf = new java.text.SimpleDateFormat("yyyy/MM/dd")

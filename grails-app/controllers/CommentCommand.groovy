@@ -22,5 +22,10 @@ class CommentCommand {
   String entryId
   boolean emailUpdates
   Date created = new Date()
+  String markup = 'wiki'
+
+  String toMarkup() {
+    return (markup == 'wiki') ? body.encodeAsWiki() : body
+  }
 
 }

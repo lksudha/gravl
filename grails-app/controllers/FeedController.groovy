@@ -3,6 +3,21 @@ import com.sun.syndication.io.SyndFeedOutput
 
 class FeedController {
 
+    private boolean useFeedburner() {
+		if (false) {
+			def userAgent = request.getHeader("user-agent")
+			if (userAgent && userAgent =~ /(?i)FeedBurner/) {
+				log.info("Feedburner Agent Detected: [$userAgent]")
+				return false
+			} else {
+				def remoteAddr = request.getRemoteAddr()
+				log.debug("Redirecting: [$userAgent] from [$remoteAddr] to feedburner")
+				return true
+			}
+		}
+		return false
+	}
+
     def feeds = {
 
         log.debug "Starting feed generation..."

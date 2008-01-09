@@ -15,7 +15,6 @@ class CommentController {
         if (comment.hasErrors())  {
            log.debug "Missing stuff in comment..."
         }
-        comment.body = params.body.encodeAsWiki()
 
         render(template: "/blog/comment", model: [comment: comment ])
         
@@ -23,24 +22,27 @@ class CommentController {
 
     def save = { CommentCommand comment ->
         if (comment.hasErrors()) {
-            comment.body = params.body.encodeAsWiki()
             render(template: "/blog/comment", model: [comment: comment ])
-
        } else {
             Comment newComment = new Comment(comment.properties)
             newComment.ipaddress = request.getRemoteAddr()
             BlogEntry be = BlogEntry.get(comment.entryId)
             be.addToComments(newComment).save()
 
-            if (session.account) { // auto approve comments by owners/authenticated users
-                comment.status = "approved"
-                notificationService.approvedCommend(newComment)
-            } else {
-                notificationService.newCommentPosted(newComment)
-            }
-
             log.debug "Rendering new comment"
             render(template: "/blog/comment", model: [comment: comment, newlySaved: true ])
+
+
+            def baseUri = request.scheme + "://" + request.serverName +
+                    (request.serverPort != 80 ?":" + request.serverPort : "" ) +
+            grailsAttributes.getApplicationUri(request)
+
+            if (session.account) { // auto approve comments by owners/authenticated users
+                comment.status = "approved"
+                notificationService.approvedCommend(newComment, baseUri)
+            } else {
+                notificationService.newCommentPosted(newComment, baseUri)
+            }
 
         }
 

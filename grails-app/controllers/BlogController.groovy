@@ -6,26 +6,89 @@ class BlogController {
 
     def index = {redirect(action: list, params: params)}
 
+    def getBlogProperty(Blog blog, String propName) {
+        if (blog.blogProperties) {
+            BlogProperty bp = blog.blogProperties.find {it.name == propName}
+            return bp ? bp : null
+        } else {
+            return null
+        }
+    }
+
+    def getBlogPropertyValue(Blog blog, String propName, def defValue) {
+
+        log.debug "Searching for property ${propName} in blog ${blog.blogid}"
+        BlogProperty bp = getBlogProperty(blog, propName)
+        if (bp && bp.value) {
+            return bp.value
+        } else {
+            return defValue
+        }
+
+    }
+
+    def setBlogProperty(Blog blog, String propName, String propValue) {
+
+        BlogProperty bp = getBlogProperty(blog, propName)
+        if (bp) {
+            bp.value = propValue
+        } else {
+            bp = new BlogProperty(name: propName, value: propValue)
+            blog.addToBlogProperties(bp).save()
+        }
+    }
+
     def properties = {
+
+        def blogId = params.blog
+        log.debug "Getting Properties for ${blogId}"
+        Blog blog = Blog.findByBlogid(blogId)
+        BlogPropertiesCommand bpc = new BlogPropertiesCommand(id: blog.id, title: blog.title, byline: blog.byline,
+                blogid: blog.blogid, allowComments: blog.allowComments)
+
+        bpc.emailNotify = getBlogPropertyValue(blog, "emailNotify", false)
+        bpc.emailAddresses = getBlogPropertyValue(blog, "emailAddresses", "")
+
+        bpc.gtalkNotify = getBlogPropertyValue(blog, "gtalkNotify", false)
+        bpc.gtalkAddresses = getBlogPropertyValue(blog, "gtalkAddresses", "")
+
+        bpc.useFeedburner = getBlogPropertyValue(blog, "useFeedburner", false)
+        bpc.fbAddress = getBlogPropertyValue(blog, "fbAddress", "")
+
+        log.debug "Dumping cmd: " + bpc.dump()
+
+        return [ cmd : bpc ]
 
     }
 
     def updateProperties= { BlogPropertiesCommand bpc ->
 
-        if (!bpc.validate()) {
+        if (bpc.hasErrors()) {
             render(view: "properties", cmd: bpc)
         } else {
             Blog blog = Blog.get(bpc.id)
             if (blog) {
-                blog.properties = bpc.properties
-                // delete existing properties
-                BlogProperties.executeUpdate("delete from BlogProperties bp where bp.blog", blog)
-                blog.addToProperties(new BlogProperty(name: 'emailNotify', value: cmd.emailNotify))
-                blog.addToProperties(new BlogProperty(name: 'emailAddresses', value: cmd.emailAddresses))                
+                blog.title = bpc.title
+                blog.byline = bpc.byline
+                blog.allowComments = bpc.allowComments
+                blog.blogid = bpc.blogid
+
+                setBlogProperty(blog, "emailNotify", bpc.emailNotify.toString())
+                setBlogProperty(blog, "emailAddresses", bpc.emailAddresses)
+
+                setBlogProperty(blog, "gtalkNotify", bpc.gtalkNotify.toString())
+                setBlogProperty(blog, "gtalkAddresses", bpc.gtalkAddresses)
+
+                setBlogProperty(blog, "useFeedburner", bpc.useFeedburner.toString())
+                setBlogProperty(blog, "fbAddress", bpc.fbAddress) 
+
+                flash.message = "Successfully updated blog properties"
+
             } else {
                 flash.message = "Could not locate blog id  [${bpc.id}] to update"
-                render(view: "properties", cmd: bpc)
+
             }
+            render(view: "properties", model: [ cmd: bpc ])
         }
 
     }

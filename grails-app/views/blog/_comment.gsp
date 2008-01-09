@@ -8,7 +8,7 @@
     </g:hasErrors>
     <div class="bubble"><a name="comment${comment.properties.id}"/>
         <blockquote>
-            <p>${comment.body}</p>
+            <p>${comment.toMarkup()}</p>
         </blockquote>
 
             <g:if test="${session.account}">

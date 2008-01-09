@@ -9,8 +9,7 @@ class BlogProperty
   
   Blog blog
 
-  String toString ()
-  {
-    return "BlogProperty ${id}"
+  String toString () {
+    return "BlogProperty for ${blog.blogid}: ${name} = ${value}"
   }
 }

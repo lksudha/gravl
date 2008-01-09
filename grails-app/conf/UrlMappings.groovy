@@ -8,7 +8,7 @@ class UrlMappings {
         }
 
         // setup the blog name...
-        "/$blogname/$controller/$action?/$id?" {
+        "/$blog/$controller/$action?/$id?" {
             constraints {
                 // apply constraints here
             }
@@ -47,6 +47,16 @@ class UrlMappings {
         "/$blog/stats" {
             controller = "admin"
             action = "stats"
+        }
+
+        "/$blog/admin/properties" {
+            controller = "blog"
+            action = "properties"
+        }
+
+       "/$blog/admin/updateProperties" {
+            controller = "blog"
+            action = "updateProperties"
         }
 
         "/$blog/admin/comments/pending" {

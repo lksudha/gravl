@@ -76,7 +76,7 @@
                 </g:if>
                 <div class="blogdate">By ${entry.account?.fullName} at <g:niceDate date="${entry.created}"/></div>
 
-                <div class="blogbody">${entry.body}</div>
+                <div class="blogbody">${entry.toMarkup()}</div>
                 <div class="blogtags">
                     <p>
                     Tags: <g:each var="tag" in="${entry.tags}">${tag.name}</g:each>
@@ -87,7 +87,7 @@
                 </div>
                 <g:if test="${entries.size == 1 && print==false}">
 
-
+                    <a name="comments"/>
                     <div class="blogcomments" id="allcomments">
 
                         <g:each var="comment" in="${entry.comments}" status="counter">
