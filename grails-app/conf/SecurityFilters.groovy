@@ -27,7 +27,7 @@ class SecurityFilters {
                                 "feed": ["feeds"],
                                 "pdf": ["show"],
                                 "image" : ["display"],
-                                "login" : ["loginForm", "login"]
+                                "login" : ["form", "login"]
                         ]
 
                 if (!session.account) {
@@ -53,7 +53,9 @@ class SecurityFilters {
                     if (!allowed) {
                         session.returnurl = request.forwardURI
                         println "Setting return url to " + session.returnurl
-                        // redirect(controller: 'login', action: 'form')
+                        redirect(controller: 'login', action: 'form')
+                        //println "Redirecting to ${params.blogid}/login/form"
+                        //redirect(url: "${params.blogid}/login/form")
                     }
 
 
