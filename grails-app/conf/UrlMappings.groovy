@@ -59,6 +59,11 @@ class UrlMappings {
             action = "updateProperties"
         }
 
+        "/blog/admin/drafts" {
+            controller = "admin"
+            action = "drafts"
+        }
+
         "/$blog/admin/comments/pending" {
             controller = "admin"
             action = "pendingComments"

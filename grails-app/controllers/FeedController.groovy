@@ -3,8 +3,25 @@ import com.sun.syndication.io.SyndFeedOutput
 
 class FeedController {
 
-    private boolean useFeedburner() {
-		if (false) {
+    private String checkFeedburnerPreference(Blog blog) {
+
+        BlogProperty bp = blog.blogProperties?.find { prop ->
+            prop.name == "useFeedburner"
+        }
+        log.debug "bp value is ${bp.value}"
+        return bp ? bp.value : "false"
+
+    }
+
+    private String getFeedburnerUrl(Blog blog) {
+        BlogProperty bp = blog.blogProperties?.find { prop ->
+            prop.name == "fbAddress"
+        }
+        return (bp && bp.value) ? bp.value : null
+    }
+
+    private boolean useFeedburner(Blog blog) {
+		if (checkFeedburnerPreference(blog) == 'true') {
 			def userAgent = request.getHeader("user-agent")
 			if (userAgent && userAgent =~ /(?i)FeedBurner/) {
 				log.info("Feedburner Agent Detected: [$userAgent]")
@@ -44,7 +61,7 @@ class FeedController {
         if (blog) {
 
             def entries
-             if (category) {
+             if (category) {  // category specific feed
                 def bc = BlogEntry.createCriteria()
                 entries = bc.list {
                     eq('status', 'published')
@@ -55,7 +72,18 @@ class FeedController {
                     maxResults(5)
 	                order("created", "desc")
 	            }
-             } else {
+             } else {  // general feed
+                 if (useFeedburner(blog)) {
+                    String fbUrl = 	getFeedburnerUrl(blog)
+                    if (fbUrl) {
+                        log.debug "Feedburning to ${fbUrl}"
+                        response.sendRedirect(fbUrl)
+                        return
+                    } else {
+                        log.warn "Invalid feedburner url configured for blog ${blog.blogid}"
+                    }
+                 }
+
                 entries = BlogEntry.findAllByBlogAndStatus(blog, "published", [max: 5, sort: "created", order: "desc"])
              }
                 // filter to supplied category, should be done in hibernate

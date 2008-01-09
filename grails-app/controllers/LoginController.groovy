@@ -12,9 +12,13 @@ class LoginController {
             Account account = Account.findByUserIdAndPassword(cmd.userId, cmd.password.encodeAsSha1())
             if (account) {
                 session.account = account
-                redirect(uri: "/${params.blog}/")  // to the blog they logged in from
-            } else {
+             } else {
                 flash.loginError = "Invalid username or password. Please try again"
+            }
+            
+            if (session.returnurl) {
+                redirect(uri: session.returnurl)
+            } else {
                 redirect(uri: "/${params.blog}/")
             }
         }

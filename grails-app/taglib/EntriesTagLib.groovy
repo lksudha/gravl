@@ -140,7 +140,7 @@ class EntriesTagLib {
        def entries = attrs.entries
        def baseUri = attrs.baseUri
        def recentMonth = ""
-       if (entries)
+       if (entries) {
        entries.each { entry ->
        
            def monthName = getMonthName(entry.created)
@@ -164,6 +164,9 @@ class EntriesTagLib {
            out << "</tr>"
        }
        out << "</table>"
+       } else {
+           out << "<div class='archiveMonth'>No entries to display</div>"
+       }
 
     }
 

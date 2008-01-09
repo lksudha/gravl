@@ -2,8 +2,6 @@
 
 class BlogController {
 
-    def scaffold = Blog
-
     def index = {redirect(action: list, params: params)}
 
     def getBlogProperty(Blog blog, String propName) {
@@ -141,7 +139,7 @@ class BlogController {
 
     def homePage = {
 
-               def baseUri = request.scheme + "://" + request.serverName + ":" + request.serverPort +
+       def baseUri = request.scheme + "://" + request.serverName + ":" + request.serverPort +
                 grailsAttributes.getApplicationUri(request)
 
 
@@ -154,7 +152,6 @@ class BlogController {
             render(view: 'displayOneEntry', model:  [blogObj: blog, entries: entries, print: params.print ? true : false, baseUri: baseUri ])
         } else {
             flash.message = "Could not find blogid"
-            redirect(action: list, params: params)
             render(view: 'displayOneEntry')
         }
 
@@ -196,7 +193,8 @@ class BlogController {
             log.info "Blog name is ${blog.title}"
             def entries = BlogEntry.findAllByBlogAndCreatedBetween(blog, blogStartDate, blogEndDate, [sort: 'created', order: 'desc'])
             log.info "Found some entries... for $blogId then we're ${entries.size()}"
-            entries = entries.findAll { entry -> entry.status ==~ 'published' }
+            if (!session.account) // trim to published entries only
+                entries = entries.findAll { entry -> entry.status ==~ 'published' }
             return [blog: blog, entries: entries, print: params.print ? true : false, baseUri: baseUri ]
         } else {
             flash.message = "Could not find blogid"

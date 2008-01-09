@@ -20,6 +20,14 @@ class CommentController {
         
     }
 
+    private String getBaseUri() {
+
+        return request.scheme + "://" + request.serverName +
+                    (request.serverPort != 80 ?":" + request.serverPort : "" ) +
+            grailsAttributes.getApplicationUri(request)
+
+    }
+
     def save = { CommentCommand comment ->
         if (comment.hasErrors()) {
             render(template: "/blog/comment", model: [comment: comment ])
@@ -33,15 +41,13 @@ class CommentController {
             render(template: "/blog/comment", model: [comment: comment, newlySaved: true ])
 
 
-            def baseUri = request.scheme + "://" + request.serverName +
-                    (request.serverPort != 80 ?":" + request.serverPort : "" ) +
-            grailsAttributes.getApplicationUri(request)
+
 
             if (session.account) { // auto approve comments by owners/authenticated users
                 comment.status = "approved"
-                notificationService.approvedCommend(newComment, baseUri)
+                notificationService.approvedCommend(newComment, getBaseUri())
             } else {
-                notificationService.newCommentPosted(newComment, baseUri)
+                notificationService.newCommentPosted(newComment, getBaseUri())
             }
 
         }
@@ -85,7 +91,7 @@ class CommentController {
             log.debug "Approval successful"
             message = "Approved comment"
             successful = true
-            notificationService.approvedComment(comment)
+            notificationService.approvedComment(comment, getBaseUri())
         } else {
             log.debug "Approve failed"
             message = "Failed to approve message. Does not exist, or no access rights"

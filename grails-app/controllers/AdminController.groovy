@@ -82,5 +82,21 @@ class AdminController {
 
     }
 
+    def drafts = {
+        def blogId = params.blog
+        Blog blog = Blog.findByBlogid(blogId)
+        def entries = []
+        if (blog) {
+            entries = BlogEntry.findAllByBlogAndStatus(blog, "unpublished", [sort: "created", order: "desc"])
+        } else {
+            flash.message = "Could not find blog draft entries"
+        }
+        def baseUri = request.scheme + "://" + request.serverName + ":" + request.serverPort +
+                grailsAttributes.getApplicationUri(request)
+
+        return [entries: entries, baseUri: baseUri]
+
+    }
+
 
 }
