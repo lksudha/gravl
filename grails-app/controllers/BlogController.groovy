@@ -6,6 +6,30 @@ class BlogController {
 
     def index = {redirect(action: list, params: params)}
 
+    def properties = {
+
+    }
+
+    def updateProperties= { BlogPropertiesCommand bpc ->
+
+        if (!bpc.validate()) {
+            render(view: "properties", cmd: bpc)
+        } else {
+            Blog blog = Blog.get(bpc.id)
+            if (blog) {
+                blog.properties = bpc.properties
+                // delete existing properties
+                BlogProperties.executeUpdate("delete from BlogProperties bp where bp.blog", blog)
+                blog.addToProperties(new BlogProperty(name: 'emailNotify', value: cmd.emailNotify))
+                blog.addToProperties(new BlogProperty(name: 'emailAddresses', value: cmd.emailAddresses))                
+            } else {
+                flash.message = "Could not locate blog id  [${bpc.id}] to update"
+                render(view: "properties", cmd: bpc)
+            }
+        }
+
+    }
+
     def archive = {
 
         def blogId = params.blog

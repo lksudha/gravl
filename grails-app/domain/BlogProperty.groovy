@@ -1,11 +1,13 @@
 class BlogProperty
 {
   // static hasMany = []
-  // static belongsTo = []
+  static belongsTo = [ Blog ]
   // static constraints = {}
 
   String name
   String value
+  
+  Blog blog
 
   String toString ()
   {
