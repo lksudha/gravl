@@ -16,11 +16,11 @@ class LoginController {
                 flash.loginError = "Invalid username or password. Please try again"
             }
             
-            if (session.returnurl) {
-                redirect(uri: session.returnurl)
-            } else {
+//            if (session.returnurl) {
+//                redirect(uri: session.returnurl)
+//            } else {
                 redirect(uri: "/${params.blog}/")
-            }
+//            }
         }
 
     }

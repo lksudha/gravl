@@ -1,6 +1,7 @@
 class UrlMappings {
     
     static mappings = {
+        
         "/$controller/$action?/$id?" {
             constraints {
                 // apply constraints here
@@ -64,6 +65,11 @@ class UrlMappings {
             action = "drafts"
         }
 
+        "/$blog/admin/blog/$action/$id?" {
+            controller = "blogEntry"
+        }
+
+
         "/$blog/admin/comments/pending" {
             controller = "admin"
             action = "pendingComments"
@@ -74,19 +80,8 @@ class UrlMappings {
             action = "approvedComments"
         }
 
-        "/$blog/admin/login/form" {
+        "/$blog/admin/login/$action" {
             controller = "login"
-            action = "form"
-        }
-
-        "/$blog/admin/login/login" {
-            controller = "login"
-            action = "login"
-        }
-
-        "/$blog/admin/login/logout" {
-            controller = "login"
-            action = "logout"
         }
 
 
@@ -108,6 +103,7 @@ class UrlMappings {
             controller = "image"
             action = "display"
         }
+
 
         // home page
         "/$blog" {

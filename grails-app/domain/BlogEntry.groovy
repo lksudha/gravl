@@ -9,6 +9,7 @@ class BlogEntry {
       subtitle (nullable: true, blank: true, maxSize: 128)
       excerpt (nullable:true, blank: true, maxSize: 1024)
       markup (inList: ['html', 'wiki'])
+      status(inList: ['published', 'unpublished'])
       account (nullable: true)
   }
 
@@ -23,7 +24,7 @@ class BlogEntry {
   String body
   String markup = "html"
 
-  String status = "draft"
+  String status = "unpublished"
   boolean allowComments = true
 
   String toString ()
