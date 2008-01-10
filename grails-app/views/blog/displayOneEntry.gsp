@@ -9,6 +9,8 @@
             <meta name="layout" content="main"/>
             <link rel="stylesheet" href="${createLinkTo(dir: 'css', file: 'bubbles.css')}"/>
             <g:javascript library="scriptaculous"/>
+            <link rel="stylesheet" href="${createLinkTo(dir: 'css', file: 'prettify.css')}"/>
+            <g:javascript library="prettify" />
         </g:else>
 
 
