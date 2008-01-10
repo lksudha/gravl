@@ -165,7 +165,7 @@ class EntriesTagLib {
        }
        out << "</table>"
        } else {
-           out << "<div class='archiveMonth'>No entries to display</div>"
+           out << "</table><div class='archiveMonth'>No entries to display</div>"
        }
 
     }

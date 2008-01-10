@@ -84,11 +84,14 @@
 
                 <div class="blogbody">${entry.toMarkup()}</div>
                 <div class="blogtags">
+                    <div style="float: right;">
+                        <a href="${baseUri + entry.toPermalink()}#comments">${ entry.comments.size() } Comments.</a>
+                    </div>
                     <p>
-                    Tags: <g:each var="tag" in="${entry.tags}">${tag.name}</g:each>
-                    </p>
-                    <p>
-                    ${ entry.comments.size() } Comments:
+                    Tags:
+                        <g:each var="tag" in="${entry.tags}">
+                            <a href="<g:createLinkTo dir="${params.blog}/archive" file="${tag.name}"/>">${tag.name}</a>
+                        </g:each>
                     </p>
                 </div>
                 <g:if test="${entries.size == 1 && print==false}">

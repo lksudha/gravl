@@ -8,16 +8,19 @@
             font-size: x-large;
         }
 
-        .button input {
+        .buttons input {
             font-size: medium;
         }
         
     </style>
+    <g:javascript library="scriptaculous"/>
+    <link rel="stylesheet" href="${createLinkTo(dir: 'css', file: 'prettify.css')}"/>
+    <g:javascript library="prettify" />
 </head>
 <body>
 <div class="body">
 <p style='font-size: large; border-bottom: 1px dotted black; padding-bottom: 4px;'>Edit Blog</p>
-<g:form controller="${params.blog}" method="admin/blog/save">
+<g:form controller="${params.blog}" action="admin/blog/save">
     <input type="hidden" name="id" value="${blogEntry?.id}"/>
     <table>
         <tbody>
@@ -91,10 +94,13 @@
     </table>
     </div>
     <div class="buttons">
-        <span class="button"><g:actionSubmit class="save" value="Save"/></span>
-        <span class="button"><g:actionSubmit class="preview" value="Preview"/></span>
-        <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete"/></span>
+        <g:actionSubmit class="save" value="Save"/>
+        <g:submitToRemote url="[controller: 'blogEntry', action: 'preview']" update="entryPreview" value="Preview"/>
+        <g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete"/>
     </div>
 </g:form>
+<div id="entryPreview">
+    
+</div>
 </body>
 </html>

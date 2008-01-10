@@ -82,10 +82,15 @@
 		      		<div class="niceBox">
 			      			<div class="niceBoxHd">User Info</div>
 			      			<div class="niceBoxBody">
-								<p><a href="<g:createLink controller='account' action='edit'/>">
-									${session.account.userId}
-								</a> (${session.account.fullName}} </p>
-                                  <a href="<g:createLinkTo dir="${params.blog}/admin/login/logout"/>">Logout</a>
+								<p> ${session.account.fullName}  (${session.account.userId}} </p>
+                                  <ul>
+                                  <li><a href="<g:createLinkTo dir="${params.blog}/admin/stats"/>">Stats</a></li>
+                                  <li><a href="<g:createLinkTo dir="${params.blog}/admin/drafts"/>">Draft Entries</a></li>
+                                  <li><a href="<g:createLinkTo dir="${params.blog}/admin/blog/edit"/>">New Blog Entry</a></li>
+                                  <li><a href="<g:createLinkTo dir="${params.blog}/admin/comments/pending"/>">Pending Comments</a></li>
+                                  <li><a href="<g:createLinkTo dir="${params.blog}/admin/properties"/>">Blog Properties</a></li>
+                                  <li><a href="<g:createLinkTo dir="${params.blog}/admin/login/logout"/>">Logout</a></li>
+                                  </ul>
                               </div>
 			      		
 			      	</div>

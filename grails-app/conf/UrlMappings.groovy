@@ -1,7 +1,7 @@
 class UrlMappings {
     
     static mappings = {
-        
+
         "/$controller/$action?/$id?" {
             constraints {
                 // apply constraints here
@@ -45,7 +45,7 @@ class UrlMappings {
             }
         }
 
-        "/$blog/stats" {
+        "/$blog/admin/stats" {
             controller = "admin"
             action = "stats"
         }
@@ -103,12 +103,15 @@ class UrlMappings {
             controller = "image"
             action = "display"
         }
-
+        
 
         // home page
         "/$blog" {
             controller = "blog"
             action = "homePage"
         }
+
+       "500"(view:"niceError")
+       
     }
 }

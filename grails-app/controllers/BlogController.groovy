@@ -151,7 +151,7 @@ class BlogController {
             def entries = BlogEntry.findAllByBlogAndStatus(blog, "published", [sort: 'created', order: 'desc', max: 5])
             render(view: 'displayOneEntry', model:  [blogObj: blog, entries: entries, print: params.print ? true : false, baseUri: baseUri ])
         } else {
-            flash.message = "Could not find blogid"
+            // flash.message = "Could not find blogid for home page" // favicon.ico hits this!
             render(view: 'displayOneEntry')
         }
 
@@ -197,7 +197,7 @@ class BlogController {
                 entries = entries.findAll { entry -> entry.status ==~ 'published' }
             return [blog: blog, entries: entries, print: params.print ? true : false, baseUri: baseUri ]
         } else {
-            flash.message = "Could not find blogid"
+            flash.message = "Could not find blogid for selected entries"
             redirect(action: list, params: params)
         }
     }

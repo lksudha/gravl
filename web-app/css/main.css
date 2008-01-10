@@ -79,6 +79,9 @@ div#footerText {
     margin: 3px;
 }
 
+.blogentry {
+    margin-top: 1em;
+}
 
 .blogtitle a:link, .blogtitle a:visited {
 
@@ -161,6 +164,9 @@ li {
     float: right;
 }
 
+.blogTags {
+    border-bottom: 1px dotted black;
+}
 
 /* Blog comments */
 

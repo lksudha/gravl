@@ -76,6 +76,27 @@ class AdminController {
 
     def pendingComments = {
 
+        def blogId = params.blog
+        Blog blog = Blog.findByBlogid(blogId)
+        def entries = []
+        if (blog) {
+            def bc = BlogEntry.createCriteria()
+                entries = bc.list {
+                    eq('status', 'published')
+                    eq('blog', blog)
+                    comments {
+                        eq('status', 'pending')
+                    }
+	                order("created", "desc")
+	            }
+        } else {
+            flash.message = "Could not find blog pending comments"
+        }
+        def baseUri = request.scheme + "://" + request.serverName + ":" + request.serverPort +
+                grailsAttributes.getApplicationUri(request)
+
+        render(view: 'comments', model: [entries: entries, baseUri: baseUri])
+
     }
 
     def approvedComments = {

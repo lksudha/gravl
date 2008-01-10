@@ -23,15 +23,19 @@ class SecurityFilters {
 
                 def publicStuff = [
                                 "blog" : ["archive", "homePage", "displayOneEntry"],
-                                "comments" : ["newComment", "preview", "save"],
+                                "comment" : ["newComment", "preview", "save"],
                                 "feed": ["feeds"],
                                 "pdf": ["show"],
                                 "image" : ["display"],
                                 "login" : ["form", "login"]
                         ]
 
+                println ("Security checking on ${request.forwardURI}")
                 if (!session.account) {
-                    boolean allowed = true
+                    boolean allowed = false
+
+                    println "Checking access to controller [${controllerName}] with action [${actionName}] (${request.forwardURI})"
+
                     if (publicStuff.keySet().find { it == controllerName }) {
                         
                         if (publicStuff[controllerName].find { it == actionName }) {
