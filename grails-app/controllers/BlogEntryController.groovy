@@ -101,7 +101,7 @@ class BlogEntryController {
         } else {
             flash.message = "Invalid blog to delete"
         }
-        redirect(uri: "/${params.blog}")
+        redirect(uri: "/${params.blog}/")
     }
 
 }

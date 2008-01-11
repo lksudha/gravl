@@ -7,7 +7,7 @@ class ReferrerFilters {
 
     def filters = {
         // do some tracking on rss feeds and 
-        extractReferrers(controller:'blog', action: '*') {
+        extractReferrers(controller:'disabled', action: '*') {
 
             before = {
 

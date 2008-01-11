@@ -183,4 +183,10 @@ class EntriesTagLib {
 
     }
 
+    def redirectFirstBlog = { attr ->
+        Blog b = Blog.listOrderByBlogid()[0]
+        response.sendRedirect("${request.contextPath}/${b.blogid}/")
+
+    }
+
 }

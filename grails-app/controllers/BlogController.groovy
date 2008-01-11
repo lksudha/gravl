@@ -139,6 +139,10 @@ class BlogController {
 
     def homePage = {
 
+//        if (!request.forwardURI.endsWith("/")) {
+//             redirect(uri: "/${params.blog}/")
+//        }
+
        def baseUri = request.scheme + "://" + request.serverName + ":" + request.serverPort +
                 grailsAttributes.getApplicationUri(request)
 

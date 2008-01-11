@@ -30,7 +30,11 @@ environments {
 	production {
 		dataSource {
 			dbCreate = "update"
-			url = "jdbc:hsqldb:file:prodDb;shutdown=true"
-		}
+			// url = "jdbc:hsqldb:file:prodDb;shutdown=true"
+            driverClassName = "org.postgresql.Driver"
+	        url = "jdbc:postgresql://localhost/gravl"
+	        username = "glen"
+	        password = "password"
+        }
 	}
 }

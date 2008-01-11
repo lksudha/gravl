@@ -151,7 +151,7 @@ class ImportService implements Serializable {
                             commentsImported++
                         }
 
-                    } else if (entry.name =~ /.*images\/.*/) {
+                    } else if (entry.name =~ /.*images\/.+\..+/) {
 
                         log.debug "Processing Image file: $entry.name"
                         String configDir =  ConfigurationHolder.config.blogdata.dir
@@ -159,6 +159,7 @@ class ImportService implements Serializable {
                                 entry.name.substring(entry.name.indexOf("images"))
 
                         log.debug "Processing Image file: $fileName"
+
                         File outfile = new File(fileName)
                         File parentDir = new File(outfile.getParent())
 

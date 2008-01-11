@@ -24,7 +24,7 @@
               {
                 method: 'get',
                 parameters: $('webflowForm').serialize(true) ,
-                frequency: 5,
+                frequency: 10,
                 decay: 2,
                 onSuccess: function() {
                     // hackery to delay update till the webflowFormDiv is refreshed... I wish onComplete() worked...
