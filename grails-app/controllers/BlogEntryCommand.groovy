@@ -6,7 +6,7 @@ class BlogEntryCommand {
         subtitle(nullable: true, blank: true, maxSize: 128)
         excerpt(nullable: true, blank: true, maxSize: 1024)
         markup(inList: ['html', 'wiki'])
-        status(inList: ['published', 'unpublished'])
+        status(inList: ['published', 'unpublished', 'approved'])
     }
 
     int id  // id of already saved BlogEntry or 0 if fresh
@@ -28,7 +28,7 @@ class BlogEntryCommand {
     }
 
     def getAllTags() {
-        return tagList.split(",")
+        return tagList.tokenize(" ")
     }
 
     public String toMarkup() {

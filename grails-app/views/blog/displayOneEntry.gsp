@@ -1,7 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
     <head>
-        <title>gravl</title>
+        <title>
+            <g:if test="${entries?.size == 1}">
+                ${entries[0].title} - ${entries[0].blog.title}
+            </g:if>
+            <g:else>
+                ${entries[0]?.blog?.title} ${params.year ? " > " + params.year : ""} ${params.month ? " > " + params.month : "" } ${params.day ? " > " + params.day : "" }
+            </g:else>
+        </title>
         <g:if test="${print==true}">
             <meta name="layout" content="print"/>
         </g:if>

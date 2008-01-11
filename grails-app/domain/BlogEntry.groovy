@@ -9,7 +9,7 @@ class BlogEntry {
       subtitle (nullable: true, blank: true, maxSize: 128)
       excerpt (nullable:true, blank: true, maxSize: 1024)
       markup (inList: ['html', 'wiki'])
-      status(inList: ['published', 'unpublished'])
+      status(inList: ['published', 'unpublished', 'approved'])
       account (nullable: true)
   }
 

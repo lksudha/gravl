@@ -10,6 +10,12 @@
 
         .buttons input {
             font-size: medium;
+            margin-top: 5px;
+        }
+
+        .label {
+            width: 5em;
+            height: 2em;
         }
         
     </style>
@@ -20,31 +26,25 @@
 <body>
 <div class="body">
 <p style='font-size: large; border-bottom: 1px dotted black; padding-bottom: 4px;'>Edit Blog</p>
-<g:form controller="${params.blog}" action="admin/blog/save">
+<g:form controller="${params.blog}/admin/blog" action="save">
     <input type="hidden" name="id" value="${blogEntry?.id}"/>
-    <table>
+    <table style="width: 100%;">
         <tbody>
 
             <tr>
-                <td>
-                    Title:
-                </td>
-                <td>
-                    <g:textField name='title' value="${blogEntry.title}" style="width: 25em;"/>
+                <td colspan="2">
+                    <g:textField name='title' value="${blogEntry.title}" style="width: 100%;"/>
                 </td>
             </tr>
 
             <tr>
-                <td>
-                    Body:
-                </td>
-                <td>
-                    <textarea rows='20' cols='91' name='body'>${blogEntry?.body}</textarea>
+                <td colspan="2">
+                    <textarea rows='20' cols='102' name='body' style="width: 100%; margin-top: 4px; margin-bottom: 4px;">${blogEntry?.body}</textarea>
                 </td>
             </tr>
 
             <tr>
-                <td>
+                <td class="label">
                     Markup:
                 </td>
                 <td>
@@ -53,7 +53,7 @@
             </tr>
 
             <tr>
-                <td>
+                <td class="label">
                     Status:
                 </td>
                 <td>
@@ -62,7 +62,7 @@
             </tr>
 
             <tr>
-                <td>
+                <td class="label">
                     Comments:
                 </td>
                 <td>
@@ -72,7 +72,7 @@
 
 
             <tr>
-                <td>
+                <td class="label">
                     Created:
                 </td>
                 <td>
@@ -82,23 +82,30 @@
 
 
             <tr>
-                <td>
+                <td class="label">
                     Tags:
                 </td>
                 <td>
-                    <g:textField name="tagList" value="${blogEntry?.tagList}"/>
+                    <g:textField name="tagList" value="${blogEntry?.tagList}" style="width: 100%"/>
                 </td>
             </tr>
 
         </tbody>
     </table>
     </div>
-    <div class="buttons">
-        <g:actionSubmit class="save" value="Save"/>
+    <div class="buttons" style="float: left; ">
         <g:submitToRemote url="[controller: 'blogEntry', action: 'preview']" update="entryPreview" value="Preview"/>
-        <g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete"/>
+        <g:actionSubmit value="Save"/>
+
     </div>
 </g:form>
+    
+    <div class="buttons" style="float: right;top: -1em;">
+        <g:form controller="${params.blog}/admin/blog" action="delete">
+            <input type="hidden" name="id" value="${blogEntry?.id}"/>
+            <g:submitButton name="delete" onclick="return confirm('Are you sure?');" value="Delete"/>
+        </g:form>
+    </div>
 <div id="entryPreview">
     
 </div>

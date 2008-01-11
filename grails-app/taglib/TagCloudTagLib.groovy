@@ -38,7 +38,7 @@ class TagCloudTagLib {
             out << "<a href='${request.contextPath}/$blogId/archive/$tag' class='tagCloudSize" + (freq / catSize).intValue() + "'>"
             out << tag
             out << "</a> "
-            log.debug "Tag class of $tag with size $freq is " +  (freq / catSize).intValue()
+            // log.debug "Tag class of $tag with size $freq is " +  (freq / catSize).intValue()
         }
         }
 

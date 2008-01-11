@@ -9,6 +9,11 @@
     <body>
 
         <g:if test="${params.tagName}">
+            <div style="float: right">
+                <a href="${request.contextPath}/${params.blog}/categories/${params.tagName}/atom">
+                    <img src="${createLinkTo(dir:'images',file:'feed-icon-16x16.jpg')}" alt="Atom Feed for category ${params.tagName}"/>
+                </a>
+            </div>
             <p style='font-size: large; border-bottom: 1px dotted black; padding-bottom: 4px;'>Archive for Category ${params.tagName}</p>
         </g:if>
 
