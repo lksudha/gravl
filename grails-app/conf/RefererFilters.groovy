@@ -2,7 +2,7 @@
  * Simple filter to handle referer traffic
  */
 
-class ReferrerFilters {
+class RefererFilters {
 
 
     def filters = {
@@ -25,7 +25,7 @@ class ReferrerFilters {
 
                 // put in the cache, not use of applicationContext to lookup service bean
                 CacheService cacheService = applicationContext.getBean('cacheService')
-                cacheService.putToCache("referrers", 60*24, Calendar.getInstance(),
+                cacheService.putToCache("referers", 60*24, Calendar.getInstance(),
                                 [ userAgent: userAgent, referer: referer, ip: ip, url: url ])
 
 
