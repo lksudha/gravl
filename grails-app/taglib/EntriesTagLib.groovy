@@ -173,7 +173,7 @@ class EntriesTagLib {
 
     def feedburner = { attr ->
 
-        if (ConfigurationHolder.config.http..usefeedburner) {
+        if (ConfigurationHolder.config.http.usefeedburner) {
             out << """
 			<p style='margin-top: 5px'>
 					<img src="http://feeds.feedburner.com/~fc/groovyblogs?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="Feedburner Stats" />
@@ -187,6 +187,16 @@ class EntriesTagLib {
         Blog b = Blog.listOrderByBlogid()[0]
         response.sendRedirect("${request.contextPath}/${b.blogid}/")
 
+    }
+
+    def customSidebar = { attr ->
+        def blogId = attr.blog
+        File f = new File("${ConfigurationHolder.config.blogdata.dir}/${blogId}/template/sidebar.html")
+        if (f.exists() && f.canRead()) {
+            out << f.text
+        } else {
+            log.debug "No readable custom sidebar detected at ${f.absoluteFile}"
+        }
     }
 
 }

@@ -19,7 +19,8 @@ class TagCloudTagLib {
 
         blog.tags.each {tag ->
             def tagCount = tag.entries.size()
-            tagToFreq[tag.name] = tagCount
+            if (tagCount > 0)
+                tagToFreq[tag.name] = tagCount
             // log.debug "Setting size of ${tag.name} to $tagCount"
         }
         def allFreq = tagToFreq.collect {tag, freq -> return freq}.sort()

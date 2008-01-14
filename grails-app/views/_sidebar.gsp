@@ -38,17 +38,7 @@
 </script>
 
 
-                  <div class="niceBox">
-	      			<div class="niceBoxHd"></div>
-	      			<div class="niceBoxBody">
-						Gravl was developed by
-						<a href="http://blogs.bytecode.com.au/glen">Glen Smith</a>
-						 on <a href="http://www.grails.org/">Grails 1.0 RC1</a>
-						for the Grails demo app collection.
-	      			</div>
-	      		
-	      		</div>
-	      		
+                <g:customSidebar blog="${params.blog}"/>
 	      	
 	      		<div class="niceBox">
 	      			<div class="niceBoxHd"></div>
@@ -133,7 +123,9 @@
 
                <div class="niceBox">
                     <div class="niceBoxBody">
-                        <g:tagCloud blogId="${params.blog}"/>
+                        <div class="tagCloud">
+                            <g:tagCloud blogId="${params.blog}"/>
+                        </div>
                     </div>
                 </div>
 

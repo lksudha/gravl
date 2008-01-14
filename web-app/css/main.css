@@ -22,6 +22,21 @@ div#hd {
 
 }
 
+.tagCloud a {
+
+    color: #676767;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+
+.tagCloud a:hover {
+
+    text-decoration: underline;
+    font-weight: bold;
+
+}
+
 #hdtitle a:hover {
 
     text-decoration: underline;
@@ -81,6 +96,14 @@ div#footerText {
 
 .blogentry {
     margin-top: 1em;
+}
+
+.blogtitle {
+    padding-top: 7px;
+}
+
+.blogdate {
+    margin-bottom: 2em;
 }
 
 .blogtitle a:link, .blogtitle a:visited {

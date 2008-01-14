@@ -91,19 +91,33 @@ class UrlMappings {
         }
 
 
+        // image display stuff. Mostly /glen/images/stuff.gif but historically /glen/2007/12/images/stuff.gif
+        "/$blog/images/$dir/$file**" {
+            controller = "image"
+            action = "display"
+        }
 
-        // image display stuff. Mostly /glen/images/stuff.gif but historically /glen/2007/12/images/stuff.gif 
-        "/$blog/**/images/**" {
+        "/$blog/images/$file**" {
             controller = "image"
             action = "display"
         }
 
         // image display stuff. Mostly /glen/images/stuff.gif but historically /glen/2007/12/images/stuff.gif
-        "/$blog/images/**" {
+        "/$blog/**/images/$dir/$file**" {
             controller = "image"
             action = "display"
         }
-        
+
+        "/$blog/**/images/$file**" {
+            controller = "image"
+            action = "display"
+        }
+
+        "/favicon.ico" {
+            controller = "image"
+            action = "display"
+            id = "favicon.ico"
+        }
 
         // home page
         "/$blog" {
@@ -111,7 +125,7 @@ class UrlMappings {
             action = "homePage"
         }
 
-       "500"(view:"niceError")
+       "505"(view:"niceError")
        
     }
 }

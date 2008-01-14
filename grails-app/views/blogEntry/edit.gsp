@@ -106,7 +106,7 @@
             <g:submitButton name="delete" onclick="return confirm('Are you sure?');" value="Delete"/>
         </g:form>
     </div>
-<div id="entryPreview">
+<div id="entryPreview" style="margin-top: 3em;">
     
 </div>
 </body>
