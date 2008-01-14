@@ -113,10 +113,11 @@ class UrlMappings {
             action = "display"
         }
 
-        "/favicon.ico" {
+        "/favicon**" {
             controller = "image"
             action = "display"
-            id = "favicon.ico"
+            blog = ""
+            file = "favicon.ico"
         }
 
         // home page

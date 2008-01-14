@@ -14,6 +14,8 @@
 
       <g:tableFromMap map="${urlCount}" headings="${['URL', 'Count']}"/>
 
+      <g:tableFromMap map="${referers}" headings="${['URL', 'Count']}"/>
+      
       <g:tableFromMap map="${hitsPerHour}" headings="${['Hour', 'Hits']}"/>
 
 

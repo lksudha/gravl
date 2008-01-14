@@ -30,7 +30,9 @@ class AdminController {
 
     def stats = {
 
-        Map allReferers = cacheService.getCacheMap("referrers")
+        def blogId = params.blog
+
+        Map allReferers = cacheService.getCacheMap("referers")
         def hitsPerHour = [ : ]
         def browserTypes = [ : ]
         def countries = [ : ]
@@ -41,11 +43,13 @@ class AdminController {
 
             def details = detailsElement.getObjectValue()
 
+
             // first do hit counting
             urlCount[details.url] = urlCount[details.url] ? urlCount[details.url]+1 : 1
 
-            // then referrer counts
-            referers[details.referer] = referers[details.referer] ? referers[details.referer]+1 : 1
+            // then referrer counts, but only for external references
+            if (details.referer && (details.referer.indexOf("/${blogId}/") == -1))
+                referers[details.referer] = referers[details.referer] ? referers[details.referer]+1 : 1
 
             // then by browser type, needs more parsing work
             // Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-GB; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11

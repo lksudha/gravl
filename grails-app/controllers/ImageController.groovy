@@ -1,7 +1,7 @@
 class ImageController {
 
     def mimeType = [ "mov" : "video/quicktime" ]
-    def exts = [ "png", "jpg", "gif", "mov" ]
+    def exts = [ "png", "jpg", "gif", "ico", "mov" ]
 
     def display = {
 
@@ -16,6 +16,9 @@ class ImageController {
         println "Rendering image from $fileName"
         boolean found = false
         exts.each { ext ->
+
+            if (found) return
+
             File image = new File(fileName + "." + ext)
             println "Trying... ${image.absoluteFile}"
             if (image.exists() && image.canRead()) {
@@ -32,7 +35,7 @@ class ImageController {
                 response.setContentLength(b.length)
                 response.getOutputStream().write(b)
                 found = true
-                return
+               
             }
         }
         
