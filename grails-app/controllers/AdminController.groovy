@@ -21,7 +21,7 @@ class AdminController {
             total += value
         }
         niceMap.each { key, value ->
-            percentMap[key] = ((value / total) * 100).setScale(1) // one decimal for google maps
+            percentMap[key] = ((value / total) * 100) // .setScale(1) // one decimal for google maps
         }
         return percentMap
 
@@ -42,7 +42,6 @@ class AdminController {
         allReferers.each { cal, detailsElement ->
 
             def details = detailsElement.getObjectValue()
-
 
             // first do hit counting
             urlCount[details.url] = urlCount[details.url] ? urlCount[details.url]+1 : 1

@@ -51,7 +51,7 @@
             </strong> on
             <g:niceDate date="${comment.created}"/>
             <g:if test="${session.account}">
-                <g:if test="${comment.properties.ipAddress}"> from ${comment.ipAddress}</g:if>
+                <g:if test="${comment.properties.ipaddress}"> from ${comment.ipaddress}</g:if>
                 <g:if test="${comment.email}"> email <a href="mailto:${comment.email}">${comment.email}</a></g:if>
             </g:if>
 

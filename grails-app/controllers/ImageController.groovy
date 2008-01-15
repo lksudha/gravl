@@ -7,6 +7,10 @@ class ImageController {
 
         println "Dumping request: ${request.dump()}"
         println "Displaying image ${request.uri} for blog ${params.blog}"
+//        if (params.uri == null) {
+//            // it's a favicon, trips UrlMapper bug...
+//            return
+//        }
         // log.debug request.dump()
         String uri = request.requestURI.toString()
         String configDir = grailsApplication.config.blogdata.dir

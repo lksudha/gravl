@@ -11,6 +11,8 @@ class RefererFilters {
 
             before = {
 
+                println "Processing Referers for controller: ${controllerName} action: ${actionName}"
+
                 def actionsToCount = [ 'homePage', 'displayOneEntry' ]
 
                 // only look at referrers for page links, and don't count admins in stats

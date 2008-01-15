@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>Name:<br/>
-                <g:textField name="author"/></td>
+                <g:textField name="author" value="${author}"/></td>
             </tr>
             <tr>
                 <td>Website: (optional)<br/>

@@ -191,7 +191,8 @@ class EntriesTagLib {
 
     def customSidebar = { attr ->
         def blogId = attr.blog
-        File f = new File("${ConfigurationHolder.config.blogdata.dir}/${blogId}/template/sidebar.html")
+        def file = attr.file
+        File f = new File("${ConfigurationHolder.config.blogdata.dir}/${blogId}/${file}")
         if (f.exists() && f.canRead()) {
             out << f.text
         } else {

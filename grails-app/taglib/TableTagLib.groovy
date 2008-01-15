@@ -7,20 +7,22 @@ class TableTagLib {
 		def map = attrs.map
 		def headings = attrs.headings
 
-		out << '<table>'
+		out << '<table class="prettyTable">'
 		if (headings) {
-            out << '<tr>'
+            out << '<thead><tr>'
             headings.each { heading ->
                 out << "<th>$heading</th>"
             }
-            out << '</tr>'
+            out << '</tr></thead>'
         }
         if (map) {
             int counter = 0
+            out << "<tbody>"
             map.each { key, value ->
                 def style = (counter % 2) ? "even" : "odd"
-                out << "<tr style='$style'><td>$key</td><td>$value</td></tr>"
+                out << "<tr style='$style'><td class='leftcol'>$key</td><td class='rightcol'>$value</td></tr>"
             }
+            out << "</tbody>"
         }
 
 		out << '</table>'

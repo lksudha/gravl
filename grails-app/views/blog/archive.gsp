@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
     <head>
-        <title>archive</title>
+        <title>Archive - ${params.tagName ? params.tagName + " Category - " : ""} ${entries[0]?.blog?.title} </title>
         <meta name="layout" content="main"/>
         <link rel="stylesheet" href="${createLinkTo(dir: 'css', file: 'bubbles.css')}"/>
         <g:javascript library="scriptaculous"/>

@@ -6,7 +6,7 @@ class CommentController {
 
         log.debug "Sending new comment form via Ajax"
 
-        [ entryId: params.id ]
+        [ entryId: params.id, author: session.account ? session.account.fullName : "" ]
         // displays a new comment form
     }
 
@@ -40,11 +40,8 @@ class CommentController {
             log.debug "Rendering new comment"
             render(template: "/blog/comment", model: [comment: comment, newlySaved: true ])
 
-
-
-
             if (session.account) { // auto approve comments by owners/authenticated users
-                comment.status = "approved"
+                newComment.status = "approved"
                 notificationService.approvedCommend(newComment, getBaseUri())
             } else {
                 notificationService.newCommentPosted(newComment, getBaseUri())

@@ -38,7 +38,7 @@
 </script>
 
 
-                <g:customSidebar blog="${params.blog}"/>
+                <g:customSidebar blog="${params.blog}" file="template/sidebar.html"/>
 	      	
 	      		<div class="niceBox">
 	      			<div class="niceBoxHd"></div>
@@ -104,7 +104,7 @@
 				                     <span class="formButton">
 				                        <input type="submit" value="Login"/>
 				                     </span>
-				            <form>
+				            </form>
 
 		      			</div>
 		      		
@@ -129,9 +129,12 @@
                     </div>
                 </div>
 
-                <div style="padding-left: 3em;">
+                <div style="padding-left: 80px;">
 	      			<a href="http://www.grails.org/">
 	      				<img src="${createLinkTo(dir:'images',file:'grails_button.gif')}" alt="Powered By Grails"/>
 	      			</a>
 	      		</div>
+
+                <g:customSidebar blog="${params.blog}" file="template/sidebar_bottom.html"/>
+
 

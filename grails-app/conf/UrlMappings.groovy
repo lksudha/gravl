@@ -116,8 +116,6 @@ class UrlMappings {
         "/favicon**" {
             controller = "image"
             action = "display"
-            blog = ""
-            file = "favicon.ico"
         }
 
         // home page
