@@ -1,10 +1,10 @@
 /**
- * Created by IntelliJ IDEA.
- * User: glen
- * Date: Jan 8, 2008
- * Time: 6:57:24 PM
- * To change this template use File | Settings | File Templates.
- */
+* Created by IntelliJ IDEA.
+* User: glen
+* Date: Jan 8, 2008
+* Time: 6:57:24 PM
+* To change this template use File | Settings | File Templates.
+*/
 
 class AdminController {
 
@@ -65,13 +65,26 @@ class AdminController {
 
         }
 
+        def api = 'http://chart.apis.google.com/chart?'
 
+        def browserTypesUrl = [ api , "chs=500x200" ,
+                "cht=By+Browser+Type" ,
+                "chl=" + browserTypes.keySet().collect { it.encodeAsURL() }.join("|") ,
+                "cht=p3" ,
+                "chd=t:" + toPercentMap(browserTypes).values().join("|") ].join("&")
 
+         def countriesChartUrl = [ api , "chs=500x200" ,
+                 "cht=Hits+By+Country" ,
+                 "chl=" + countries.keySet().collect{ it.encodeAsURL() }.join("|") ,
+                 "cht=p3" ,
+                 "chd=t:" + toPercentMap(countries).values().join("|") ].join("&") 
 
         return [ urlCount: urlCount, referers: referers, browserTypes: browserTypes,
                         hitsPerHour: hitsPerHour, countries: countries,
                     browserTypesChart: toPercentMap(browserTypes),
+                    browserTypesUrl: browserTypesUrl,
                     countriesChart: toPercentMap(countries),
+                    countriesChartUrl: countriesChartUrl,
                     hitsPerHourChart: toPercentMap(hitsPerHour)
                     ]
 

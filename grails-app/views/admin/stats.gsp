@@ -41,7 +41,11 @@
 
       <g:tableFromMap map="${browserTypes}" headings="${['Browser Type', 'Hits']}"/>
 
+      <img src="${browserTypesUrl}" alt="Hits by Browser Type"/>
+
       <g:tableFromMap map="${countries}" headings="${['Country', 'Hits']}"/>
+
+      <img src="${countriesChartUrl}" alt="Hits by Country"/>
 
       <%--
       

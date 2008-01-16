@@ -32,7 +32,7 @@ class RefererFilters {
 
                     // put in the cache, not use of applicationContext to lookup service bean
                     CacheService cacheService = applicationContext.getBean('cacheService')
-                    cacheService.putToCache("referers", 60*24, Calendar.getInstance(),
+                    cacheService.putToCache("referers", 60*60*24, Calendar.getInstance(),
                                     [ userAgent: userAgent, referer: referer, ip: ip, url: url ])
                                     
                 }
