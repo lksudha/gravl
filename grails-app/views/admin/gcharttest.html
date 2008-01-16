@@ -1,0 +1,106 @@
+
+<html>
+  <head>
+      <title>Simple Google Chart Demo</title>
+  </head>
+  <script type="text/javascript">
+      function createChart() {
+
+          var api = document.getElementById("serviceUrl").value
+
+          var str = api
+
+          // var value =document.getElementById("chartUrl").value
+
+          var size = document.getElementById("chs").value
+          str += "chs=" + size
+
+          var title = document.getElementById("chtt").value
+          str += "&chtt=" + title
+
+          var labels = document.getElementById("chl").value
+          str += "&chl=" + labels
+
+          var xylabels = document.getElementById("chxl").value
+          str += "&chxl=" + xylabels
+
+          var data = document.getElementById("chd").value
+          str += "&chd=" + data
+
+          var type = document.getElementById("cht").value
+          str += "&cht=" + type
+
+          var xlabels = document.getElementById("chxt").value
+          str += "&chxt=" + xlabels
+
+          var chartDiv = document.getElementById("chart")
+          chartDiv.innerHTML = "<p><img src='" + str + "'/></p><p>" + str + "</p>"
+          return false;
+      }
+  </script>
+  <body>
+    <form action="http://chart.apis.google.com/chart" id="chartForm">
+        <table>
+            <tr>
+                <td>Chart API: </td>
+                <td><input type="text" name="serviceUrl" id="serviceUrl" size=80 value="http://chart.apis.google.com/chart?"/> </td>
+                <td></td>
+            </tr>
+            <!--
+            <tr>
+                <td>URL To Render: </td>
+                <td><input type="text" name="url" id="chartUrl" size=80></td>
+                <td><input type="button" value="Test" onclick="createChart();"></td>
+            </tr>
+            -->
+
+            <tr>
+                <td>Size: </td>
+                <td><input type="text" id="chs" size=10/></td>
+            </tr>
+
+            <tr>
+                <td>Data: </td>
+                <td><input type="text" id="chd" size=40/></td>
+            </tr>
+
+            <tr>
+                <td>Labels: </td>
+                <td><input type="text" id="chl" size=40/></td>
+            </tr>
+
+            <tr>
+                <td>XY Labels: </td>
+                <td><input type="text" id="chxl" size=40/></td>
+            </tr>
+
+
+            <tr>
+                <td>Title: </td>
+                <td><input type="text" id="chtt" size=40/></td>
+            </tr>
+
+            <tr>
+                <td>Type: </td>
+                <td><input type="text" id="cht" size=40/></td>
+            </tr>
+
+             <tr>
+                <td>Labels Required: </td>
+                <td><input type="text" id="chxt" size=10 value="x"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="button" value="Test" onclick="createChart();">
+                </td>
+            </tr>
+
+        </table>
+    </form>
+
+    <div id="chart">
+
+    </div>
+
+  </body>
+</html>
