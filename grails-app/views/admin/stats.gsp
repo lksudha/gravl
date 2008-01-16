@@ -5,7 +5,6 @@
       <meta name="layout" content="main"/>
   </head>
   <body>
-      <h1>Blog Stats</h1>
 
       <style>
           .prettyTable {
@@ -19,33 +18,69 @@
             border: 1px solid lightgray;
           }
 
-          .prettyTable thead tr td {
+          .prettyTable thead tr th {
             font-weight: bolder;
+            padding: 4px;
           }
 
           .prettyTable tbody tr td {
             padding: 4px;
+            font-size: smaller;
           }
 
           .rightcol {
             width: 10%;  
           }
 
+          h2 {
+            font-size: xx-large;
+            border-bottom: dotted black 1px;
+            margin-top: 10px;
+          }
+
+          h1 {
+            font-size: xx-large;
+            font-weight: bold;
+            border-bottom: dotted black 1px;
+          }
+
       </style>
+
+      <h1>Blog Stats</h1>
+
+
+      <h2>Hits</h2>
 
       <g:tableFromMap map="${urlCount}" headings="${['URL', 'Count']}"/>
 
+      <h2>Referers</h2>
+
       <g:tableFromMap map="${referers}" headings="${['URL', 'Count']}"/>
-      
+
+      <h2>Hits Per Hour</h2>
+
       <g:tableFromMap map="${hitsPerHour}" headings="${['Hour', 'Hits']}"/>
+
+      <g:barChart type="bvs" title="Hits Per Hour" size="${[500,200]}" axes="x,y" axesLabels="${[0:hitsPerHour.keySet(),1:[0,0,hitsPerHour.values().max()]]}" 
+            dataType="simple" data="${hitsPerHour.values().asList()}" />
+
+      <h2>Browser Types</h2>
 
       <g:tableFromMap map="${browserTypes}" headings="${['Browser Type', 'Hits']}"/>
 
-      <img src="${browserTypesUrl}" alt="Hits by Browser Type"/>
+      <g:pieChart type="3d" title='Browser Types' size="${[600,200]}"
+               labels="${browserTypes.keySet()}" dataType='simple' data='${browserTypes.values().asList()}' />
+
+      <h2>Hits By Country</h2>
 
       <g:tableFromMap map="${countries}" headings="${['Country', 'Hits']}"/>
 
-      <img src="${countriesChartUrl}" alt="Hits by Country"/>
+      <g:pieChart type="3d" title='Hits By Country' size="${[600,200]}"
+               labels="${countries.keySet()}" dataType='simple' data='${countries.values().asList()}' />
+
+
+
+
 
       <%--
       
