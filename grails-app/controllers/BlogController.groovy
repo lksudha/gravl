@@ -163,7 +163,29 @@ class BlogController {
 
     def displayStaticEntry = {
 
-        // TODO implement static pages here
+        println "\n\n\nEntering STATIC ENTRY\n\n\n"
+
+        def baseUri = request.scheme + "://" + request.serverName + ":" + request.serverPort +
+                 grailsAttributes.getApplicationUri(request)
+
+        def blogId = params.blog
+        def title = params.id
+        println "Looking for static entry with title [${title}]"
+        def blog = Blog.findByBlogid(blogId)
+        if (blog) {
+            def entries = BlogEntry.findAllByBlogAndStatus(blog, "static")
+            entries = entries.findAll { entry -> entry.title.encodeAsNiceTitle() == title }
+            if (entries && entries.size() == 1) {
+                return [ entries: entries, print: params.print ? true : false, baseUri: baseUri ]
+            } else {
+                response.sendError(response.SC_NOT_FOUND);
+            }
+
+        } else {
+            response.sendError(response.SC_NOT_FOUND);
+        }
+
+
     }
 
     def displayOneEntry = {
@@ -205,8 +227,7 @@ class BlogController {
                 entries = entries.findAll { entry -> entry.status ==~ 'published' }
             return [blog: blog, entries: entries, print: params.print ? true : false, baseUri: baseUri ]
         } else {
-            flash.message = "Could not find blogid for selected entries"
-            redirect(action: list, params: params)
+            response.sendError(response.SC_NOT_FOUND);
         }
     }
 

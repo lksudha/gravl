@@ -1,7 +1,41 @@
 class TableTagLib {
 
+
+
+
+
+
+    private String getMarkupName(url) {
+
+        def urlStartsWithMap = [
+            "http://www.google" : "Google",
+            "http://www.groovyblogs.org" : "GroovyBlogs",
+            "http://groovyblogs.org" : "GroovyBlogs",
+            "http://search.live.com/" : "MS Live Search"
+        ]
+
+        def markupName = url
+
+        urlStartsWithMap.each { key, value ->
+            if (url.startsWith(key)) {
+                markupName = value
+
+                def matcher = url =~ /\Wq=([^&]+)/
+                if ( matcher ) {
+                    markupName += ": " + matcher.group(1).decodeURL()
+                }
+
+            }
+
+        }
+
+        return markupName
+
+    }
+
+
     // turn a map into a table
-    // takes a map="[ : ]" and an optional headings="[one,two,three]"
+    // takes a map="[ : ]" and an optional headings="[Country,Population]"
     def tableFromMap = { attrs ->
 
 		def map = attrs.map
@@ -22,9 +56,11 @@ class TableTagLib {
             map.each { key, value ->
                 def style = (counter++ % 2) ? "even" : "odd"
                 out << "<tr class='${style}'><td class='leftcol'>"
-                if (url) { out << "<a href='${key}'>"  }
-                out << "$key"
-                if (url) { out << "</a>" }
+                if (url) {
+                    out << "<a href='${key}'>" << getMarkupName(key) << "</a>"
+                } else {
+                    out << key
+                }
                 out << "</td><td class='rightcol'>$value</td></tr>"
             }
             out << "</tbody>"

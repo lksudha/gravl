@@ -22,8 +22,8 @@ class SecurityFilters {
             before = {
 
                 def publicStuff = [
-                                "blog" : ["archive", "homePage", "displayOneEntry"],
-                                "comment" : ["newComment", "preview", "save"],
+                                "blog" : ["archive", "homePage", "displayOneEntry", "displayStaticEntry" ],
+                                "comment" : ["newComment", "preview", "save", "opt-out"],
                                 "feed": ["feeds"],
                                 "pdf": ["show"],
                                 "image" : ["display"],

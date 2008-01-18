@@ -41,6 +41,8 @@ class AdminController {
 
         allReferers.each { cal, detailsElement ->
 
+            if (!detailsElement) return // element could be being evicted from cache right now!
+
             def details = detailsElement.getObjectValue()
 
             // first do hit counting

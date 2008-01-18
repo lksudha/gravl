@@ -20,6 +20,31 @@ class CommentController {
         
     }
 
+    def optout = {
+
+        boolean success = false
+
+        if (params.comment && params.email) {
+            log.debug "Opting out on comment ${params.comment} for ${params.email}"
+            Comment comment = Comment.get(params.comment)
+            if (comment) {
+                log.debug "Opting out on comment"
+                def allComments = comment.blogEntry.comments
+
+                allComments.each { c ->
+                    if (c.email == comment.email) {
+                        c.notify == false
+                        c.save()
+                        success = true
+                    }
+                }
+
+            }
+        }
+        return [ success: success, email: params.email ] 
+
+    }
+
     private String getBaseUri() {
 
         return request.scheme + "://" + request.serverName +

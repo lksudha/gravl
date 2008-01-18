@@ -11,7 +11,7 @@
 
     </head>
     
-    <body>
+    <body style="margin: 1em;">
         <g:layoutBody/>
    </body>
 

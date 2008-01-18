@@ -72,17 +72,18 @@
 
       <g:tableFromMap map="${browserTypes}" headings="${['Browser Type', 'Hits']}"/>
 
-      <g:pieChart type="3d" title='Browser Types' size="${[600,200]}"
-               labels="${browserTypes.keySet()}" dataType='simple' data='${browserTypes.values().asList()}' />
+      <g:barChart type="bhs" title='Browser Types' size="${[600,200]}" axes="x,y" axesLabels="${[1:browserTypes.keySet(),0:[0,0,browserTypes.values().max()]]}"
+               dataType="text" data='${browserTypes.values().asList()}' />
 
       <h2>Hits By Country</h2>
 
       <g:tableFromMap map="${countries}" headings="${['Country', 'Hits']}"/>
 
+      <g:barChart type="bhs" title='Hits By Country' size="${[600,200]}" axes="x,y" axesLabels="${[1:countries.keySet(),0:[0,0,countries.values().max()]]}"
+               dataType="text" data='${countries.values().asList()}' />
+
       <g:pieChart type="3d" title='Hits By Country' size="${[600,200]}"
-               labels="${countries.keySet()}" dataType='simple' data='${countries.values().asList()}' />
-
-
+               labels="${countries.keySet()}" dataType='text' data='${countries.values().asList()}' />
 
 
 

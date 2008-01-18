@@ -8,18 +8,26 @@
     </head>
     <body>
 
+        <style>
+            td input {
+                padding: 3px;
+                font-size: larger;
+
+            }
+        </style>
+
         <g:form controller="${params.blog}" action="admin/updateProperties">
             <g:hiddenField name="id" value="${cmd.id}"/>
             <table>
 
                 <tr>
                     <td>Blog Name: </td>
-                    <td><g:textField name="title" value="${cmd.title}"/></td>
+                    <td><g:textField name="title" value="${cmd.title}" size="60"/></td>
                 </tr>
 
                 <tr>
                     <td>Byline: </td>
-                    <td><g:textField name="byline" value="${cmd.byline}"/></td>
+                    <td><g:textField name="byline" value="${cmd.byline}" size="60"/></td>
                 </tr>
 
                 <tr>
@@ -33,17 +41,17 @@
 
                 <tr>
                     <td><g:checkBox name="emailNotify" value="${cmd.emailNotify}"/>Email on new comments to: (comma separated) </td>
-                    <td><g:textField name="emailAddresses" value="${cmd.emailAddresses}"/></td>
+                    <td><g:textField name="emailAddresses" value="${cmd.emailAddresses}"  size="60"/></td>
                 </tr>
 
                 <tr>
                     <td><g:checkBox name="gtalkNotify" value="${cmd.gtalkNotify}"/>GTail notify on new comments to: (comma separated) </td>
-                    <td><g:textField name="gtalkAddresses" value="${cmd.gtalkAddresses}"/></td>
+                    <td><g:textField name="gtalkAddresses" value="${cmd.gtalkAddresses}" size="60"/></td>
                 </tr>
 
                 <tr>
                     <td><g:checkBox name="useFeedburner" value="${cmd.useFeedburner}"/>Enable Feedburner. Your Feedburner URL:</td>
-                    <td><g:textField name="fbAddress" value="${cmd.fbAddress}"/></td>
+                    <td><g:textField name="fbAddress" value="${cmd.fbAddress}" size="60"/></td>
                 </tr>
 
 
