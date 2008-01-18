@@ -25,7 +25,10 @@ class UrlMappings {
             }
         }
 
-
+        "/$blog/pages/$id" {
+            controller = "blog"
+            action = "displayStaticEntry"
+        }
 
         // feeds for all blog entries
         "/$blog/$feedtype" {
@@ -60,9 +63,14 @@ class UrlMappings {
             action = "updateProperties"
         }
 
-        "/blog/admin/drafts" {
+        "/$blog/admin/drafts" {
             controller = "admin"
             action = "drafts"
+        }
+
+        "/$blog/admin/static" {
+            controller = "admin"
+            action = "staticEntries"
         }
 
         "/$blog/admin/blog/$action/$id?" {

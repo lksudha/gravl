@@ -76,6 +76,7 @@
                                   <ul>
                                   <li><a href="<g:createLinkTo dir="${params.blog}/admin/stats"/>">Stats</a></li>
                                   <li><a href="<g:createLinkTo dir="${params.blog}/admin/drafts"/>">Draft Entries</a></li>
+                                  <li><a href="<g:createLinkTo dir="${params.blog}/admin/static"/>">Static Entries</a></li>
                                   <li><a href="<g:createLinkTo dir="${params.blog}/admin/blog/edit"/>">New Blog Entry</a></li>
                                   <li><a href="<g:createLinkTo dir="${params.blog}/admin/comments/pending"/>">Pending Comments</a></li>
                                   <li><a href="<g:createLinkTo dir="${params.blog}/admin/properties"/>">Blog Properties</a></li>

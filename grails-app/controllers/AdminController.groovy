@@ -102,6 +102,21 @@ class AdminController {
 
     }
 
+    def staticEntries = {
+        def blogId = params.blog
+        Blog blog = Blog.findByBlogid(blogId)
+        def entries = []
+        if (blog) {
+            entries = BlogEntry.findAllByBlogAndStatus(blog, "static", [sort: "created", order: "desc"])
+        } else {
+            flash.message = "Could not find static entries"
+        }
+        def baseUri = request.scheme + "://" + request.serverName + ":" + request.serverPort +
+                grailsAttributes.getApplicationUri(request)
+
+        render(view: 'drafts', model: [entries: entries, baseUri: baseUri, title: 'Static'])
+    }
+
     def drafts = {
         def blogId = params.blog
         Blog blog = Blog.findByBlogid(blogId)
@@ -114,7 +129,7 @@ class AdminController {
         def baseUri = request.scheme + "://" + request.serverName + ":" + request.serverPort +
                 grailsAttributes.getApplicationUri(request)
 
-        return [entries: entries, baseUri: baseUri]
+        return [entries: entries, baseUri: baseUri, title: 'Draft']
 
     }
 

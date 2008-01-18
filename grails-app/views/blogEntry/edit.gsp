@@ -57,7 +57,7 @@
                     Status:
                 </td>
                 <td>
-                    <g:select name='status' from='["published", "unpublished"]' value="${blogEntry?.status}"></g:select>
+                    <g:select name='status' from='["published", "unpublished", "static"]' value="${blogEntry?.status}"></g:select>
                 </td>
             </tr>
 

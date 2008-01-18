@@ -161,6 +161,10 @@ class BlogController {
 
     }
 
+    def displayStaticEntry = {
+
+        // TODO implement static pages here
+    }
 
     def displayOneEntry = {
 
