@@ -28,6 +28,10 @@
             font-size: smaller;
           }
 
+          .odd {
+            background-color: #f4f4f4;
+          }
+
           .rightcol {
             width: 10%;  
           }
@@ -55,7 +59,7 @@
 
       <h2>Referers</h2>
 
-      <g:tableFromMap map="${referers}" headings="${['URL', 'Count']}"/>
+      <g:tableFromMap map="${referers}" headings="${['URL', 'Count']}" url="true"/>
 
       <h2>Hits Per Hour</h2>
 

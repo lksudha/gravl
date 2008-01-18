@@ -33,11 +33,11 @@ class AdminController {
         def blogId = params.blog
 
         Map allReferers = cacheService.getCacheMap("referers")
-        def hitsPerHour = [ : ]
-        def browserTypes = [ : ]
-        def countries = [ : ]
-        def urlCount = [ : ]
-        def referers = [ : ]
+        def hitsPerHour = new TreeMap()
+        def browserTypes = new TreeMap()
+        def countries = new TreeMap()
+        def urlCount = new TreeMap()
+        def referers = new TreeMap()
 
         allReferers.each { cal, detailsElement ->
 
@@ -56,6 +56,7 @@ class AdminController {
 
             // work out hits per hour
             def hour = cal.get(Calendar.HOUR_OF_DAY)
+            hour = (hour < 10) ? "0${hour}" : "${hour}"
             hitsPerHour[hour] = hitsPerHour[hour] ? hitsPerHour[hour]+1 : 1
 
             // country codes from ip
