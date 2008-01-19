@@ -54,7 +54,8 @@ class AdminController {
 
             // then by browser type, needs more parsing work
             // Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-GB; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11
-            browserTypes[details.userAgent] = browserTypes[details.userAgent] ? browserTypes[details.userAgent]+1 : 1
+            if (details.userAgent)
+                browserTypes[details.userAgent] = browserTypes[details.userAgent] ? browserTypes[details.userAgent]+1 : 1
 
             // work out hits per hour
             def hour = cal.get(Calendar.HOUR_OF_DAY)
