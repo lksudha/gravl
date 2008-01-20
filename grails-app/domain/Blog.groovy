@@ -2,6 +2,8 @@ class Blog
 {
   static hasMany = [ blogEntries : BlogEntry, tags : Tag, blogProperties : BlogProperty ]
   // static belongsTo = []
+
+  static searchable = true
     
   static constraints = {
       title(nullable: false, size: 1..128)

@@ -65,15 +65,12 @@
 
       <g:tableFromMap map="${hitsPerHour}" headings="${['Hour', 'Hits']}"/>
 
-      <g:barChart type="bvs" title="Hits Per Hour" size="${[500,200]}" axes="x,y" axesLabels="${[0:hitsPerHour.keySet(),1:[0,0,hitsPerHour.values().max()]]}" 
+      <g:barChart type="bvs" title="Hits Per Hour" size="${[800,200]}" axes="x,y" axesLabels="${[0:hitsPerHour.keySet(),1:[0,0,hitsPerHour.values().max()]]}" 
             dataType="simple" data="${hitsPerHour.values().asList()}" />
 
       <h2>Browser Types</h2>
 
       <g:tableFromMap map="${browserTypes}" headings="${['Browser Type', 'Hits']}"/>
-
-      <g:barChart type="bhs" title='Browser Types' size="${[800,200]}" axes="x,y" axesLabels="${[1:browserTypes.keySet(),0:[0,0,browserTypes.values().max()]]}"
-               dataType="text" data='${browserTypes.values().asList()}' />
 
       <h2>Hits By Country</h2>
 

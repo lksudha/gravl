@@ -2,6 +2,8 @@ class BlogEntry {
 
   static hasMany = [ comments : Comment, tags : Tag ]
   static belongsTo = [ Blog ]
+
+  static searchable = true
   
   static constraints = {
       title (nullable: false, maxSize: 128)

@@ -97,6 +97,11 @@ class UrlMappings {
             controller = "blog"
             action = "archive"
         }
+
+        "/$blog/search" {
+            controller = "blog"
+            action = "search"
+        }
         
 
 

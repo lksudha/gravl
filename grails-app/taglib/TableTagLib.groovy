@@ -52,6 +52,7 @@ class TableTagLib {
         }
         if (map) {
             int counter = 0
+            int total = 0
             out << "<tbody>"
             map.each { key, value ->
                 def style = (counter++ % 2) ? "even" : "odd"
@@ -62,7 +63,9 @@ class TableTagLib {
                     out << key
                 }
                 out << "</td><td class='rightcol'>$value</td></tr>"
+                total += value
             }
+            out << "<tr><td>Total</td><td>${total}</td></tr>"
             out << "</tbody>"
         }
 

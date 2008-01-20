@@ -188,6 +188,12 @@ class BlogController {
 
     }
 
+    def search = {
+
+        
+
+    }
+
     def displayOneEntry = {
 
         log.info "Ok.. We're goes to display selected entries for ${params.blog}"
@@ -225,6 +231,12 @@ class BlogController {
             log.info "Found some entries... for $blogId then we're ${entries.size()}"
             if (!session.account) // trim to published entries only
                 entries = entries.findAll { entry -> entry.status ==~ 'published' }
+            if (params.id) {
+                // if we have an id, match that entry..
+                def filtered = entries.findAll { it.title.encodeAsNiceTitle() == params.id }
+                if (filtered.size())
+                    entries = filtered
+            }
             return [blog: blog, entries: entries, print: params.print ? true : false, baseUri: baseUri ]
         } else {
             response.sendError(response.SC_NOT_FOUND);
