@@ -76,7 +76,7 @@
 
       <g:tableFromMap map="${countries}" headings="${['Country', 'Hits']}"/>
 
-      <g:barChart type="bhs" title='Hits By Country' size="${[800,200]}" axes="x,y" axesLabels="${[1:countries.keySet(),0:[0,0,countries.values().max()]]}"
+      <g:barChart type="bvs" title='Hits By Country' size="${[800,200]}" axes="x,y" axesLabels="${[0:countries.keySet(),1:[0,0,countries.values().max()]]}"
                dataType="text" data='${countries.values().asList()}' />
 
       <g:pieChart type="3d" title='Hits By Country' size="${[600,200]}"

@@ -21,7 +21,7 @@
 
                 <div id="hdtitle"><a href="<g:createLinkTo dir="${params.blog}/"/>"><g:blogTitle blogid="${params.blog}"/></a></div>
 
-                <div style="float: right; position: relative;  ">
+                <div style="float: right; position: relative; margin-right: 7px; font-size: medium; ">
                     <g:searchBox noCombo="true" query="${params.query}" fields="title,body" controller="${params.blog}" action="search"/>
                 </div>
                 

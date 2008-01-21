@@ -58,10 +58,11 @@ class BlogEntry {
 
 		def fields = [:]
 		// strip html before storing in index
-		fields.title = title.replaceAll("\\<.*?\\>","");
-		fields.body = body.replaceAll("\\<.*?\\>","");
-		fields.created = "" + created.getTime();
-		fields.blogid = blog.blogid;
+		fields.title = title.replaceAll("\\<.*?\\>","")
+		fields.body = body.replaceAll("\\<.*?\\>","")
+		fields.created = "" + created.getTime()
+		fields.blogid = blog.blogid
+		fields.permalink = toPermalink()
 
 		return fields
 

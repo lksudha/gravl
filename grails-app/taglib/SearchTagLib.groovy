@@ -21,7 +21,7 @@ class SearchTagLib {
 		
 		if (attrs.query == null) { attrs.query = "" }
 		
-		out << "<input id='searchField' size='30' name='query' value='${attrs.query}'/> "
+		out << "<input id='searchField' size='20' name='query' value='${attrs.query}'/> "
 		
 		
 		int selectedMaxHits
@@ -68,11 +68,7 @@ class SearchTagLib {
 
             println "Result: " + result.dump()
 
-            BlogEntry be = new BlogEntry(created: new Date(blogDate), title: result.document.get("title"),
-                    blog: new Blog(blogid: result.document.get("blogid")))
-
-            // def hitUrl = request.contextPath + "/entries/jump/" + result.document.get("id")
-            def hitUrl = request.contextPath + be.toPermalink()
+            def hitUrl = request.contextPath + result.document.get("permalink")
 
 			out << "<div class='hitEntry'>"
             out << "<div class='hitTitle'>"
@@ -91,49 +87,5 @@ class SearchTagLib {
 	
 	}
 	
-	def searchCrumbs = { attrs ->
-	
-		def searchResults = attrs.results
-		int hitsPerPage = searchResults.maxHitsRequested
-		int totalHits = searchResults.totalHitCount
-		int currentOffset = searchResults.totalHitsOffset
-		def fields = searchResults.fields.join(",")
-		def query = searchResults.queryTerms
-		
-		int totalPages = totalHits / hitsPerPage
-		
-		if (totalPages > 0) {
-			out << "<ul class='searchCrumbs'>"
-			for (p in 0..totalPages) {
-				
-				def offset = p * hitsPerPage
-				
-				def searchUrl = request.requestURI + "?query=${query}&fields=${fields}&offset=${offset}&hitcount=${hitsPerPage}"
-				
-				out << "<li> "
-				
-				def liBody
-				def liClass
-				
-				if (offset == currentOffset) {
-					liBody = "${p+1}" 
-					liClass ="currentPage"
-				} else {
-					liBody = "<a href='$searchUrl'>${p+1}</a>"
-					if (offset < currentOffset) {
-						liClass = "prevPage"
-					} else {
-						liClass = "nextPage"
-					}
-				}
-				
-				out << "<li class='${liClass}'>"
-				out << liBody
-				out << "</li>"
-			}
-			out << "</ul>"
-		}
-	
-	}
 
 }

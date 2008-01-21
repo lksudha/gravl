@@ -1,3 +1,6 @@
+import org.codehaus.groovy.grails.web.servlet.GrailsApplicationAttributes
+import org.springframework.context.ApplicationContext
+
 class BootStrap {
 
     def init = {servletContext ->
@@ -37,14 +40,16 @@ the <b>properties</b> link.
         }
 
         log.info("Optimising index starting at " + new Date())
-     	SearchService searchService = new SearchService()
+        ApplicationContext ctx = servletContext.getAttribute(GrailsApplicationAttributes.APPLICATION_CONTEXT)
+        SearchService searchService = (SearchService) ctx.getBean("searchService")
      	searchService.deleteIndex()
      	def entries = BlogEntry.list()
      	log.info("Attempting to index "  + entries.size() + " entries")
+     	long start = System.currentTimeMillis()
      	searchService.indexAll(entries)
      	log.info("Index complete, optimising")
      	searchService.optimise()
-     	log.info("Optimising index complete at " + new Date())
+     	log.info("Optimising index complete in ${System.currentTimeMillis() - start} ms")
 
     }
     def destroy = {

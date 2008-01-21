@@ -1,33 +1,23 @@
-
-import org.apache.commons.logging.LogFactory
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.analysis.SimpleAnalyzer;
+import org.apache.lucene.analysis.TokenStream
+import org.apache.lucene.analysis.standard.StandardAnalyzer
 import org.apache.lucene.document.DateTools
-import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
-import org.apache.lucene.index.IndexReader;
-import org.apache.lucene.index.IndexWriter;
-import org.apache.lucene.index.Term;
-import org.apache.lucene.queryParser.ParseException;
-import org.apache.lucene.queryParser.QueryParser;
+import org.apache.lucene.document.Document
+import org.apache.lucene.document.Field
+import org.apache.lucene.index.IndexReader
+import org.apache.lucene.index.IndexWriter
+import org.apache.lucene.index.Term
 import org.apache.lucene.queryParser.MultiFieldQueryParser
 import org.apache.lucene.search.BooleanClause
-import org.apache.lucene.search.Hit;
-import org.apache.lucene.search.HitCollector;
-import org.apache.lucene.search.HitIterator;
-import org.apache.lucene.search.Hits;
-import org.apache.lucene.search.IndexSearcher;
-import org.apache.lucene.search.Query;
-import org.apache.lucene.store.Directory;
-import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.search.highlight.Fragmenter;
-import org.apache.lucene.search.highlight.SimpleFragmenter;
-import org.apache.lucene.search.highlight.QueryScorer;
-import org.apache.lucene.search.highlight.Highlighter;
-import org.apache.lucene.search.highlight.SimpleHTMLFormatter;
-import org.apache.lucene.analysis.TokenStream;
+import org.apache.lucene.search.IndexSearcher
+import org.apache.lucene.search.Query
+import org.apache.lucene.search.highlight.Highlighter
+import org.apache.lucene.search.highlight.QueryScorer
+import org.apache.lucene.search.highlight.SimpleFragmenter
+import org.apache.lucene.search.highlight.SimpleHTMLFormatter
+import org.apache.lucene.store.Directory
+import org.apache.lucene.store.FSDirectory
 
-
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
 /**
 * A Simple Grails Search Service which uses Lucene to do the heavy lifting.
@@ -40,7 +30,7 @@ class SearchService  {
 	//def log = LogFactory.getLog(this.class.name)
 	
 	// name relative to app root
-	def indexDirectoryName = "gravl-index"
+	def indexDirectoryName = ConfigurationHolder.config.blogdata.index // "gravl-index"
 	boolean transactional = false
 	
 	Directory dir

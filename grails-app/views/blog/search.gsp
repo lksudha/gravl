@@ -34,7 +34,7 @@
 
             .hitInfo {
                 font-size: smaller;
-                color: lightgray;
+                color: #6e7d8e;
             }
 
         </style>
@@ -61,9 +61,7 @@
                 <g:paginate controller="${params.blog}" action="search" total="${results.totalHitCount}" max="10" params="[ query: params.query, fields: params.fields ]"/>
              </div>
 
-            <div id="searchCrumbs">
-				<!-- <g:searchCrumbs results="${results}"/> -->
-			</div>
+            
 		</g:if>
     </body>
 </html>

@@ -11,7 +11,8 @@ class TableTagLib {
             "http://www.google" : "Google",
             "http://www.groovyblogs.org" : "GroovyBlogs",
             "http://groovyblogs.org" : "GroovyBlogs",
-            "http://search.live.com/" : "MS Live Search"
+            "http://search.live.com/" : "MS Live Search",
+            "http://www.javablogs.com/" : "Javablogs"
         ]
 
         def markupName = url
@@ -65,7 +66,7 @@ class TableTagLib {
                 out << "</td><td class='rightcol'>$value</td></tr>"
                 total += value
             }
-            out << "<tr><td>Total</td><td>${total}</td></tr>"
+            out << "<tr class='total'><td><i>Total</i></td><td><i>${total}</i></td></tr>"
             out << "</tbody>"
         }
 
