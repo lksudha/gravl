@@ -54,5 +54,18 @@ class BlogEntry {
 
   }
 
+  def indexedFields() {
+
+		def fields = [:]
+		// strip html before storing in index
+		fields.title = title.replaceAll("\\<.*?\\>","");
+		fields.body = body.replaceAll("\\<.*?\\>","");
+		fields.created = "" + created.getTime();
+		fields.blogid = blog.blogid;
+
+		return fields
+
+	}
+
     
 }

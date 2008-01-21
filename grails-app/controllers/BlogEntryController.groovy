@@ -1,5 +1,7 @@
 class BlogEntryController {
 
+    SearchService searchService
+
     def edit = {
         BlogEntryCommand bec = new BlogEntryCommand()
         if (params.id) {
@@ -86,6 +88,7 @@ class BlogEntryController {
             }
 
             flash.message = "Successfully Updated Entry: ${be.title}"
+            searchService.index(be)
             redirect(uri: be.toPermalink())
             return
         }
@@ -98,6 +101,7 @@ class BlogEntryController {
             BlogEntry be = BlogEntry.get(bec.id)
             be.delete()
             flash.message = "Successfully deleted entry: ${be.title}"
+            searchService.unindex(be)
         } else {
             flash.message = "Invalid blog to delete"
         }

@@ -20,11 +20,15 @@
                 <NOimg id="logo" src="${createLinkTo(dir: 'images', file: 'headerlogo.png')}" alt="gravel logo"/>
 
                 <div id="hdtitle"><a href="<g:createLinkTo dir="${params.blog}/"/>"><g:blogTitle blogid="${params.blog}"/></a></div>
+
+                <div style="float: right; position: relative;  ">
+                    <g:searchBox noCombo="true" query="${params.query}" fields="title,body" controller="${params.blog}" action="search"/>
+                </div>
+                
+
                 <div id="hdsubtitle"><g:blogByline blogid="${params.blog}"/></div>
 
-                <div id="tabs">
 
-                </div>
 
             </div>
             <div id="bd"><!-- start body -->

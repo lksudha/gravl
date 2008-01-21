@@ -36,6 +36,16 @@ the <b>properties</b> link.
 
         }
 
+        log.info("Optimising index starting at " + new Date())
+     	SearchService searchService = new SearchService()
+     	searchService.deleteIndex()
+     	def entries = BlogEntry.list()
+     	log.info("Attempting to index "  + entries.size() + " entries")
+     	searchService.indexAll(entries)
+     	log.info("Index complete, optimising")
+     	searchService.optimise()
+     	log.info("Optimising index complete at " + new Date())
+
     }
     def destroy = {
     }
