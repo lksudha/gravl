@@ -77,6 +77,7 @@ class BlogEntryController {
                 blog.errors.allErrors.each {
                     println it
                 }
+                searchService.index(be)
 
             } else {
                 log.debug "Saving blog entry update:" + be.validate()
@@ -85,10 +86,11 @@ class BlogEntryController {
                     println it
                 }
                 fixTags(be, bec.getAllTags())
+                searchService.reindex(be)
             }
 
             flash.message = "Successfully Updated Entry: ${be.title}"
-            searchService.index(be)
+
             redirect(uri: be.toPermalink())
             return
         }
