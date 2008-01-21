@@ -67,7 +67,7 @@ class CommentController {
 
             if (session.account) { // auto approve comments by owners/authenticated users
                 newComment.status = "approved"
-                notificationService.approvedCommend(newComment, getBaseUri())
+                notificationService.approvedComment(newComment, getBaseUri())
             } else {
                 notificationService.newCommentPosted(newComment, getBaseUri())
             }
