@@ -64,23 +64,23 @@ class SearchTagLib {
 //			def hitUrl = request.contextPath + "/" + result.document.get("class").toLowerCase() + 
 //				+ "/show/" + result.document.get("id")
 
-            long blogDate = Long.parseLong(result.document.get("created"))
+//            long blogDate = Long.parseLong(result.document.get("created"))
 
             println "Result: " + result.dump()
 
-            def hitUrl = request.contextPath + result.document.get("permalink")
-
-			out << "<div class='hitEntry'>"
-            out << "<div class='hitTitle'>"
-			out << "<a href='${hitUrl}'>"
-			out << result.highlight[titleField]
-			out << "</a>"
-			out << "</div>"
-			out << "<div class='hitInfo'>"
-			out << new Date(blogDate)
-			out << "</div>"
-			out << "<p class='hitBody'>" + result.highlight[bodyField] + "</p>"
-			out << "</div>"
+//            def hitUrl = request.contextPath + result.document.get("permalink")
+//
+//			out << "<div class='hitEntry'>"
+//            out << "<div class='hitTitle'>"
+//			out << "<a href='${hitUrl}'>"
+//			out << result.highlight[titleField]
+//			out << "</a>"
+//			out << "</div>"
+//			out << "<div class='hitInfo'>"
+//			out << new Date(blogDate)
+//			out << "</div>"
+//			out << "<p class='hitBody'>" + result.highlight[bodyField] + "</p>"
+//			out << "</div>"
 			out << "</div>"
 		}
 		

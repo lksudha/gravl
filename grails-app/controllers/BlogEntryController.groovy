@@ -77,7 +77,7 @@ class BlogEntryController {
                 blog.errors.allErrors.each {
                     println it
                 }
-                searchService.index(be)
+                //searchService.index(be)
 
             } else {
                 log.debug "Saving blog entry update:" + be.validate()
@@ -86,7 +86,7 @@ class BlogEntryController {
                     println it
                 }
                 fixTags(be, bec.getAllTags())
-                searchService.reindex(be)
+                //searchService.reindex(be)
             }
 
             flash.message = "Successfully Updated Entry: ${be.title}"
@@ -103,7 +103,7 @@ class BlogEntryController {
             BlogEntry be = BlogEntry.get(bec.id)
             be.delete()
             flash.message = "Successfully deleted entry: ${be.title}"
-            searchService.unindex(be)
+            // searchService.unindex(be)
         } else {
             flash.message = "Invalid blog to delete"
         }

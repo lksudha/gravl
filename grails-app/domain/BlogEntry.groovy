@@ -1,3 +1,6 @@
+import org.compass.annotations.*
+
+@SearchableDynamicMetaData(name = "blogid", expression = "data.blog?.blogid", store = Store.YES, index = Index.UN_TOKENIZED, converter = "groovy")
 class BlogEntry {
 
   static hasMany = [ comments : Comment, tags : Tag ]

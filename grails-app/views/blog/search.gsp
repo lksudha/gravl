@@ -42,23 +42,44 @@
         <g:if test="${results != null}">
 		
 			<div id="searchCount">
-				<g:if test="${results.totalHitCount > 0}">
-					Displaying <b>${1 + results.totalHitsOffset} - ${results.totalHitsOffset + results.returnedHitCount}</b> 
-					of <b>${results.totalHitCount}</b> matches 
+				<g:if test="${results.total > 0}">
+					Displaying <b>${1 + results.offset} - ${results.offset + results.max}</b> 
+					of <b>${results.total}</b> matches
 				</g:if>
 				<g:else>
 					No matches found. 
 				</g:else>	
 				(<b>${results.queryTime}</b> ms).  Index contains <b>${results.totalDocsInIndex}</b> documents.
 			</div>
-			
+			<%--
 			<div id="searchBody">
 				<g:searchResults results="${results}" titleField="title" bodyField="body"/>
 			</div>
+			--%>
+
+
+            <g:each var="result" in="${results.results}">
+
+                <div class='hit'>
+
+                    <div class='hitEntry'>
+                        <div class='hitTitle'>
+                            <a href='${request.contextPath}/${result.toPermalink()}'>
+                                ${result.title}
+                            </a>
+                        </div>
+                        <div class='hitInfo'>
+                            <g:niceDate date="${result.created}"/>
+                        </div>
+                        <p class='hitBody'></p>
+                    </div>
+                </div>
+
+            </g:each>
 
 
             <div class="archivePaginate">
-                <g:paginate controller="${params.blog}" action="search" total="${results.totalHitCount}" max="10" params="[ query: params.query, fields: params.fields ]"/>
+                <g:paginate controller="${params.blog}" action="search" total="${results.total}" max="10" params="[ query: params.query]"/>
              </div>
 
             

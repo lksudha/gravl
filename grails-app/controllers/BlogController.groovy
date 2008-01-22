@@ -191,6 +191,17 @@ class BlogController {
     }
 
     def search = {
+
+        def query = params.query
+        def blogid = params.blog
+        
+        // limit query to current blog published entries...
+        def results = BlogEntry.search(query, params) //   + " +blogid:${blogid}")
+
+        return [ results: results, query: query ]
+    }
+
+    def searchOld = {
         def fields = params.fields
         def query = params.query
         def blogid = params.blog
