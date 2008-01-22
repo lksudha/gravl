@@ -7,6 +7,15 @@
     <facet type="Groovy" name="Groovy">
       <configuration />
     </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <options>
+          <option name="enableValidation" value="true" />
+          <option name="reportErrorsAsWarnings" value="true" />
+        </options>
+        <customNs />
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
@@ -16,6 +25,8 @@
       <sourceFolder url="file://$MODULE_DIR$/grails-app/domain" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/grails-app/services" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/grails-app/taglib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/searchable-0.4-SNAPSHOT/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/searchable-0.4-SNAPSHOT/src/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/groovy" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/integration" isTestSource="true" />
@@ -23,7 +34,7 @@
     </content>
     <orderEntry type="library" name="GRAILS" level="application" />
     <orderEntry type="library" name="GROOVY" level="application" />
-    <orderEntry type="jdk" jdkName="1.4" jdkType="JavaSDK" />
+    <orderEntry type="jdk" jdkName="1.5" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gravl" level="project" />
     <orderEntryProperties />
