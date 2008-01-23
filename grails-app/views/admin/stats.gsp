@@ -76,8 +76,6 @@
 
       <g:tableFromMap map="${countries}" headings="${['Country', 'Hits']}"/>
 
-      <g:barChart type="bvs" title='Hits By Country' size="${[800,200]}" axes="x,y" axesLabels="${[0:countries.keySet(),1:[0,0,countries.values().max()]]}"
-               dataType="text" data='${countries.values().asList()}' />
 
       <g:pieChart type="3d" title='Hits By Country' size="${[600,200]}"
                labels="${countries.keySet()}" dataType='text' data='${countries.values().asList()}' />
@@ -85,7 +83,11 @@
 
 
       <%--
+
+      <g:barChart type="bvs" title='Hits By Country' size="${[800,200]}" axes="x,y" axesLabels="${[0:countries.keySet(),1:[0,0,countries.values().max()]]}"
+               dataType="text" data='${countries.values().asList()}' />
       
+
       <g:barChart title='Hits Per Hour' size="${[400,200]}" colors="${['FF0000','00ff00','0000ff']}" type="bvs"
               labels="${hitsPerHourChart.keySet()}" axes="x,y" axesLabels="${[0:hitsPerHourChart.keySet()]}" fill="${'bg,s,efefef'}" dataType='text' data='${new ArrayList(hitsPerHourChart.values())}' />
 

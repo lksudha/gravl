@@ -207,9 +207,9 @@ class BlogController {
 
     def timeline = {
         Blog blogObj = Blog.findByBlogid(params.blog)
-        def entries = BlogEntry.findAllByBlogAndStatus(blogObj, "published", [ sort: 'created', order: 'asc'])
+        // def entries = BlogEntry.findAllByBlogAndStatus(blogObj, "published", [ sort: 'created', order: 'asc'])
 
-        return [ blogObj: blogObj, startDate: entries[0]?.created  ]
+        return [ blogObj: blogObj, startDate: new Date()  ]
     }
 
     def timelineData = {
