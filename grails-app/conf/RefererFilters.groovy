@@ -21,6 +21,11 @@ class RefererFilters {
                     // Scoop up Referer and User-Agent and remote IP
                     def userAgent = request.getHeader("User-Agent")
                     def referer = request.getHeader("Referer")
+                    if (referer) {
+                        // strip jsessionid
+                        // http://www.groovyblogs.org/entries/recent;jsessionid=29001bb1d7a8d0d55a4f13917e6a
+                        referer = referer.replaceAll("(?i);?jsessionid=\\w+", "") 
+                    }
                     def ip = request.getRemoteAddr()
                     println "IP: [${ip}], Referer: [${referer}], Agent: [${userAgent}]"
 
