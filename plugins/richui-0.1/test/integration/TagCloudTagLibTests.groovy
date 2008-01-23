@@ -5,7 +5,7 @@ class TagCloudTagLibTests extends GroovyTestCase {
 	void testTagCloud() {
 		def attrs = [values: [Grails: 20, Java: 15], style: "", styleClass: "", action: "", controller: "", linkStyle: "", linkClass: ""]
 			     		
-		def tl = new TagCloudTagLib()
+		def tl = new TagCloudTagLib2()
 		tl.tagCloudRenderer = new TagCloudRenderer()
 		     		
 		String expectedResult = """

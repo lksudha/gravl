@@ -19,7 +19,7 @@ Provides a set of AJAX components
     <resource>TimelineTagLib</resource>
     <resource>TreeViewTagLib</resource>
     <resource>AutoCompleteTagLib</resource>
-    <resource>TagCloudTagLib</resource>
+    <resource>TagCloudTagLib2</resource>
     <resource>RatingTagLib</resource>
     <resource>ProgressBarTagLib</resource>
     <resource>FontTagLib</resource>

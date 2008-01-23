@@ -246,6 +246,9 @@ class BlogController {
                  (request.serverPort != 80 ? ":" +  request.serverPort : "") +
                  grailsAttributes.getApplicationUri(request)
 
+        if (baseUri.endsWith("/"))
+            baseUri =  baseUri[0..baseUri.size()-2]
+
         // limit query to current blog published entries...
         def results = BlogEntry.search(query, params) //   + " +blogid:${blogid}")
 
