@@ -190,6 +190,21 @@ class BlogController {
 
     }
 
+    def tagcomplete = {
+        Blog blogObj = Blog.findByBlogid(params.blog)
+        def queryRegex = "(?i)${params.query}" // case insensitive...
+        def tags = blogObj.tags.findAll { tag -> tag.name =~ queryRegex }
+        render(contentType: "text/xml") {
+            results() {
+                tags.each {t ->
+                    result() {
+                        name(t.name)
+                    }
+                }
+            }
+        }
+    }
+
     def search = {
 
         def query = params.query

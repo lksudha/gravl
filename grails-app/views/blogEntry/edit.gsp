@@ -72,6 +72,7 @@
 
 
             <tr>
+
                 <td class="label">
                     Created:
                 </td>
@@ -86,7 +87,9 @@
                     Tags:
                 </td>
                 <td>
-                    <g:textField name="tagList" value="${blogEntry?.tagList}" style="width: 100%"/>
+                    <resource:autoComplete skin="default" />
+                    <richui:autoComplete name="tagList" delimChar=" " style="width: 100%"  
+                            action="${createLinkTo(dir: params.blog+ '/blog/tagcomplete')}"/>
                 </td>
             </tr>
 
