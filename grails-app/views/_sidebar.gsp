@@ -62,7 +62,12 @@
                      <div class="niceBox">
                           <div class="niceBoxHd"></div>
                           <div class="niceBoxBody" style="text-align: center;">
-                             <a href="${request.contextPath + '/' + params.blog + "/archive"}" class="feedLink">Archive</a>
+                              <p>
+                                <a href="${request.contextPath + '/' + params.blog + "/archive"}" class="feedLink">Archive</a>
+                              </p>
+                              <p>
+                                <a href="${request.contextPath + '/' + params.blog + "/timeline"}" class="feedLink">Timeline</a>
+                              </p>
                         </div>
                     </div>
 

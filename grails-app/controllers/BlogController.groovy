@@ -1,4 +1,4 @@
-
+import java.text.SimpleDateFormat
 
 class BlogController {
 
@@ -205,15 +205,51 @@ class BlogController {
         }
     }
 
+    def timeline = {
+        Blog blogObj = Blog.findByBlogid(params.blog)
+        def entries = BlogEntry.findAllByBlogAndStatus(blogObj, "published", [ sort: 'created', order: 'asc'])
+
+        return [ blogObj: blogObj, startDate: entries[0]?.created  ]
+    }
+
+    def timelineData = {
+
+        def baseUri = request.scheme + "://" + request.serverName +
+                 (request.serverPort != 80 ? ":" +  request.serverPort : "") +
+                 grailsAttributes.getApplicationUri(request)
+
+        Blog blogObj = Blog.findByBlogid(params.blog)
+        def entries = BlogEntry.findAllByBlogAndStatus(blogObj, "published", [ sort: 'created', order: 'asc'])
+
+        println "Timeline rendering for ${entries.size()} entries"
+
+        render(contentType: "text/xml") {
+            SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy HH:mm:ss", Locale.US)
+
+            data() {
+                entries.each { entry ->
+                    event(start: sdf.format(entry.created),
+                            title: entry.title,
+                            link: baseUri + entry.toPermalink(),
+                            "" )
+	            }
+            }
+        }
+    }
+
     def search = {
 
         def query = params.query
         def blogid = params.blog
-        
+
+        def baseUri = request.scheme + "://" + request.serverName +
+                 (request.serverPort != 80 ? ":" +  request.serverPort : "") +
+                 grailsAttributes.getApplicationUri(request)
+
         // limit query to current blog published entries...
         def results = BlogEntry.search(query, params) //   + " +blogid:${blogid}")
 
-        return [ results: results, query: query ]
+        return [ results: results, query: query, baseUri: baseUri ]
     }
 
     def searchOld = {

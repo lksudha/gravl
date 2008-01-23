@@ -98,6 +98,17 @@ class UrlMappings {
             action = "archive"
         }
 
+        "/$blog/timeline" {
+            controller = "blog"
+            action = "timeline"
+        }
+
+        "/$blog/timelineData" {
+            controller = "blog"
+            action = "timelineData"
+        }
+
+
         "/$blog/search" {
             controller = "blog"
             action = "search"

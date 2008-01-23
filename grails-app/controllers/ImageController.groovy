@@ -5,7 +5,7 @@ class ImageController {
 
     def display = {
 
-        println "Dumping request: ${request.dump()}"
+        //println "Dumping request: ${request.dump()}"
         println "Displaying image ${request.uri} for blog ${params.blog}"
 //        if (params.uri == null) {
 //            // it's a favicon, trips UrlMapper bug...
