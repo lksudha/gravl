@@ -64,7 +64,7 @@
 
                     <div class='hitEntry'>
                         <div class='hitTitle'>
-                            <a href='${baseUri}/${result.toPermalink()}'>
+                            <a href='${baseUri}${result.toPermalink()}'>
                                 ${result.title}
                             </a>
                         </div>
