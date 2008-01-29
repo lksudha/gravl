@@ -66,6 +66,29 @@ class FilesController {
 
     }
 
+    def rename = {
+
+        def newName = params.value
+        def filename = params.filename
+        def dir = params.dir
+        def blogId = params.blog
+
+        String configDir = grailsApplication.config.blogdata.dir
+        String from = "${configDir}/${blogId}/${dir}/${filename}"
+        String to = "${configDir}/${blogId}/${dir}/${newName}"
+        log.debug "Renaming file at ${from} to ${newName}"
+
+        File f = new File(from)
+        if (f.exists()) {
+            f.renameTo(new File(to))
+            render "${newName}"
+        } else {
+            // all bad, but how to break the news? 
+            render "${filename}"
+        }
+
+    }
+
 
 
 }

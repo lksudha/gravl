@@ -28,8 +28,11 @@
                     <g:link controller="${params.blog}/files" action="list" params="[dir: (dir + '/' + file.name)]">${file.name}</g:link>
                 </g:if>
                 <g:else>
-                    ${file.name}
+                    <div id="file-${file.name}">${file.name}</div>
                 </g:else>
+                <g:javascript>
+                     new Ajax.InPlaceEditor( 'file-${file.name}', '<g:createLink controller="${params.blog}/files" action="rename"/>?dir=${dir}&filename=${file.name}');
+                </g:javascript>
             </td>
             <td>
 
@@ -38,9 +41,13 @@
                     <a href="<g:createLink controller="${params.blog + dir}" action="${file.name}"/>" rel="lightbox" title="${file.name}">
                         <img src="<g:createLinkTo dir='images' file="zoom.png" alt="preview image"/>"/>
                     </a>
+                    <a href="<g:createLink controller="${params.blog + dir}" action="${file.name}"/>">
+                         <img src="<g:createLinkTo dir='images' file="photo.png" alt="show image"/>"/>
+                    </a>
                     <g:link controller="${params.blog}/files" action="delete" params="[ dir: dir, filename: file.name]">
                         <img src="<g:createLinkTo dir='images' file="delete.png" alt="delete image"/>"/>
                     </g:link>
+                    
                 </g:if>
 
 
