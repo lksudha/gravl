@@ -29,6 +29,11 @@ class TableTagLib {
             }
 
         }
+        
+        if (markupName && markupName.size() > 90) {
+        	// draw the line at 90 chars...
+        	markupName = markupName[0..90] + "..."
+        }
 
         return markupName
 
