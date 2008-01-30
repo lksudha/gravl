@@ -64,9 +64,9 @@
 
                     <div class='hitEntry'>
                         <div class='hitTitle'>
-                            <a href='${baseUri}/${result.toPermalink()}'>
+                            <g:link controller="${result.toPermalink().substring(1)}">
                                 ${result.title}
-                            </a>
+                            </g:link>
                         </div>
                         <div class='hitInfo'>
                             <g:niceDate date="${result.created}"/>

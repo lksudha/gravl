@@ -1,12 +1,14 @@
-import org.compass.annotations.*
-
-@SearchableDynamicMetaData(name = "blogid", expression = "data.blog?.blogid", store = Store.YES, index = Index.UN_TOKENIZED, converter = "groovy")
 class BlogEntry {
 
   static hasMany = [ comments : Comment, tags : Tag ]
   static belongsTo = [ Blog ]
 
-  static searchable = true
+  // we only index title and body
+  static searchable = {
+        title()
+        body()
+        blog(component: true)
+  }
   
   static constraints = {
       title (nullable: false, maxSize: 128)

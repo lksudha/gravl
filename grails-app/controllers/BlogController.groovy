@@ -242,17 +242,10 @@ class BlogController {
         def query = params.query
         def blogid = params.blog
 
-        def baseUri = request.scheme + "://" + request.serverName +
-                 (request.serverPort != 80 ? ":" +  request.serverPort : "") +
-                 grailsAttributes.getApplicationUri(request)
-
-        if (baseUri.endsWith("/"))
-            baseUri =  baseUri[0..baseUri.size()-2]
-
         // limit query to current blog published entries...
-        def results = BlogEntry.search(query, params) //   + " +blogid:${blogid}")
+        def results = BlogEntry.search(query + " +blogid:${blogid}", params) 
 
-        return [ results: results, query: query, baseUri: baseUri ]
+        return [ results: results, query: query ] // , baseUri: baseUri ]
     }
 
     def searchOld = {
