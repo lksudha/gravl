@@ -1,4 +1,8 @@
 import java.text.SimpleDateFormat
+import org.apache.lucene.search.highlight.*
+import org.apache.lucene.analysis.TokenStream
+import org.apache.lucene.analysis.standard.StandardAnalyzer
+
 
 class BlogController {
 
@@ -237,14 +241,15 @@ class BlogController {
         }
     }
 
+    // info about constrained searches in http://www.nabble.com/Resolved%3A-Searchable-Plugin-and-Composition-td15144310.html
     def search = {
 
         def query = params.query
         def blogid = params.blog
 
         // limit query to current blog published entries...
-        def results = BlogEntry.search(query + " +blogid:${blogid}", params) 
-
+        def results = BlogEntry.search(query + " +blogid:${blogid}", params)
+        
         return [ results: results, query: query ] // , baseUri: baseUri ]
     }
 

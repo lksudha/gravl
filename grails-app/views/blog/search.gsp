@@ -58,7 +58,7 @@
 			--%>
 
 
-            <g:each var="result" in="${results.results}">
+            <g:each var="result" in="${results.results}" status="i">
 
                 <div class='hit'>
 
