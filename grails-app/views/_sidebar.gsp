@@ -77,7 +77,7 @@
 		      		<div class="niceBox">
 			      			<div class="niceBoxHd">User Info</div>
 			      			<div class="niceBoxBody">
-								<p> ${session.account.fullName}  (${session.account.userId}} </p>
+								<p> ${session.account.fullName}  (${session.account.userId}) </p>
                                   <ul>
                                   <li><a href="<g:createLinkTo dir="${params.blog}/admin/stats"/>">Stats</a></li>
                                   <li><a href="<g:createLinkTo dir="${params.blog}/admin/drafts"/>">Draft Entries</a></li>
