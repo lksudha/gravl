@@ -89,7 +89,7 @@
                 <td>
                     <resource:autoComplete skin="default" />
                     <richui:autoComplete name="tagList" delimChar=" " style="width: 100%"  
-                            action="${createLinkTo(dir: params.blog+ '/blog/tagcomplete')}"/>
+                            action="${createLinkTo(dir: params.blog+ '/blog/tagcomplete')}" value="${blogEntry.tagList}"/>
                 </td>
             </tr>
 
