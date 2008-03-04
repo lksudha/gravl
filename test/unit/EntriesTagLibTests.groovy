@@ -1,35 +1,38 @@
-import groovy.mock.interceptor.StubFor
-
-// import groovy.mock.interceptor.StubFor
 
 class EntriesTagLibTests extends GroovyTestCase {
 
+    // mocked "out" for taglib
+    StringWriter out
+
+    /** Setup metaclass fixtures for mocking. */
+    void setUp() {
+        out = new StringWriter()
+        EntriesTagLib.metaClass.out = out
+    }
+
+    /** Remove metaclass fixtures for mocking. */
+    void tearDown() {
+        def remove = GroovySystem.metaClassRegistry.&removeMetaClass
+        remove EntriesTagLib
+    }
+
     void testNiceDate() {
 
-        // create taglib with mocked "out"
-        StringWriter out = new StringWriter()
-        EntriesTagLib.metaClass.out = out
         EntriesTagLib btl = new EntriesTagLib()
-
 
         Date now = new Date()
 
         btl.niceDate(date: now)
 
         assertEquals(
-            new java.text.SimpleDateFormat("EEE, d MMM yyyy HH:mm").format(now),
-            out.toString()
-        )
+                new java.text.SimpleDateFormat("EEE, d MMM yyyy HH:mm").format(now),
+                out.toString()
+                )
 
     }
 
     void testDateFromNow() {
 
-        // create taglib with mocked "out"
-        StringWriter out = new StringWriter()
-
-
-        EntriesTagLib.metaClass.out = out
         EntriesTagLib btl = new EntriesTagLib()
 
         Calendar cal = Calendar.getInstance()
@@ -47,4 +50,5 @@ class EntriesTagLibTests extends GroovyTestCase {
         assertEquals "1 hour ago", out.toString()
 
     }
+
 }

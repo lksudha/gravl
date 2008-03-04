@@ -1,12 +1,6 @@
 import java.text.SimpleDateFormat
-import org.apache.lucene.search.highlight.*
-import org.apache.lucene.analysis.TokenStream
-import org.apache.lucene.analysis.standard.StandardAnalyzer
-
 
 class BlogController {
-
-    SearchService searchService
 
     def index = {redirect(action: homePage, params: params)}
 

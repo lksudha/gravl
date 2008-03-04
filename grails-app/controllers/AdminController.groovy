@@ -10,23 +10,6 @@ class AdminController {
 
     CacheService cacheService
     CountryLookupService countryLookupService
-    
-
-    //TODO this should done with a closure...
-    private Map toPercentMap(niceMap) {
-
-        def percentMap = [ : ]
-        def total = 0
-        niceMap.values().each { value ->
-            total += value
-        }
-        niceMap.each { key, value ->
-            percentMap[key] = ((value / total) * 100) // .setScale(1) // one decimal for google maps
-        }
-        return percentMap
-
-
-    }
 
     def stats = {
 

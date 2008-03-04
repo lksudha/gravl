@@ -289,5 +289,8 @@
       <jarDirectory url="file://$PROJECT_DIR$/plugins/searchable-0.4-SNAPSHOT/lib" recursive="false" />
     </library>
   </component>
+  <UsedPathMacros>
+    <macro name="GROOVY_ECLIPSE_HOME" />
+  </UsedPathMacros>
 </project>
 

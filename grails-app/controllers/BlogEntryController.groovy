@@ -1,7 +1,5 @@
 class BlogEntryController {
 
-    SearchService searchService
-
     def edit = {
         BlogEntryCommand bec = new BlogEntryCommand()
         if (params.id) {
