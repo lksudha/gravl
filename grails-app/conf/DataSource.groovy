@@ -13,11 +13,8 @@ hibernate {
 environments {
 	development {
 		dataSource {
-            dbCreate = "update"
-            driverClassName = "org.postgresql.Driver"
-	        url = "jdbc:postgresql://localhost/gravl"
-	        username = "glen"
-	        password = "password"
+            dbCreate = "create-drop"
+			url = "jdbc:hsqldb:mem:testDb"
 		}
 	}
 	test {
