@@ -37,15 +37,19 @@ target(default: "Zips an application distro for upload to googlecode etc") {
             include ( name: "plugins/**/*.*")
             include ( name: "grails-app/**/*.*")
             include ( name: "web-app/**/*.*")
+            exclude ( name: "plugins/*.zip")
             exclude ( name: "**/WEB-INF/lib/**/*.*")
+            exclude ( name: "**/WEB-INF/plugins/**/*.*")
+            exclude ( name: "**/web-app/plugins/**/*.*")
+            
         }
-        fileset ( dir : baseDir, includes: "*.*", excludes: "*.war,*.zip,*.log")
+        fileset ( dir : baseDir, includes: "*.*", excludes: "*.war,*.zip,*.log,TEST*.xml,devDB.*")
     }
 
    tar( destfile: tarName, basedir: zipDir, includes: "${zipName}/**/*.*" )
    gzip( src: tarName, destfile: tgzName )
    delete ( file: tarName )
-   Ant.delete( dir: buildDir )
+   delete( dir: buildDir )
 
 
 }
