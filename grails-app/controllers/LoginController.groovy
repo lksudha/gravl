@@ -13,14 +13,12 @@ class LoginController {
             if (account) {
                 session.account = account
              } else {
+                session.account = null
                 flash.loginError = "Invalid username or password. Please try again"
             }
-            
-//            if (session.returnurl) {
-//                redirect(uri: session.returnurl)
-//            } else {
-                redirect(uri: "/${params.blog}/")
-//            }
+
+            redirect(uri: "/${params.blog}/")
+
         }
 
     }
@@ -29,6 +27,7 @@ class LoginController {
         if (session.account) {
             session.account = null
         }
+
         redirect(uri: "/${params.blog}/")  // to the blog they logged out from
     }
 
