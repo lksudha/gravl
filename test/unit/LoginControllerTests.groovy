@@ -1,7 +1,24 @@
 class LoginControllerTests extends GroovyTestCase {
 
+    def session
+    def params
+    def redirectParams
+    def flash
+
     /** Setup metaclass fixtures for mocking. */
     void setUp() {
+
+        session = [ : ]
+        LoginController.metaClass.getSession = { -> session }
+
+        params = [ : ]
+        LoginController.metaClass.getParams = { -> params }
+
+        redirectParams = [ : ]
+        LoginController.metaClass.redirect = { Map args -> redirectParams = args  }
+
+        flash = [ : ]
+        LoginController.metaClass.getFlash = { -> flash }
 
         def logger = new Expando( debug: { println it }, info: { println it },
                                   warn: { println it }, error: { println it } )
@@ -22,12 +39,8 @@ class LoginControllerTests extends GroovyTestCase {
 
     void testIndexRedirect() {
 
-        def redirectParams = [ : ]
-        LoginController.metaClass.redirect = { Map args -> redirectParams = args  }
-
         LoginController lc = new LoginController()
         lc.index()
-
         assertEquals "form" , redirectParams.action
 
 
@@ -37,20 +50,9 @@ class LoginControllerTests extends GroovyTestCase {
 
     void testLogin() {
 
-
-        String.metaClass.encodeAsSha1 = { ->  delegate }
-
-        def session = [ : ]
-        LoginController.metaClass.getSession = { -> session }
-
-        def params = [ blog : 'demo' ]
-        LoginController.metaClass.getParams = { -> params }
-
-        def redirectParams = [ : ]
-        LoginController.metaClass.redirect = { Map args -> redirectParams = args  }
-
-        def flash = [ : ]
-        LoginController.metaClass.getFlash = { -> flash }
+        String.metaClass.encodeAsSha1 = { -> delegate }
+        
+        params['blog'] = 'demo'
 
         Account.metaClass.static.findByUserIdAndPassword = { String userId, String password ->
            if (userId == 'glen' && password == 'sesame' ) {
@@ -78,20 +80,14 @@ class LoginControllerTests extends GroovyTestCase {
         assertNull session.account
         assertNotNull flash.loginError
 
-
-
-
     }
 
 
 
     void testLogout() {
 
-        def session = [ account: "user"]
-        LoginController.metaClass.getSession = { -> session }
-        LoginController.metaClass.getParams = { -> [ blog : 'demo' ] }
-        def redirectParams = [ : ]
-        LoginController.metaClass.redirect = { Map args -> redirectParams = args  }
+        session['account'] =  "user"
+        params['blog'] = 'demo'
 
         LoginController lc = new LoginController()
         assertNotNull lc.session.account
@@ -106,10 +102,6 @@ class LoginControllerTests extends GroovyTestCase {
     }
 
     void testForm() {
-        
-        def renderParams = [:]
-        
-        LoginController.metaClass.render = { Map args -> renderParams = args }
 
         def controller = new LoginController()
 
