@@ -48,7 +48,7 @@
         
         <g:hiddenField name="entryId" value="${entryId}"/>
         <g:submitToRemote url="[controller: 'comment', action: 'preview']" update="commentPreview" value="Preview" onComplete="Effect.Appear('commentPreview')"/>
-        <g:submitToRemote url="[controller: 'comment', action: 'save']" update="commentPreview" value="Save" onComplete="refreshIfSuccessful()"/>
+        <g:submitToRemote url="[controller: 'comment', action: 'save']" before="this.enabled=false;" update="commentPreview" value="Save" onComplete="refreshIfSuccessful()"/>
         <input type="button" value="Cancel" onclick="removeNewCommentUI();" />
     
     </g:form>
