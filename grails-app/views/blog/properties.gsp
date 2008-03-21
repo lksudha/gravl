@@ -16,7 +16,7 @@
             }
         </style>
 
-        <g:form controller="${params.blog}" action="admin/updateProperties">
+        <form action="<g:createLinkTo dir="${params.blog}/admin/updateProperties"/>">
             <g:hiddenField name="id" value="${cmd.id}"/>
             <table>
 
@@ -58,7 +58,7 @@
             </table>
             <g:submitButton name="save" value="Save"/>
 
-        </g:form>
+        </form>
 
     </body>
 </html>

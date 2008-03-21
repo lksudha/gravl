@@ -242,40 +242,24 @@ class BlogController {
         def blogid = params.blog
 
         // limit query to current blog published entries...
-        def results = BlogEntry.search(query + " +blogid:${blogid}", params)
+        def results = BlogEntry.search(query + " +blogid:${blogid}", params,
+                withHighlighter: { highlighter, index, sr ->
+            // lazy-init the storage
+            if (!sr.highlights) {
+                sr.highlights = []
+            }
+
+            // store highlighted text; "body" is a searchable-property of the BlogEntry domain class
+            def matchedFragment = highlighter.fragment("body")
+            matchedFragment = matchedFragment?.
+                    replaceAll("(?i)</?(pre|code|a|i|br|p|img)[^>]*>", "")?.
+                    replaceAll("(?i)<[^b/]+", "")
+            sr.highlights[index] = "..." + matchedFragment + "..."
+        })
         
         return [ results: results, query: query ] // , baseUri: baseUri ]
     }
 
-    def searchOld = {
-        def fields = params.fields
-        def query = params.query
-        def blogid = params.blog
-
-        int hitcount = params.hitcount ? Integer.parseInt(params.hitcount) : 10
-        int offset = params.offset ? Integer.parseInt(params.offset) : 0
-
-        if (fields && query) {
-            // limit query to current blog published entries...
-            query += " AND blogid:${blogid}"
-
-            log.debug("Field $fields with query $query with hitcount $hitcount and offset $offset")
-
-            def fieldsList = fields.split(',')
-
-            def results = searchService.search(query, fieldsList, hitcount, offset)
-
-            log.debug("Total query results [" + results.totalHitCount + "]")
-
-            return [results: results, query: query, fields: fields]
-
-        } else {
-
-            return [:]
-
-        }
-
-    }
 
     def displayOneEntry = {
 

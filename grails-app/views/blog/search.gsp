@@ -49,13 +49,7 @@
 				<g:else>
 					No matches found. 
 				</g:else>	
-				(<b>${results.queryTime}</b> ms).  Index contains <b>${results.totalDocsInIndex}</b> documents.
 			</div>
-			<%--
-			<div id="searchBody">
-				<g:searchResults results="${results}" titleField="title" bodyField="body"/>
-			</div>
-			--%>
 
 
             <g:each var="result" in="${results.results}" status="i">
@@ -64,14 +58,18 @@
 
                     <div class='hitEntry'>
                         <div class='hitTitle'>
-                            <g:link controller="${result.toPermalink().substring(1)}">
+                            <a href="<g:createLinkTo dir="${result.toPermalink().substring(1)}"/>">
+
                                 ${result.title}
-                            </g:link>
+
+                                </a>
                         </div>
                         <div class='hitInfo'>
                             <g:niceDate date="${result.created}"/>
                         </div>
-                        <p class='hitBody'></p>
+                        <p class='hitBody'>
+                            ${ results.highlights[i] ?: "..." }
+                        </p>
                     </div>
                 </div>
 
