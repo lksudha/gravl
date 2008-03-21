@@ -5,12 +5,12 @@ class NotificationService {
 
     boolean transactional = false
 
-    def isEmailNotifyActive(Comment comment) {
+    boolean isEmailNotifyActive(Comment comment) {
 
         BlogProperty bp = comment.blogEntry.blog.blogProperties?.find { prop ->
             prop.name == "emailNotify"
         }
-        return bp ? bp.value : false
+        return bp ? Boolean.valueOf(bp.value) : false
     }
 
     def sendEmailNotification(Comment comment, String address, String baseUri) {
