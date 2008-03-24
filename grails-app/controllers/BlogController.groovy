@@ -241,9 +241,7 @@ class BlogController {
         def query = params.query
         def blogid = params.blog
 
-        // limit query to current blog published entries...
-        def results = BlogEntry.search(query + " +blogid:${blogid}", params,
-                withHighlighter: { highlighter, index, sr ->
+        params.withHighlighter = { highlighter, index, sr ->
             // lazy-init the storage
             if (!sr.highlights) {
                 sr.highlights = []
@@ -254,8 +252,11 @@ class BlogController {
             matchedFragment = matchedFragment?.
                     replaceAll("(?i)</?(pre|code|a|i|br|p|img)[^>]*>", "")?.
                     replaceAll("(?i)<[^b/]+", "")
-            sr.highlights[index] = "..." + matchedFragment + "..."
-        })
+            sr.highlights[index] = "..." + (matchedFragment ?: "") + "..."
+        }
+
+        // limit query to current blog published entries...
+        def results = BlogEntry.search(query + " +blogid:${blogid}", params)
         
         return [ results: results, query: query ] // , baseUri: baseUri ]
     }
