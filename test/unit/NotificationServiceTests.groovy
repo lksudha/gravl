@@ -1,17 +1,12 @@
+import groovy.mock.interceptor.*
+
 class NotificationServiceTests extends GroovyTestCase {
 
     NotificationService ns
-    Expando ms
 
 
     /** Setup metaclass fixtures for mocking. */
     void setUp() {
-
-
-        ms = new Expando()
-        ms.send = { address, content, subject -> println "Invoked Send"; return "" }
-        NotificationService.metaClass.mailService = { -> ms }
-
 
         def logger = new Expando( debug: { println it }, info: { println it },
                                   warn: { println it }, error: { println it } )
@@ -74,9 +69,19 @@ class NotificationServiceTests extends GroovyTestCase {
                 bp
         ] ], toPermalink: {}, title: 'Sample Post' ] }
         def comment = new Comment(body: "sample body")
-        println  comment.blogEntry.blog.blogProperties
-        ns.sendEmailNotification(comment,"abc@abc.com", "http://localhost/demo/")
+        def mockMail = new MockFor(MailService.class)
+        mockMail.demand.send(1) { address, body, title -> "done" }
         
+        mockMail.use {
+            ns.mailService = new MailService()
+
+            ns.sendEmailNotification(comment,"abc@abc.com", "http://localhost/demo/")
+
+        }
+        
+
+
+
 
 
     }
