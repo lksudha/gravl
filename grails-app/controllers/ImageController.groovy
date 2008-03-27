@@ -24,7 +24,7 @@ class ImageController {
             if (found) return
 
             File image = new File(fileName + "." + ext)
-            println "Trying... ${image.absoluteFile}"
+            //println "Trying... ${image.absoluteFile}"
             if (image.exists() && image.canRead()) {
                 println "Found image: ${image.absoluteFile}"
                 // String ext = fileName.substring(fileName.lastIndexOf(".") + 1)

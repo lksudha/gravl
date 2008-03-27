@@ -26,7 +26,7 @@
 <body>
 <div class="body">
 <p style='font-size: large; border-bottom: 1px dotted black; padding-bottom: 4px;'>Edit Blog</p>
-<g:form controller="${params.blog}/admin/blog" action="save">
+<form action="<g:createLinkTo dir="${params.blog}/admin/blog/save"/>">
     <input type="hidden" name="id" value="${blogEntry?.id}"/>
     <table style="width: 100%;">
         <tbody>
@@ -101,7 +101,7 @@
         <g:actionSubmit value="Save"/>
 
     </div>
-</g:form>
+</form>
     
     <div class="buttons" style="float: right;top: -1em;">
         <g:form controller="${params.blog}/admin/blog" action="delete">

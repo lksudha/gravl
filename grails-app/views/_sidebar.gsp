@@ -131,7 +131,7 @@
                <div class="niceBox">
                     <div class="niceBoxBody">
                         <div class="tagCloud">
-                            <g:tagCloud blogId="${params.blog}"/>
+                            <g:tagCloudCustom blogId="${params.blog}"/>
                         </div>
                     </div>
                 </div>

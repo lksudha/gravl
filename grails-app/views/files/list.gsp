@@ -59,13 +59,14 @@
 </table>
 
 <div style="padding: 1em; border: 1px dotted black; background-color: lightyellow;">
-    <g:form controller="${params.blog}/files" action="upload" method="post" enctype="multipart/form-data">
+    <form action="<g:createLinkTo dir='${params.blog}/files/upload'/>" method="post" enctype="multipart/form-data">
         Filename:
         <input name="filename"/>
+        File:
         <input type="hidden" name="dir" value="${dir}"/>
         <input type="file" name="myFile"/>
-        <input type="submit"/>
-    </g:form>
+        <input type="submit" value="Upload"/>
+    </form>
 </div>
 
 </body>

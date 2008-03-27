@@ -50,16 +50,17 @@ cache {
 
 mail {
 	host ="latte"
-	from="glen.smith@gmail.com"
+	from="glen@bytecode.com.au"
 	subject="Welcome to gravl"
-    enabled=false
+    enabled=true
 }
 
 chat {
+	serviceName = "gmail.com"
     host = "talk.google.com"
     port = 5222
-    username = "user@gmail.com"
-    password = "password"
+    username = "bytecode.com.au@gmail.com"
+    password = "tanstaaflgoogle"
 }
 
 http {
@@ -162,5 +163,8 @@ grails.war.java5.dependencies = [
 
 
 // The following properties have been added by the Upgrade process...
+
 grails.views.default.codec="none" // none, html, base64
+
 grails.views.gsp.encoding="UTF-8"
+
