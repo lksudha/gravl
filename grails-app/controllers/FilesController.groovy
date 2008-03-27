@@ -20,8 +20,9 @@ class FilesController {
         if (d.exists() && d.isDirectory()) {
             files = d.listFiles()
         }
+        println "\n>>> Setting dir to [${dir}]\n"
 
-        return [ files: files, dir: dir ]
+        [ files: files, dirName: dir ]
 
     }
 
