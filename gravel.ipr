@@ -290,7 +290,6 @@
     </library>
   </component>
   <UsedPathMacros>
-    <macro name="GRAILS_HOME" />
     <macro name="GROOVY_ECLIPSE_HOME" />
   </UsedPathMacros>
 </project>

@@ -12,6 +12,7 @@ class NotificationServiceTests extends GroovyTestCase {
                                   warn: { println it }, error: { println it } )
         NotificationService.metaClass.getLog = { -> logger }
 
+
         ns = new NotificationService()
         
 
@@ -48,13 +49,9 @@ class NotificationServiceTests extends GroovyTestCase {
                 bp
         ] ] ] }
         def comment = new Comment()
-        println  comment.blogEntry.blog.blogProperties
         assertTrue ns.isEmailNotifyActive(comment)
         bp.value = 'false'
         assertFalse ns.isEmailNotifyActive(comment)
-        
-
-        GroovySystem.metaClassRegistry.removeMetaClass Comment
 
         
     }
@@ -68,9 +65,14 @@ class NotificationServiceTests extends GroovyTestCase {
         Comment.metaClass.getBlogEntry = { -> [ blog: [ blogProperties: [
                 bp
         ] ], toPermalink: {}, title: 'Sample Post' ] }
-        def comment = new Comment(body: "sample body")
+        def comment = new Comment(body: "sample body", author: "Joe User")
         def mockMail = new MockFor(MailService.class)
-        mockMail.demand.send(1) { address, body, title -> "done" }
+        def result = [:]
+        mockMail.demand.send(1) { address, body, title ->
+            result.address = address
+            result.body = body
+            result.title = title
+        }
         
         mockMail.use {
             ns.mailService = new MailService()
@@ -78,11 +80,8 @@ class NotificationServiceTests extends GroovyTestCase {
             ns.sendEmailNotification(comment,"abc@abc.com", "http://localhost/demo/")
 
         }
-        
-
-
-
-
+        assertEquals "abc@abc.com", result.address
+        assertEquals "[Gravl] New comment for Sample Post by Joe User", result.title
 
     }
 

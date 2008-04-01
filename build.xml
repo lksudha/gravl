@@ -1,4 +1,4 @@
-<project name="gravel" default="test">
+<project name="gravl" default="test">
 
     <condition property="grails" value="grails.bat">
         <os family="windows"/>

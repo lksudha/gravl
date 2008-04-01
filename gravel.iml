@@ -27,6 +27,15 @@
       <sourceFolder url="file://$MODULE_DIR$/grails-app/taglib" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/plugins/cacheable-0.1/grails-app/services" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/plugins/cacheable-0.1/src/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/google-chart-0.4.4/grails-app/taglib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/google-chart-0.4.4/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/google-chart-0.4.4/test/integration" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/richui-0.3/grails-app/conf" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/richui-0.3/grails-app/controllers" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/richui-0.3/grails-app/services" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/richui-0.3/grails-app/taglib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/richui-0.3/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/richui-0.3/test/integration" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/plugins/searchable-0.4-SNAPSHOT/src/groovy" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/plugins/searchable-0.4-SNAPSHOT/src/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/plugins/searchable-0.4.1-SNAPSHOT/grails-app/conf" isTestSource="false" />
@@ -49,9 +58,11 @@
       <library name="Grails User Library">
         <CLASSES>
           <root url="file://$MODULE_DIR$/plugins/searchable-0.4.1-SNAPSHOT/lib" />
+          <root url="file://$MODULE_DIR$/plugins/richui-0.3/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/plugins/richui-0.3/lib" recursive="false" />
         <jarDirectory url="file://$MODULE_DIR$/plugins/searchable-0.4.1-SNAPSHOT/lib" recursive="false" />
       </library>
     </orderEntry>

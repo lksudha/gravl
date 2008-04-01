@@ -68,7 +68,7 @@
 </table>
 
 <div style="padding: 1em; border: 1px dotted black; background-color: lightyellow;">
-    <form action="<g:createLinkTo dir='${params.blog}/files/upload'/>" method="post" enctype="multipart/form-data">
+    <form action="<g:createLinkTo dir='${params.blog}'/>/files/upload" method="post" enctype="multipart/form-data">
         Filename:
         <input name="filename"/>
         File:

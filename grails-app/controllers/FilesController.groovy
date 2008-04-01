@@ -43,7 +43,7 @@ class FilesController {
         else {
             flash.message = 'file cannot be empty'
         }
-        redirect(controller: "${params.blog}/files", action: 'list', params: [dir: dir])
+        redirect(uri: "/${params.blog}/files/list?dir=${dir}")
 
     }
 
@@ -63,7 +63,7 @@ class FilesController {
         } else {
             flash.message = "File does not exist or is readonly: ${filename}"
         }
-        redirect(controller: "${params.blog}/files", action: 'list', params: [dir: dir])
+        redirect(uri: "/${params.blog}/files/list?dir=${dir}")
 
     }
 

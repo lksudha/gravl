@@ -1,6 +1,0 @@
-<plugin name='cacheable' version='0.1'>
-  <resources>
-    <resource>CacheableConfiguration</resource>
-    <resource>CacheableService</resource>
-  </resources>
-</plugin>
