@@ -60,7 +60,7 @@ chat {
     host = "talk.google.com"
     port = 5222
     username = "bytecode.com.au@gmail.com"
-    password = "tanstaaflgoogle"
+    password = "password"
 }
 
 http {
