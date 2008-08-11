@@ -40,7 +40,7 @@ class UrlMappings {
         }
 
         // feeds for individual categories
-        "/$blog/categories/$categoryName/$feedtype" {
+        "/$blog/categories/$categoryName/$feedtype**.xml" {
             controller = "feed"
             action = "feeds"
             constraints {
@@ -138,10 +138,12 @@ class UrlMappings {
             action = "display"
         }
 
+        
         "/favicon**" {
             controller = "image"
             action = "display"
         }
+
 
         // home page
         "/$blog" {
