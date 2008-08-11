@@ -19,29 +19,38 @@ class ImageController {
 
         println "Rendering image from $fileName"
         boolean found = false
-        exts.each { ext ->
-
-            if (found) return
-
-            File image = new File(fileName + "." + ext)
-            //println "Trying... ${image.absoluteFile}"
-            if (image.exists() && image.canRead()) {
-                println "Found image: ${image.absoluteFile}"
-                // String ext = fileName.substring(fileName.lastIndexOf(".") + 1)
-                if (mimeType[ext]) {
-                    log.debug "Setting response type to ${mimeType[ext]}"
-                    response.setContentType("image/${mimeType[ext]}")
-                } else {
-                    log.debug "Setting response type to image/${ext}"
-                    response.setContentType("image/" + ext)
-                }
-                byte[] b = image.readBytes();
-                response.setContentLength(b.length)
-                response.getOutputStream().write(b)
-                found = true
-               
-            }
+        File image = new File(fileName)
+        if (image.exists() && image.canRead()) {
+            println "Found image: ${image.absoluteFile}"
+            byte[] b = image.readBytes();
+            response.setContentLength(b.length)
+            response.getOutputStream().write(b)
+            found = true
         }
+
+//        exts.each { ext ->
+//
+//            if (found) return
+//
+//            File image = new File(fileName + "." + ext)
+//            //println "Trying... ${image.absoluteFile}"
+//            if (image.exists() && image.canRead()) {
+//                println "Found image: ${image.absoluteFile}"
+//                // String ext = fileName.substring(fileName.lastIndexOf(".") + 1)
+//                if (mimeType[ext]) {
+//                    log.debug "Setting response type to ${mimeType[ext]}"
+//                    response.setContentType("image/${mimeType[ext]}")
+//                } else {
+//                    log.debug "Setting response type to image/${ext}"
+//                    response.setContentType("image/" + ext)
+//                }
+//                byte[] b = image.readBytes();
+//                response.setContentLength(b.length)
+//                response.getOutputStream().write(b)
+//                found = true
+//
+//            }
+//        }
         
         if (!found) {
             println "Image not found or not readable"
