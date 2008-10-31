@@ -40,8 +40,8 @@ pdf {
 }
 
 blogdata {
-    dir="/data/gravl/"
-    index="/data/gravl/index/"
+    dir="data/gravl/"
+    index="data/gravl/index/"
 }
 
 cache {

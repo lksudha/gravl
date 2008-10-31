@@ -14,11 +14,12 @@ environments {
 	development {
 		dataSource {
 			dbCreate = "update"
+            url = "jdbc:hsqldb:file:devDB"
 			// url = "jdbc:hsqldb:file:prodDb;shutdown=true"
-            driverClassName = "org.postgresql.Driver"
-	        url = "jdbc:postgresql://localhost/gravl"
-	        username = "glen"
-	        password = "password"
+            // driverClassName = "org.postgresql.Driver"
+	        // url = "jdbc:postgresql://localhost/gravl"
+	        // username = "glen"
+	        // password = "password"
         }
 	}
 	test {
