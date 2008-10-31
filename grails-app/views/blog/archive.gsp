@@ -10,7 +10,7 @@
 
         <g:if test="${params.tagName}">
             <div style="float: right">
-                <a href="${request.contextPath}/${params.blog}/categories/${params.tagName}/atom.xml">
+                <a href="${request.contextPath}/${params.blog}/categories/${params.tagName}/atom">
                     <img src="${createLinkTo(dir:'images',file:'feed-icon-16x16.jpg')}" alt="Atom Feed for category ${params.tagName}"/>
                 </a>
             </div>

@@ -40,7 +40,7 @@ class UrlMappings {
         }
 
         // feeds for individual categories
-        "/$blog/categories/$categoryName/$feedtype**.xml" {
+        "/$blog/categories/$categoryName/$feedtype" {
             controller = "feed"
             action = "feeds"
             constraints {
