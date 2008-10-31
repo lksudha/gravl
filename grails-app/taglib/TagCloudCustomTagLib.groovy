@@ -23,6 +23,11 @@ class TagCloudCustomTagLib {
                 tagToFreq[tag.name] = tagCount
             // log.debug "Setting size of ${tag.name} to $tagCount"
         }
+
+        if (tagToFreq.size() < 1) {
+            return
+        }
+
         def allFreq = tagToFreq.collect {tag, freq -> return freq}.sort()
         def minFreq = allFreq[0]  // first entry
         def maxFreq = allFreq[allFreq.size() > 1 ? -1 : 0] // last entry
