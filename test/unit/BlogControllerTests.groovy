@@ -15,4 +15,6 @@ class BlogControllerTests extends GroovyTestCase {
         remove EntriesTagLib
     }
 
+    void testNothing() { }
+
 }
