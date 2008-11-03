@@ -3,7 +3,7 @@ class TagTests extends GroovyTestCase {
     // simple test case for the tagcloud
     public void testTagCloud() {
 
-        Blog blog = new Blog(title: 'JUnit Blog', blogid: "junit").save()
+        Blog blog = new Blog(title: 'JUnit Blog', blogId: "junit").save()
         println blog.errors.dump()
 
         // setup some mock tags...
@@ -25,7 +25,7 @@ class TagTests extends GroovyTestCase {
         blog.save(flush: true)
 
         // now test our tagcloud
-        new TagCloudTagLib().tagCloud(blogId: "junit");
+        new TagCloudCustomTagLib().tagCloudCustom(blogId: "junit");
 
     }
 }
