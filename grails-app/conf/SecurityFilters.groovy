@@ -11,24 +11,69 @@ class SecurityFilters {
     private String getBaseUri(request) {
 
         return request.scheme + "://" + request.serverName +
-                    (request.serverPort != 80 ?":" + request.serverPort : "" ) +
-            grailsAttributes.getApplicationUri(request)
+        (request.serverPort != 80 ?":" + request.serverPort : "" ) +
+        grailsAttributes.getApplicationUri(request)
 
     }
 
     def filters = {
+
+        /*
+
+        blogSystem(controller: "blog", action: "(updateProperties|fileUploadFlow)") {
+        accessControl(auth: false) {
+        role("admin")
+        }
+        }
+
+        blogEditing(controller: "blogEntry", action: "*") {
+        accessControl(auth: false) {
+        role("admin")
+        }
+        }
+
+        blogProperties(controller: "blogProperty", action: "*") {
+        accessControl(auth: false) {
+        role("admin")
+        }
+        }
+
+        commentApproval(controller: "comment", action: "(delete|approve)") {
+        accessControl(auth: false) {
+        role("admin")
+        }
+        }
+
+        pdfManagement(controller: "pdf", action: "*") {
+        accessControl(auth: false) {
+        role("admin")
+        }
+        }
+
+        fileManagement(controller: "files", action: "*") {
+        accessControl(auth: false) {
+        role("admin")
+        }
+        }
+
+
+         */
+
+
+        
         loginCheck(controller: '*', action: '*') {
 
             before = {
 
+
                 def publicStuff = [
-                                "blog" : ["archive", "homePage", "displayOneEntry", "displayStaticEntry", "search", "timeline", "timelineData"],
-                                "comment" : ["newComment", "preview", "save", "opt-out"],
-                                "feed": ["feeds"],
-                                "pdf": ["show"],
-                                "image" : ["display"],
-                                "login" : ["form", "login"]
-                        ]
+        "blog" : ["archive", "homePage", "displayOneEntry", "displayStaticEntry", "search", "timeline", "timelineData"],
+        "comment" : ["newComment", "preview", "save", "opt-out"],
+        "feed": ["feeds"],
+        "pdf": ["show"],
+        "image" : ["display"],
+        "login" : ["form", "login"]
+                ]
 
                 println ("Security checking on ${request.forwardURI}")
                 if (!session.account) {
@@ -37,11 +82,11 @@ class SecurityFilters {
                     println "Checking access to controller [${controllerName}] with action [${actionName}] (${request.forwardURI})"
 
                     if (publicStuff.keySet().find { it == controllerName }) {
-                        
+
                         if (publicStuff[controllerName].find { it == actionName }) {
                             println "Access ok to public controller [${controllerName}] with action [${actionName}]"
                             if (controllerName != 'login') // keep last unsecured page in session for post-login return
-                                session.returnurl = request.forwardURI
+                            session.returnurl = request.forwardURI
                             allowed = true
                         } else {
                             println "Access privileged action: ${actionName}"
@@ -71,7 +116,9 @@ class SecurityFilters {
 
             }
 
+
         }
+         
     }
 
 }

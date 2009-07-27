@@ -1,8 +1,7 @@
 dataSource {
-	pooled = false
-	driverClassName = "org.hsqldb.jdbcDriver"
-	username = "sa"
-	password = ""
+    pooled = false
+    username = "sa"
+    password = ""
 }
 hibernate {
     cache.use_second_level_cache=true
@@ -11,32 +10,31 @@ hibernate {
 }
 // environment specific settings
 environments {
-	development {
-		dataSource {
-			dbCreate = "update"
+    development {
+        dataSource {
+            dbCreate = "update"
             url = "jdbc:hsqldb:file:devDB"
-			// url = "jdbc:hsqldb:file:prodDb;shutdown=true"
+            driverClassName = "org.hsqldb.jdbcDriver"
+            // url = "jdbc:hsqldb:file:prodDb;shutdown=true"
             // driverClassName = "org.postgresql.Driver"
-	        // url = "jdbc:postgresql://localhost/gravl"
-	        // username = "glen"
-	        // password = "password"
+            // url = "jdbc:postgresql://localhost/gravl"
+            // username = "glen"
+            // password = "password"
         }
-	}
-	test {
-		dataSource {
-			dbCreate = "create-drop"
-			url = "jdbc:hsqldb:mem:testDb"
+    }
+    test {
+        dataSource {
+            dbCreate = "create-drop"
+            url = "jdbc:hsqldb:mem:testDb"
+            driverClassName = "org.hsqldb.jdbcDriver"
             //url = "jdbc:hsqldb:file:devDB"
         }
-	}
-	production {
-		dataSource {
-			dbCreate = "update"
-			// url = "jdbc:hsqldb:file:prodDb;shutdown=true"
-            driverClassName = "org.postgresql.Driver"
-	        url = "jdbc:postgresql://localhost/gravl"
-	        username = "glen"
-	        password = "password"
+    }
+    production {
+        dataSource {
+            dbCreate = "update"
+            jndiName = "jdbc/gravl"
+            
         }
-	}
+    }
 }

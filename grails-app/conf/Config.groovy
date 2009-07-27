@@ -9,7 +9,7 @@
 // if(System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
-grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
+grails.mime.file.extensions = false // enables the parsing of file extensions from URLs into the request format
 
 grails.mime.types = [ html: ['text/html','application/xhtml+xml'],
                       xml: ['text/xml', 'application/xml'],
@@ -40,8 +40,8 @@ pdf {
 }
 
 blogdata {
-    dir="data/gravl/"
-    index="data/gravl/index/"
+    dir="/data/gravl/"
+    index="/data/gravl/index/"
 }
 
 cache {
@@ -49,7 +49,7 @@ cache {
 }
 
 mail {
-	host ="latte"
+	host ="192.168.1.7"
 	from="glen@bytecode.com.au"
 	subject="Welcome to gravl"
     enabled=true
@@ -88,77 +88,30 @@ beans {
 
 
 // log4j configuration
-log4j {
-    appender.stdout = "org.apache.log4j.ConsoleAppender"
-    appender.'stdout.layout'="org.apache.log4j.PatternLayout"
-    appender.'stdout.layout.ConversionPattern'='[%r] %c{2} %m%n'
-    appender.errors = "org.apache.log4j.FileAppender"
-    appender.'errors.layout'="org.apache.log4j.PatternLayout"
-    appender.'errors.layout.ConversionPattern'='[%r] %c{2} %m%n'
-    appender.'errors.File'="stacktrace.log"
-    rootLogger="error,stdout"
-    logger {
-        grails="debug"
-        StackTrace="error,errors"
-        org {
-            codehaus.groovy.grails.web.servlet="error"  //  controllers
-            codehaus.groovy.grails.web.pages="error" //  GSP
-            codehaus.groovy.grails.web.sitemesh="error" //  layouts
-            codehaus.groovy.grails."web.mapping.filter"="error" // URL mapping
-            codehaus.groovy.grails."web.mapping"="error" // URL mapping
-            codehaus.groovy.grails.commons="info" // core / classloading
-            codehaus.groovy.grails.plugins="error" // plugins
-            codehaus.groovy.grails.orm.hibernate="error" // hibernate integration
-            springframework="off"
-            hibernate="off"
-        }
-    }
-    additivity.StackTrace=false
+log4j = {
+    // Example of changing the log pattern for the default console
+    // appender:
+    //
+    //appenders {
+    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
+    //}
+
+    error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
+	       'org.codehaus.groovy.grails.web.pages', //  GSP
+	       'org.codehaus.groovy.grails.web.sitemesh', //  layouts
+	       'org.codehaus.groovy.grails."web.mapping.filter', // URL mapping
+	       'org.codehaus.groovy.grails."web.mapping', // URL mapping
+	       'org.codehaus.groovy.grails.commons', // core / classloading
+	       'org.codehaus.groovy.grails.plugins', // plugins
+	       'org.codehaus.groovy.grails.orm.hibernate', // hibernate integration
+	       'org.springframework',
+	       'org.hibernate'
+
+    warn   'org.mortbay.log'
+    debug   "grails.app"
+
 }
 
-// WAR dependency config
-grails.war.dependencies = [
-    "ant.jar",
-    "ant-launcher.jar",
-    "hibernate3.jar",
-    "jdbc2_0-stdext.jar",
-    "jta.jar",
-    "groovy-all-*.jar",
-    "springmodules-sandbox.jar",
-    "standard-${servletVersion}.jar",
-    "jstl-${servletVersion}.jar",
-    "antlr-*.jar",
-    "cglib-*.jar",
-    "dom4j-*.jar",
-    "ehcache-*.jar",
-    "junit-*.jar",
-    "commons-logging-*.jar",
-    "sitemesh-*.jar",
-    "spring-*.jar",
-    "log4j-*.jar",
-    "ognl-*.jar",
-    "hsqldb-*.jar",
-    "commons-lang-*.jar",
-    "commons-collections-*.jar",
-    "commons-beanutils-*.jar",
-    "commons-pool-*.jar",
-    "commons-dbcp-*.jar",
-    "commons-cli-*.jar",
-    "commons-validator-*.jar",
-    "commons-fileupload-*.jar",
-    "commons-io-*.jar",
-    "commons-io-*.jar",
-    "*oro-*.jar",
-    "jaxen-*.jar",
-    "xercesImpl.jar",
-    "xstream-1.2.1.jar",
-    "xpp3_min-1.1.3.4.O.jar"
-]
-
-grails.war.java5.dependencies = [
-    "hibernate-annotations.jar",
-    "ejb3-persistence.jar",
-]
 
 
 

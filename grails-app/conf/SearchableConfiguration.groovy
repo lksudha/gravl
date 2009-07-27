@@ -12,7 +12,7 @@ class SearchableConfiguration {
      *
      * Examples: "/home/app/compassindex", "ram://app-index" or null to use the default
      */
-    String compassConnection = "data/gravl/searchable/" // SearchableCompassUtils.getDefaultConnection()
+    String compassConnection = "/data/gravl/searchable/" // SearchableCompassUtils.getDefaultConnection()
 
     /**
      * Any settings you wish to pass to Compass
