@@ -27,7 +27,7 @@
 <body>
 <div class="body">
 <p style='font-size: large; border-bottom: 1px dotted black; padding-bottom: 4px;'>Edit Blog</p>
-<form action="<g:createLinkTo dir="${params.blog}/admin/blog/save"/>" method="POST">
+<form action="<g:resource dir="${params.blog}/admin/blog/save"/>" method="POST">
     <input type="hidden" name="id" value="${blogEntry?.id}"/>
     <table style="width: 100%;">
         <tbody>
@@ -180,10 +180,10 @@
 </form>
     
     <div class="buttons" style="float: right;top: -1em;">
-        <g:form controller="${params.blog}/admin/blog" action="delete">
+        <form action="<g:resource dir="${params.blog}/admin/blog/delete"/>">
             <input type="hidden" name="id" value="${blogEntry?.id}"/>
             <g:submitButton name="delete" onclick="return confirm('Are you sure?');" value="Delete"/>
-        </g:form>
+        </form>
     </div>
 <div id="entryPreview" style="margin-top: 3em;">
     
