@@ -12,7 +12,8 @@ class TableTagLib {
             "http://www.groovyblogs.org" : "GroovyBlogs",
             "http://groovyblogs.org" : "GroovyBlogs",
             "http://search.live.com/" : "MS Live Search",
-            "http://www.javablogs.com/" : "Javablogs"
+            "http://www.javablogs.com/" : "Javablogs",
+            "http://www.bing.com/" : "Bing"
         ]
 
         def markupName = url

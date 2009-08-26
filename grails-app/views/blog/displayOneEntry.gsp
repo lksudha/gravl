@@ -77,9 +77,9 @@
                 <div class="blogtitle"><a href="${baseUri + entry.toPermalink()}">${entry.title}</a></div>
                 <g:if test="${print!=true}">
                     <div class="printIcons">
-                        <g:if test="${session.account}">
+                        <jsec:user>
                             <a href="<g:createLinkTo dir="${params.blog}"/>/admin/blog/edit/${entry.id}">Edit</a>
-                        </g:if>
+                        </jsec:user>
                         <a href="${entry.toPermalink()}?print=true"><img src="<g:createLinkTo dir="images" file="print_button.png"/>" alt="Printer Friendly Version"/></a>
                         <%--
                         <g:link controller="pdf" action="show" params="[url: entry.toPermalink()]">

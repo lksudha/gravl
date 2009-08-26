@@ -8,6 +8,7 @@
 
 class SecurityFilters {
 
+	/*
     private String getBaseUri(request) {
 
         return request.scheme + "://" + request.serverName +
@@ -15,50 +16,63 @@ class SecurityFilters {
         grailsAttributes.getApplicationUri(request)
 
     }
+	*/
 
-    def filters = {
+    def filters = {     
 
-        /*
-
+		
         blogSystem(controller: "blog", action: "(updateProperties|fileUploadFlow)") {
-        accessControl(auth: false) {
-        role("admin")
+	 		before = {
+		        accessControl(auth: false) {
+		        	role("admin")
+		        }
+			}
         }
-        }
+		
 
         blogEditing(controller: "blogEntry", action: "*") {
-        accessControl(auth: false) {
-        role("admin")
-        }
+		 	before = {
+		        accessControl(auth: false) {
+		        	role("admin")
+		        }
+			}
         }
 
         blogProperties(controller: "blogProperty", action: "*") {
-        accessControl(auth: false) {
-        role("admin")
-        }
+		 	before = {
+		        accessControl(auth: false) {
+		        	role("admin")
+		        }
+			}
         }
 
         commentApproval(controller: "comment", action: "(delete|approve)") {
-        accessControl(auth: false) {
-        role("admin")
-        }
-        }
+		 	before = {
+		        accessControl(auth: false) {
+		        	role("admin")
+		        }
+			}
+	    }
 
         pdfManagement(controller: "pdf", action: "*") {
-        accessControl(auth: false) {
-        role("admin")
-        }
+		 	before = {
+	        	accessControl(auth: false) {
+	        		role("admin")
+	        	}
+			}
         }
 
         fileManagement(controller: "files", action: "*") {
-        accessControl(auth: false) {
-        role("admin")
+		 	before = {
+	        	accessControl(auth: false) {
+	        		role("admin")
+	        	}
+			}
         }
-        }
 
 
-         */
-
+         
+		/*
 
         
         loginCheck(controller: '*', action: '*') {
@@ -118,6 +132,7 @@ class SecurityFilters {
 
 
         }
+		*/
          
     }
 

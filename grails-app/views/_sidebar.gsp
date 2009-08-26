@@ -72,12 +72,12 @@
                     </div>
 
 
-                  <g:if test="${session.account}">
+                 <jsec:user>
 	      		
 		      		<div class="niceBox">
 			      			<div class="niceBoxHd">User Info</div>
 			      			<div class="niceBoxBody">
-								<p> ${session.account.fullName}  (${session.account.userId}) </p>
+								<p> <jsec:principal/>  (<g:link controller="auth" action="signOut">Logout</g:link>) </p>
                                   <ul>
                                   <li><a href="<g:createLinkTo dir="${params.blog}/admin/stats"/>">Stats</a></li>
                                   <li><a href="<g:createLinkTo dir="${params.blog}/admin/drafts"/>">Draft Entries</a></li>
@@ -93,8 +93,8 @@
 			      	</div>
 
 	      		
-	      		</g:if>
-	      		<g:else>
+	      		</jsec:user>
+	      		<jsec:notUser>
 		      		<div class="niceBox">
 		      			<div class="niceBoxBody">
 
@@ -102,21 +102,23 @@
                                 <div class="flash">${flash.loginError}</div>
                            </g:if>
 
-                           <form action="<g:createLinkTo dir="${params.blog}/admin/login/login"/>" method="post" >
+                           <g:form controller="auth" action="signIn" method="post" >
                                     <b>User Id:</b><br/>
-                                    <input type='text' name='userId'/>
+                                    <input type='text' name='username'/>
                                     <b>Password:</b><br/>
                                     <input type="password" name='password'/>
+									<b>Remember Me:</b>
+									<g:checkBox name="rememberMe" /><br/>
 
 				                     <span class="formButton">
 				                        <input type="submit" value="Login"/>
 				                     </span>
-				            </form>
+				            </g:form>
 
 		      			</div>
 		      		
 		      		</div>
-	      		</g:else>
+	      		</jsec:notUser>
 	      		
 
 	      		<div class="niceBox">

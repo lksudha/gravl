@@ -1,4 +1,5 @@
 import java.text.SimpleDateFormat
+import org.jsecurity.SecurityUtils
 
 class BlogController {
 
@@ -297,7 +298,7 @@ class BlogController {
             log.info "Blog name is ${blog.title}"
             def entries = BlogEntry.findAllByBlogAndCreatedBetween(blog, blogStartDate, blogEndDate, [sort: 'created', order: 'desc'])
             log.info "Found some entries... for $blogId then we're ${entries.size()}"
-            if (!session.account) // trim to published entries only
+            if (!SecurityUtils.subject) // trim to published entries only
                 entries = entries.findAll { entry -> entry.status ==~ 'published' }
             if (params.id) {
                 // if we have an id, match that entry..

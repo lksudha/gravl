@@ -22,9 +22,9 @@
                 <div class="blogtitle"><a href="${baseUri + "/" + entry.blog.blogid + "/pages/" + entry.title.encodeAsNiceTitle() + ".html"}">${entry.title}</a></div>
                 <g:if test="${print!=true}">
                     <div class="printIcons">
-                        <g:if test="${session.account}">
-                            <a href="<g:createLinkTo dir="${params.blog}/admin/blog/edit" file="${entry.id}"/>">Edit</a>
-                        </g:if>
+                        <jsec:user>
+                            <a href="<g:createLinkTo dir="${params.blog}/admin/blog/edit" file="${entry.id.toString()}"/>">Edit</a>
+                        </jsec:user>
                         <a href="${baseUri + "/" + entry.blog.blogid + "/pages/" + entry.title.encodeAsNiceTitle() + ".html"}?print=true"><img src="<g:createLinkTo dir="images" file="print_button.png"/>" alt="Printer Friendly Version"/></a>
                         <%--
                         <g:link controller="pdf" action="show" params="[url: entry.toPermalink()]">
