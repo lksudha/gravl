@@ -25,7 +25,7 @@ class UrlMappings {
             }
         }
 
-        "/$blog/pages/$id" {
+        "/$blog/pages/$id**.html" {
             controller = "blog"
             action = "displayStaticEntry"
         }
