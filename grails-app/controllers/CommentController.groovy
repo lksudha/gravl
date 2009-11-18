@@ -1,3 +1,5 @@
+import org.jsecurity.*
+
 class CommentController {
 
     NotificationService notificationService
@@ -6,7 +8,7 @@ class CommentController {
 
         log.debug "Sending new comment form via Ajax"
 
-        [ entryId: params.id, author: session.account ? session.account.fullName : "" ]
+        [ entryId: params.id, author: SecurityUtils.subject.authenticated ? Account.findByUserId(SecurityUtils.subject.principal).fullName : "" ]
         // displays a new comment form
     }
 
@@ -65,7 +67,7 @@ class CommentController {
             log.debug "Rendering new comment"
             render(template: "/blog/comment", model: [comment: comment, newlySaved: true ])
 
-            if (session.account) { // auto approve comments by owners/authenticated users
+            if (SecurityUtils.subject.authenticated) { // auto approve comments by owners/authenticated users
                 newComment.status = "approved"
                 notificationService.approvedComment(newComment, getBaseUri())
             } else {
@@ -82,7 +84,7 @@ class CommentController {
         log.debug "Entering delete for comment ${commentId}"
         def successful
         def message
-        if (Comment.exists(commentId) && session.account) {
+        if (Comment.exists(commentId) && SecurityUtils.subject.authenticated) {
             def comment = Comment.get(commentId)
             comment.delete()
             log.debug "Delete successful"
@@ -106,7 +108,7 @@ class CommentController {
         log.debug "Entering approve for comment ${commentId}"
         def successful
         def message
-        if (Comment.exists(commentId) && session.account) {
+        if (Comment.exists(commentId) && SecurityUtils.subject.authenticated) {
             def comment = Comment.get(commentId)
             comment.status = 'approved'
             comment.save()

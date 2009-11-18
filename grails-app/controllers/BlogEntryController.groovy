@@ -1,3 +1,5 @@
+import org.jsecurity.*
+
 class BlogEntryController {
 
     def edit = {
@@ -67,8 +69,8 @@ class BlogEntryController {
 
             if (!be.id) {
                 log.debug "Creating fresh Blog entry: ${be.title}"
-                be.account = session.account
-
+                be.account = Account.findByUserId(SecurityUtils.subject.principal)
+                
                 log.debug "Adding new entry to blog ${blog.title}"
                 blog.addToBlogEntries(be).save()
                 fixTags(be, bec.getAllTags())

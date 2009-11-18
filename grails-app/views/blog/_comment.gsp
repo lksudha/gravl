@@ -11,7 +11,7 @@
             <p>${comment.toMarkup()}</p>
         </blockquote>
 
-            <g:if test="${session.account}">
+            <jsec:user>
 
                 <div class="deleteLink">
                 <a href="<g:createLink controller="comment" action="delete" id="${comment.properties.id}"/>" onclick="
@@ -42,7 +42,7 @@
                     Approve</a>
                     </div>
                 </g:if>
-            </g:if>
+            </jsec:user>
 
         <cite>
             <strong>
@@ -50,10 +50,10 @@
                     ${comment.author}<g:if test="${comment.url}"></a></g:if>
             </strong> on
             <g:niceDate date="${comment.created}"/>
-            <g:if test="${session.account}">
+            <jsec:user>
                 <g:if test="${comment.properties.ipaddress}"> from ${comment.ipaddress}</g:if>
                 <g:if test="${comment.email}"> email <a href="mailto:${comment.email}">${comment.email}</a></g:if>
-            </g:if>
+            </jsec:user>
 
         </cite>
     </div>

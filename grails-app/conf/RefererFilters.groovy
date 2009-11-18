@@ -1,7 +1,8 @@
+import org.jsecurity.*
+
 /**
  * Simple filter to handle referer traffic
  */
-
 class RefererFilters {
 
 
@@ -16,7 +17,7 @@ class RefererFilters {
                 def actionsToCount = [ 'homePage', 'displayOneEntry' ]
 
                 // only look at referrers for page links, and don't count admins in stats
-                if (actionsToCount.find { it == actionName } && !session.account) {
+                if (actionsToCount.find { it == actionName } && !SecurityUtils.subject.authenticated) {
 
                     // Scoop up Referer and User-Agent and remote IP
                     def userAgent = request.getHeader("User-Agent")

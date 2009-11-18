@@ -110,7 +110,7 @@
 
                         <g:each var="comment" in="${entry.comments}" status="counter">
 
-                            <g:if test="${comment.status == 'approved' || session.account || comment.ipaddress == request.getRemoteAddr() }">
+                            <g:if test="${comment.status == 'approved' || org.jsecurity.SecurityUtils.subject.authenticated || comment.ipaddress == request.getRemoteAddr() }">
                                 <g:render template="comment" model="[comment: comment]"/>
                             </g:if>
                             
