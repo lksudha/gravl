@@ -31,7 +31,7 @@ class UrlMappings {
         }
 
         // feeds for all blog entries
-        "/$blog/$feedtype" {
+        "/$blog/$feedtype**.xml" {
             controller = "feed"
             action = "feeds"
             constraints {

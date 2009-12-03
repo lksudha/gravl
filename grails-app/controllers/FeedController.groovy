@@ -8,7 +8,7 @@ class FeedController {
         BlogProperty bp = blog.blogProperties?.find { prop ->
             prop.name == "useFeedburner"
         }
-        log.debug "bp value is ${bp.value}"
+        log.debug "bp value is ${bp?.value}"
         return bp ? bp.value : "false"
 
     }
