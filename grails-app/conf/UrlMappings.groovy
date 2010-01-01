@@ -38,6 +38,11 @@ class UrlMappings {
                 feedtype(inList: ['rss', 'atom'])
             }
         }
+        
+        "/$blog/$feedtype" {
+            controller = "feed"
+            action = "feeds"
+        }
 
         // feeds for individual categories
         "/$blog/categories/$categoryName/$feedtype" {
