@@ -1,9 +1,9 @@
 <html>
     <head>
         <title><g:layoutTitle default="Gravl Welcome"/></title>
-        <link rel="stylesheet" href="${createLinkTo(dir: 'css', file: 'reset-fonts-grids.css')}"/>
-        <link rel="stylesheet" href="${createLinkTo(dir: 'css', file: 'main.css')}"/>
-        <link rel="shortcut icon" href="${createLinkTo(file: 'favicon.ico')}"/>
+        <link rel="stylesheet" href="${resource(dir: 'css', file: 'reset-fonts-grids.css')}"/>
+        <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}"/>
+        <link rel="shortcut icon" href="${resource(file: 'favicon.ico')}"/>
 
         <g:layoutHead/>
         <g:javascript library="application"/>
@@ -17,9 +17,9 @@
     <body>
         <div id="doc3" class="yui-t5">
             <div id="hd">
-                <NOimg id="logo" src="${createLinkTo(dir: 'images', file: 'headerlogo.png')}" alt="gravel logo"/>
+                <NOimg id="logo" src="${resource(dir: 'images', file: 'headerlogo.png')}" alt="gravel logo"/>
 
-                <div id="hdtitle"><a href="<g:createLinkTo dir="${params.blog}/"/>"><g:blogTitle blogid="${params.blog}"/></a></div>
+                <div id="hdtitle"><a href="<g:resource dir="${params.blog}/"/>"><g:blogTitle blogid="${params.blog}"/></a></div>
 
                 <div style="float: right; position: relative; margin-right: 7px; font-size: medium; ">
                     <g:searchBox noCombo="true" query="${params.query}" fields="title,body" controller="${params.blog}" action="search"/>

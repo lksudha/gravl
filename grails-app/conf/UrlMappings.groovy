@@ -42,6 +42,9 @@ class UrlMappings {
         "/$blog/$feedtype" {
             controller = "feed"
             action = "feeds"
+            constraints {
+                feedtype(inList: ['rss', 'atom'])
+            }
         }
 
         // feeds for individual categories
@@ -151,10 +154,12 @@ class UrlMappings {
 
 
         // home page
+        
         "/$blog" {
             controller = "blog"
             action = "homePage"
         }
+        
 
        "505"(view:"niceError")
        
