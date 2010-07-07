@@ -33,7 +33,7 @@ environments {
     production {
         dataSource {
             dbCreate = "update"
-            jndiName = "jdbc/gravl"
+            jndiName = "java:comp/env/jdbc/gravl"
             
         }
     }
