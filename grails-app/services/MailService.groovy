@@ -8,6 +8,10 @@ class MailService {
         if (ConfigurationHolder.config.mail.enabled) {
             new AntBuilder().mail(
                     mailhost: ConfigurationHolder.config.mail.host,
+                    mailport: ConfigurationHolder.config.mail.port,
+                    ssl: ConfigurationHolder.config.mail.ssl,
+                    user: ConfigurationHolder.config.mail.username,
+                    password: ConfigurationHolder.config.mail.password,
                     subject: msgSubject) {
                 from(address: ConfigurationHolder.config.mail.from)
                 to(address: toaddress)

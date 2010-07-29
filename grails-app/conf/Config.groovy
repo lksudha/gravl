@@ -48,18 +48,28 @@ cache {
 	enabled = true
 }
 
+
 mail {
-	host ="192.168.1.7"
+	host ="smtp.gmail.com"
+	port = 465
+	username = "your.username@gmail.com"
+	password = "yourpassword"
 	from="glen@bytecode.com.au"
 	subject="Welcome to gravl"
     enabled=true
+    ssl=true
+    props = ["mail.smtp.auth":"true", 					   
+              "mail.smtp.socketFactory.port":"465",
+              "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+              "mail.smtp.socketFactory.fallback":"false"]
 }
+
 
 chat {
 	serviceName = "gmail.com"
     host = "talk.google.com"
     port = 5222
-    username = "bytecode.com.au@gmail.com"
+    username = "your.username@gmail.com"
     password = "password"
 }
 
