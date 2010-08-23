@@ -15,6 +15,7 @@ class NotificationService {
 
     def sendEmailNotification(Comment comment, String address, String baseUri) {
         log.debug "Sending new notification to ${address} on comment to ${comment.blogEntry.title}"
+        try {
         mailService.send(address,
                 """
 <p>
@@ -24,6 +25,9 @@ New Comment by ${comment.author} on
 ${comment.toMarkup()}
                 """, 
                 "[Gravl] New comment for ${comment.blogEntry.title} by ${comment.author}")
+            } catch (Exception e) {
+            	log.error "Error sending email comment", e
+            }
 
     }
 
@@ -77,6 +81,7 @@ to opt of any further comments on this thread,
 
     def newCommentPosted(Comment comment, String baseUri) {
         log.debug ("New comment posted")
+        
         if (isEmailNotifyActive(comment)) {
             log.debug "Email notification active, sending comment notification"
             emailCommentNotification(comment, baseUri)

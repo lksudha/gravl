@@ -3,6 +3,7 @@ import org.codehaus.groovy.grails.commons.ConfigurationHolder
 class EntriesTagLib {
 
     CacheService cacheService
+    BlogEntriesService blogEntriesService
 
     public static String getNiceDate(Date date) {
 
@@ -198,6 +199,23 @@ class EntriesTagLib {
         } else {
             log.debug "No readable custom sidebar detected at ${f.absoluteFile}"
         }
+    }
+    
+    def writeNextPrevLinks = { attr ->
+    	if (attr.id) {
+    		
+    		def entryMap = blogEntriesService.getNextPrevEntryMap(attr.id)
+    		if (entryMap?.prevId) {
+    			out << "&laquo; <a href='${entryMap.prevLink}'>${entryMap.prevTitle}</a> &laquo; "		
+    		}
+    		if (entryMap?.nextId) {
+    			out << "&raquo; <a href='${entryMap.nextLink}'>${entryMap.nextTitle}</a> &raquo; "		
+    		}
+    		
+    	}
+    	
+    	
+    	
     }
 
 }

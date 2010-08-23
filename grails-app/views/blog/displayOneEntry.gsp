@@ -103,6 +103,9 @@
                         </g:each>
                     </p>
                 </div>
+                <div class="nextPrevLinks" style="align: center; width: 100%;">
+                	<g:writeNextPrevLinks id="${entry.id}"/>
+                </div>
                 <g:if test="${entries.size == 1 && print==false}">
 
                     <a name="comments"/>

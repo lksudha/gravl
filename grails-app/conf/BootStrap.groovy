@@ -24,6 +24,19 @@ class BootStrap {
 
             Tag tag = new Tag(name: 'sample', blog: blog)
             tag.save()
+            
+            1.upto(3) { i ->
+            	BlogEntry be = new BlogEntry(title: "Entry Number ${i}", status: "published",
+                    body: """
+<p>
+Just a really simple entry number ${i}
+</p>
+""")
+				be.created = new Date() - i
+            	be.addToTags(tag).save()
+            	blog.addToBlogEntries(be).save()
+            	
+            }
 
             BlogEntry be = new BlogEntry(title: "Welcome to Gravl", status: "published",
                     body: """
