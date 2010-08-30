@@ -62,7 +62,7 @@ class CommentController {
             Comment newComment = new Comment(comment.properties)
             newComment.ipaddress = request.getRemoteAddr()
             BlogEntry be = BlogEntry.get(comment.entryId)
-            be.addToComments(newComment).save()
+            be.addToComments(newComment).save(flush: true)
 
             log.debug "Rendering new comment"
             render(template: "/blog/comment", model: [comment: comment, newlySaved: true ])

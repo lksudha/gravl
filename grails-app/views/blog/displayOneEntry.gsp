@@ -16,8 +16,16 @@
             <meta name="layout" content="main"/>
             <link rel="stylesheet" href="${createLinkTo(dir: 'css', file: 'bubbles.css')}"/>
             <g:javascript library="scriptaculous"/>
+            <!--
             <link rel="stylesheet" href="${createLinkTo(dir: 'css', file: 'prettify.css')}"/>
             <g:javascript library="prettify" />
+        	-->
+        	<link rel="stylesheet" href="${createLinkTo(dir: 'css', file: 'shCore.css')}"/>
+        	<link rel="stylesheet" href="${createLinkTo(dir: 'css', file: 'shThemeDefault.css')}"/>
+        	<g:javascript src="shCore.js"/>
+        	<g:javascript src="shAutoloader.js"/>
+        	
+            
         </g:else>
 
 
@@ -103,9 +111,11 @@
                         </g:each>
                     </p>
                 </div>
+                <%--
                 <div class="nextPrevLinks" style="align: center; width: 100%;">
                 	<g:writeNextPrevLinks id="${entry.id}"/>
                 </div>
+                --%>
                 <g:if test="${entries.size == 1 && print==false}">
 
                     <a name="comments"/>
@@ -135,5 +145,48 @@
             </div>
 
         </g:each>
+        <g:javascript>
+        
+			function path() {
+			  var args = arguments,
+			      result = []
+			      ;
+			       
+			  for(var i = 0; i < args.length; i++)
+			      result.push(args[i].replace('@', "${createLinkTo(dir: 'js')}/"));
+			       
+			  return result
+			};
+			 
+			SyntaxHighlighter.autoloader.apply(null, path(
+			  'applescript            @shBrushAppleScript.js',
+			  'actionscript3 as3      @shBrushAS3.js',
+			  'bash shell             @shBrushBash.js',
+			  'coldfusion cf          @shBrushColdFusion.js',
+			  'cpp c                  @shBrushCpp.js',
+			  'c# c-sharp csharp      @shBrushCSharp.js',
+			  'css                    @shBrushCss.js',
+			  'delphi pascal          @shBrushDelphi.js',
+			  'diff patch pas         @shBrushDiff.js',
+			  'erl erlang             @shBrushErlang.js',
+			  'groovy                 @shBrushGroovy.js',
+			  'java                   @shBrushJava.js',
+			  'jfx javafx             @shBrushJavaFX.js',
+			  'js jscript javascript  @shBrushJScript.js',
+			  'perl pl                @shBrushPerl.js',
+			  'php                    @shBrushPhp.js',
+			  'text plain             @shBrushPlain.js',
+			  'py python              @shBrushPython.js',
+			  'ruby rails ror rb      @shBrushRuby.js',
+			  'sass scss              @shBrushSass.js',
+			  'scala                  @shBrushScala.js',
+			  'sql                    @shBrushSql.js',
+			  'vb vbnet               @shBrushVb.js',
+			  'xml xhtml xslt html    @shBrushXml.js'
+			));
+			SyntaxHighlighter.all();
+        
+        	
+        </g:javascript>
     </body>
 </html>
