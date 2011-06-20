@@ -38,7 +38,8 @@ grails.project.dependency.resolution = {
         compile 'commons-httpclient:commons-httpclient:3.1'
         compile 'spy:memcached:2.3.1'
         compile 'javax.activation:activation:1.1.1'
-        runtime 'postgresql:postgresql:8.2-507.jdbc3'
+        compile 'net.sf.opencsv:opencsv:2.1'
+        compile 'postgresql:postgresql:9.0-801.jdbc4'
    
         // runtime 'mysql:mysql-connector-java:5.1.5'
     }
